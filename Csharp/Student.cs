@@ -8,5 +8,6 @@ namespace Csharp
 {
     class Student
     {
+        public int age;
     }
 }
