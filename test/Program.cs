@@ -10,7 +10,10 @@ namespace test
     {
 
         public class Person {
+            public Person()
+            {
 
+            }
             public Person(string name)
             {
             }
@@ -21,23 +24,16 @@ namespace test
             }
             public string Name
             {
-                get;
+                get;set;
             }
+            protected /*internal*/ int Age { get; set; }//
+            public void eat()
+            {
+                Console.WriteLine("吃饭");
+            }
+
+
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //栈，堆
         //public class Student:Person
         //{
@@ -82,7 +78,11 @@ namespace test
             {
 
             }
-
+            public void Exam()
+            {
+                Age++;
+            }
+            public int classId = 20;
         }
 
         public class OnlineStudent : Student
@@ -95,13 +95,52 @@ namespace test
 
         static void Main(string[] args)
         {
+            Person lw = new Student();
+            lw.Name = "刘伟";
+            //lw.classId;//取不到
+            Console.WriteLine(((Student)lw).classId);//将lw强制类型转换为student类型
+            Console.WriteLine(lw is Student);//true
+
+            Person wx = null;
+            Console.WriteLine(wx is Person);      //false：wx是null值
+
+            Person pzq = new Person();
+            //pzq是一个Person对象，无法转换成Student
+            if (pzq is Student)//第一种判断
+            {
+                Console.WriteLine(((Student)pzq).classId);
+            }
+            else
+            {
+                Console.WriteLine("不能转换");
+            }
+            //无法将类型为“Person”的对象强制转换为类型“Student”。
+
+            //第二种判断此外我们还有另一种方式，直接使用  as
+            //进行转换。如果转换不成功，会返回null值。
+            Student converted = pzq as Student;
+            if(converted != null)
+            {
+                Console.WriteLine(converted.classId);
+            }
+            else
+            {
+                Console.WriteLine("不能转换");
+            }
 
 
             new OnlineStudent(79, "12", 17);
-          //  Student lzb = new Student();
-          //  Student zdh = new Student("周丁浩");
+            //  Student lzb = new Student();
+            //  Student zdh = new Student("周丁浩");
             //Student zdh1 = new Student("周丁浩",25);
-           // Console.WriteLine(zdh1.)
+            // Console.WriteLine(zdh1.)
+
+
+            Person zs = new Person(48);
+            //Console.WriteLine(zs.Age);//protected子类中可使用，外部不能访问
+
+
+
             Console.ReadKey();
 
 
