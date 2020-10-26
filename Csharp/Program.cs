@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.Eventing.Reader;
+using System.Threading;
 
 namespace Csharp
 {
@@ -31,13 +29,13 @@ namespace Csharp
             //Console.WriteLine(a - b);
             //Console.WriteLine(a * b);
             //Console.WriteLine(a / b);
-            //int c = 5;
-            //int d = 3;
+            //float c = 5.3F;
+            //float d = 3.2F;
             //Console.WriteLine("输出两个小数的和/差/积/商");
-            //Console.WriteLine((float)c + d);
-            //Console.WriteLine((float)c - d);
-            //Console.WriteLine((float)c * d);
-            //Console.WriteLine((float)c / d);
+            //Console.WriteLine(c + d);
+            //Console.WriteLine(c - d);
+            //Console.WriteLine(c * d);
+            //Console.WriteLine(c / d);
 
             ////--2
             //Console.WriteLine("---电脑计算并输出：[(23+7)x12-8]÷6的小数值（挑战：精确到小数点以后2位）---");
@@ -78,47 +76,15 @@ namespace Csharp
             //如果用户名或密码错误，输出：“*用户名或密码错误”
             //以上全部正确无误，输出：“恭喜！登录成功！”
             //PS：验证码 / 用户名 / 密码直接预设在源代码中，输入由Console.ReadLine()完成。
-
-            /* Console.WriteLine("请输入验证码");
-            string yanzhan = Convert.ToString(Console.ReadLine());
-            Console.WriteLine("请输入用户名");
-            string username = Convert.ToString(Console.ReadLine());
-            if (yanzhan == "1234" && username == "zl")
-            {
-                Console.WriteLine("欢迎" + username + "登录成功！");
-            }
-            else
-            {
-                if (yanzhan == "1234")
-                {
-                    Console.WriteLine("验证码输入正确");
-                }
-                else
-                {
-                    Console.WriteLine("验证码输入错误");
-
-                }
-                if (username == "zl")
-                {
-                    Console.WriteLine("用户名正确");
-                }
-                else
-                {
-                    Console.WriteLine("用户名输入错误");
-
-                }
-            }
-
-             Console.ReadKey();*/
-
-
+            //Login();
+            
             // C#：面向过程：数组  http://17bang.ren/Article/294
             ////作业：
             ////将源栈同学姓名 / 昵称分别：
             ////按进栈时间装入一维数组，
             ////按座位装入二维数组，
             ////并输出共有多少名同学。
-            //string[] studentname = { "刘伟", "李智博", "龚廷义", "廖光银", "周宁浩", "邹丽", "胡涛" };
+            //string[] studentname = { "刘伟", "李智博", "龚廷义", "廖光银", "周丁浩", "邹丽", "胡涛" };
             //int k;
             //for (k = 0; k < studentname.Length; k++)
             //{
@@ -129,7 +95,7 @@ namespace Csharp
             //location[0, 1]= "刘伟";
             //location[0, 3] = "龚廷义";
             //location[1, 0] = "李智博";
-            //location[1, 1] = "周宁浩";
+            //location[1, 1] = "周丁浩";
             //location[1, 2] = "廖光银";
             //location[2, 1] = "邹丽";
             //location[2, 3] = "胡涛";
@@ -185,7 +151,7 @@ namespace Csharp
 
             //--2
             ////用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
-            //string[] studentname = { "刘伟", "李智博", "龚廷义", "廖光银", "周宁浩", "邹丽", "胡涛" };
+            //string[] studentname = { "刘伟", "李智博", "龚廷义", "廖光银", "周丁浩", "邹丽", "胡涛" };
             //for (int i = 0; i < studentname.Length - 1; i++)
             //{
             //    Console.WriteLine(studentname[i]);
@@ -195,7 +161,7 @@ namespace Csharp
             //location[0, 1] = "刘伟";
             //location[0, 3] = "龚廷义";
             //location[1, 0] = "李智博";
-            //location[1, 1] = "周宁浩";
+            //location[1, 1] = "周丁浩";
             //location[1, 2] = "廖光银";
             //location[2, 1] = "邹丽";
             //location[2, 3] = "胡涛";
@@ -225,6 +191,17 @@ namespace Csharp
 
 
             //--4 将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
+            //double[] score = { 98, 89, 78, 64, 88, 72 };
+            //double Smax = score[0];
+            //for (int i = 0; i < score.Length; i++)
+            //{
+            //    if (Smax > score[i])
+            //    {
+
+            //    }
+
+            //}
+
 
 
 
@@ -254,6 +231,14 @@ namespace Csharp
             //    }
             //}
 
+            //6、生成一个元素（值随机）从小到大排列的数组
+            //ArraySort();
+
+            //7-设立并显示一个多维数组的值，元素值等于下标之和。
+            //MarreyXB();
+           
+
+
 
             //方法基础：声明/调用/返回值 http://17bang.ren/Article/299
             //作业
@@ -266,17 +251,28 @@ namespace Csharp
             //如果5次之内猜中，输出：你真牛逼！
             //如果8次之内猜中，输出：不错嘛！
             //10次还没猜中，输出：(～￣(OO)￣)ブ
+            //传入一个数组返回最大值，最小值
 
 
+
+            //double[] score1 = { 98, 89, 78, 64, 88, 72.8 };
+            //GetAverage(score1);//81.5;
+
+            //Console.WriteLine("***********************************************");
+            //Console.WriteLine("------------欢迎进入猜数字游戏！-------------");
+            //Console.WriteLine("我们将从1到1000间随机生成一个数字由玩家进行猜测！");
+            //  GuessMe();
+            //getMaxArray();//9
+            //getMinArray();//2
 
 
             //C#：面向过程：方法进阶：值/引用传递  20201016  http://17bang.ren/Article/303
             //作业
             //利用ref调用Swap()方法交换两个同学的床位号
+              Swap();
             //将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
             //true / false，表示登陆是否成功
             //string，表示登陆失败的原因
-
 
 
             //方法进阶：参数：重载/可选/params  20201016 http://17bang.ren/Article/641
@@ -342,38 +338,38 @@ namespace Csharp
             //return代替引用类型的引用传递
             //思考：为什么需要区分引用类型和值类型？
 
-            //--1值类型参数的值传递
-            Console.WriteLine("值类型参数的值传递");
-            int i = 18;
-            int j = i;
-            Console.WriteLine(j);//18
-            j = 19;
-            Console.WriteLine(j);//19
-            //--2引用类型参数的值传递
-            //引用类型的值传递。这里是将变量zl的值 复制一份，将副本传递给grow()方法。
-            //变量zl的值，它具体指的是什么？是 new Student()这个对象的地址
-            //因为传递给grow()方法的是对象地址，所以在方法中修改的也就是对象内容，
-            //而最后的输出的也是对象的内容（zl.age），所以……
-            Console.WriteLine("引用类型参数的值传递");
-            Student zl = new Student();
-            zl.age = 18;
-            grow(zl);//1、18
-            Console.WriteLine(zl.age);//4、19
-                                      //--3值类型参数的引用传递
-            Console.WriteLine("值类型参数的引用传递");
-            Student lw = new Student();
-            lw.age = 18;
-            Student clone = lw; //这里是把wx的什么赋值给了clone？
-            clone.age = 20;
-            Console.WriteLine(lw.age);//20
-            //因为 Student clone = lw; 这一行代码，实际上是把变量lw中存放的Student对象地址赋值给了clone，
-            //--4引用类型参数的引用传递
-            Console.WriteLine("引用类型参数的引用传递");
-            Student zll = new Student();
-            zll.age = 18;
-            grow(ref zll);
-            Console.WriteLine(zll.age);
-            Console.WriteLine("hello");
+            ////--1值类型参数的值传递
+            //Console.WriteLine("值类型参数的值传递");
+            //int i = 18;
+            //int j = i;
+            //Console.WriteLine(j);//18
+            //j = 19;
+            //Console.WriteLine(j);//19
+            ////--2引用类型参数的值传递
+            ////引用类型的值传递。这里是将变量zl的值 复制一份，将副本传递给grow()方法。
+            ////变量zl的值，它具体指的是什么？是 new Student()这个对象的地址
+            ////因为传递给grow()方法的是对象地址，所以在方法中修改的也就是对象内容，
+            ////而最后的输出的也是对象的内容（zl.age），所以……
+            //Console.WriteLine("引用类型参数的值传递");
+            //Student zl = new Student();
+            //zl.age = 18;
+            //grow(zl);//1、18
+            //Console.WriteLine(zl.age);//4、19
+            //                          //--3值类型参数的引用传递
+            //Console.WriteLine("值类型参数的引用传递");
+            //Student lw = new Student();
+            //lw.age = 18;
+            //Student clone = lw; //这里是把wx的什么赋值给了clone？
+            //clone.age = 20;
+            //Console.WriteLine(lw.age);//20
+            ////因为 Student clone = lw; 这一行代码，实际上是把变量lw中存放的Student对象地址赋值给了clone，
+            ////--4引用类型参数的引用传递
+            //Console.WriteLine("引用类型参数的引用传递");
+            //Student zll = new Student();
+            //zll.age = 18;
+            //grow(ref zll);
+            //Console.WriteLine(zll.age);
+            //Console.WriteLine("hello");
 
 
 
@@ -438,36 +434,252 @@ namespace Csharp
 
 
 
-            //int a = 3;
-            //int b = 2;
-            //float result = a / b;
-            //float result1 = (float)a / b;
-            //Console.WriteLine("int a = 3 int b = 2 " );
-            //Console.WriteLine("a / b"+a + b);
-            //Console.WriteLine("a / b;"+result);
-            //Console.WriteLine("(float)a / b"+result1);
-            //float result2 = 3 + 2 / 5;
-            //Console.WriteLine("3 + 2 / 5" + result2);
-            //double result3 = 0.1 + 0.2;
-            //Console.WriteLine(" 0.1 + 0.2;" + result3);
-            //bool result4 = a > b;
-            //Console.WriteLine("a > b"+result4);
-            //bool result5 = (0.1 + 0.2) == 0.3;
-            //Console.WriteLine("(0.1 + 0.2) == 0.3"+result5);
-            //string name = "源站";
 
-            //Console.WriteLine("你好，！源栈，欢迎您");
-            //Console.WriteLine($"你好，！源栈，欢迎您");
 
 
 
         }
 
+        private static void Login()
+        {
+            Console.WriteLine("请输入验证码");
+            if (Console.ReadLine() != "1234")
+            {
+                Console.WriteLine("*验证码错误");
+            }
+            else
+            {
+                Console.WriteLine("请输入用户名");
+                if (Console.ReadLine() != "zl")
+                {
+                    Console.WriteLine("用户名不存在");
+                }
+                else
+                {
+                    Console.WriteLine("请输入密码");
+                    if (Console.ReadLine() != "123456")
+                    {
+                        Console.WriteLine("用户名或密码错误");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("恭喜！登录成功！");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设立并显示一个多维数组的值，元素值等于下标之和。
+        /// </summary>
+        private static void MarreyXB()
+        {
+            int[,] Marrey = new int[3, 4];
+            // GetLength(0) 获得第一维的长度(行数) GetLength(1) 获得第二维的长度(列数)
+            for (int i = 0; i < Marrey.GetLength(0); i++)
+            {
+                for (int j = 0; j < Marrey.GetLength(1); j++)
+                {
+                    Console.Write(i + j + "---");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
+        /// <summary>
+        ///  利用ref调用Swap()方法交换两个同学的床位号
+        /// </summary>
+        private static void Swap()
+        {
+          
+        }
+
+        /// <summary>
+        ///   //传入一个数组返回最小值
+        /// </summary>
+        private static void getMinArray()
+        {
+            int[] arraymax = { 2, 5, 7, 8, 9 };
+            for (int i = 0; i < arraymax.Length; i++)
+            {
+                //从小到大 
+                for (int j = 0; j < arraymax.Length - 1; j++)
+                {
+                    if (arraymax[j] < arraymax[j + 1])
+                    {
+                        int temp = arraymax[j];
+                        arraymax[j] = arraymax[j + 1];
+                        arraymax[j + 1] = temp;
+
+                    }
+
+                }
+
+            }
+
+            Console.WriteLine(arraymax[arraymax.Length - 1]);
+
+        }
+        /// <summary>
+        ///   //传入一个数组返回最大值
+        /// </summary>
+        private static void getMaxArray()
+        {
+            int[] arraymax = { 2, 5, 7, 8, 9 };
+            for (int i = 0; i < arraymax.Length; i++)
+            {
+                //从小到大 
+                for (int j = 0; j < arraymax.Length - 1; j++)
+                {
+                    if (arraymax[j] > arraymax[j + 1])
+                    {
+                        int temp = arraymax[j];
+                        arraymax[j] = arraymax[j + 1];
+                        arraymax[j + 1] = temp;
+
+                    }
+
+                }
+
+            }
+
+            Console.WriteLine(arraymax[arraymax.Length - 1]);
+        }
+        /// <summary>
+        ///  生成一个元素（值随机）从小到大排列的数组
+        /// </summary>
+        public static void ArraySort()
+        {
+            //给随机数组赋值
+            int[] arryasc = new int[10];
+            Random Rvalue = new Random();
+            arryasc[0] = Rvalue.Next(5);
+            for (int i = 1; i < 10; i++)
+            {
+                arryasc[i + 1] = Rvalue.Next(0,100) + arryasc[i];
+
+                Console.WriteLine(arryasc[i]);
+            }
+            //冒泡排序
+            for (int i = 0; i < arryasc.Length; i++)
+            {
+                //从小到大 
+                for (int j = 0; j < arryasc.Length-1; j++)
+                {
+                    if (arryasc[j] > arryasc[j + 1])
+                    {
+                        int temp = arryasc[j];
+                        arryasc[j] = arryasc[j + 1];
+                        arryasc[j + 1] = temp;
+
+                    }
+
+                }
+
+            }
+
+       
+        }
+        //传入一个数组返回最大值，最小值
+
+        /// <summary>
+        /// 猜数游戏
+        /// </summary>
+        //完成“猜数字”游戏，方法名GuessMe()：
+        //随机生成一个大于0小于1000的整数
+        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
+        //没猜中可以继续猜，但最多不能超过10次
+        //如果5次之内猜中，输出：你真牛逼！
+        //如果8次之内猜中，输出：不错嘛！
+        //10次还没猜中，输出：(～￣(OO)￣)ブ  
+        public static void GuessMe()
+        {
+
+            Random r = new Random();
+            int b = r.Next(0, 1000);//随机数
+            Console.WriteLine(b);
+            Console.WriteLine("请输入您猜的数字：");
+
+            ///1、猜中
+            ///1.1检查次数
+            ///2、未猜中
+            ///2.1未到10次，继续
+            ///2.2到了10次,结束
+            for (int i = 0; i < 20; i++)
+            {
+                int   a = int.Parse(Console.ReadLine());
+                if (a!= b)
+                {
+                    if (i <= 10)
+                    {
+                        if (a > b)
+                        {
+                            Console.WriteLine("大了");
+                        }
+                        else if (a < b)
+                        {
+                            Console.WriteLine("小了");
+                        }
+                    }
+                    else if(i>10)
+                    {
+                        Console.WriteLine("不能再输了");
+                        break;
+                    }
+                }
+                else
+                {
+                    if (i <= 5)
+                    {
+                        Console.WriteLine("你真牛逼");
+                    }
+                    else if (i <= 8)
+                    {
+                        Console.WriteLine("不错嘛！");
+                    }
+                    else if (i <= 10)
+                    {
+                        Console.WriteLine("这么多次才中，加油哦");
+                    }
+                }
+
+            }
+
+
+
+
+
+
+
+
+        }
+
+        /// <summary>
+        /// 平均成绩
+        /// </summary>
+        /// <param name="score1"></param>
+        public static void GetAverage(double [] score1)
+        {
+            double sum = 0;
+            double avg = 0;
+            
+            for (int i = 0; i < score1.Length; i++)
+            { 
+                sum += score1[i];           
+            }
+             avg =Math.Round((sum / score1.Length),2);
+            Console.WriteLine("分数是" + avg);
+
+
+
+        }
         public static void grow(Student student)//2、18
         {
             // student = new Student();
             student.age++;
             Console.WriteLine(student.age);//3、19
+
         }
         public static void grow(ref Student student)
         {
