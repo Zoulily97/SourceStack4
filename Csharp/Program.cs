@@ -262,7 +262,7 @@ namespace Csharp
             {
                 //作业
                 //利用ref调用Swap()方法交换两个同学的床位号
-                Swap();
+              //  Swap();
                 //将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
                 //true / false，表示登陆是否成功
                 //string，表示登陆失败的原因
@@ -279,7 +279,7 @@ namespace Csharp
                 //传入一个有序（从大到小 / 从小到大）数组和数组中要查找的元素
                 //   如果找到，返回该元素所在的下标；否则，返回 - 1
 
-                GetArray();
+               // GetArray();
 
             }
 
@@ -291,7 +291,7 @@ namespace Csharp
                 //IndexOf()，通过遍历在无序数组中
                 //--BinarySearch()，通过二分查找法在一个有序数组中
                 //--找到某个值的下标，找不到返回 - 1
-                BinarySearch();
+              //  BinarySearch();
             }
 
             //C#-面向对象：基础中的基础-类和对象 20201019 https://zhuanlan.zhihu.com/p/92362781
@@ -375,6 +375,7 @@ namespace Csharp
                 //4、设计一种方式，保证：
                 //  1、每一个Problem对象一定有Body赋值
                 //  2、每一个User对象一定有Name和Password赋值
+                User ywq = new User("fege");
             }
 
             //C#-面向对象：静态还是实例？20201025 https://zhuanlan.zhihu.com/p/95261748

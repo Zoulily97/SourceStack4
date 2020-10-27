@@ -19,14 +19,14 @@ namespace Csharp
         //crtl+r+e
         private string title;
         private string body;
-        private string reward;
+        private int reward;
         private DateTime publishDateTime;
         private string author;
         public string Title { get => title; set => title = value; }   
         public string Body { get => body; set => body = value; }
        
         //  3、problem.Reward不能为负数
-        public string Reward { get => reward; set => reward = value; }   
+        public int  Reward { get => reward; set => reward = value; }   
         public DateTime PublishDateTime { get => publishDateTime; set => publishDateTime = value; }   
         public string Author { get => author; set => author = value; }
         public string[] HelpFiled { get; set; }

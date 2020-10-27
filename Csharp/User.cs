@@ -1,13 +1,17 @@
-﻿namespace Csharp
-{
-    //C#-面向对象：基础中的基础-类和对象 20201019 https://zhuanlan.zhihu.com/p/92362781
+﻿using System;
 
+namespace Csharp
+{
     //作业：
-    //观察“一起帮”的：
-    //注册 / 登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
-    //求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
-    //帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
-    //为这些类的字段和方法设置合适的访问修饰符
+    //1、将之前User / Problem / HelpMoney类的字段封装成属性，其中：
+    //  1、user.Password在类的外部只能改不能读
+    //  2、如果user.Name为“admin”，输入时修改为“系统管理员”
+    //  3、problem.Reward不能为负数
+    //2、调用这些类的有参 / 无参构造函数，生成这些类的对象，调用他们的方法
+    //3、一起帮的求助可以有多个（最多10个）关键字，请为其设置索引器，以便于我们通过其整数下标进行读写。
+    //4、设计一种方式，保证：
+    //  1、每一个Problem对象一定有Body赋值
+    //  2、每一个User对象一定有Name和Password赋值
 
 
 
@@ -21,6 +25,32 @@
 
         public string Password { private get; set; }//  1、user.Password在类的外部只能改不能读
         public User InvitesBy { get; set; }
+        //   2、如果user.Name为“admin”，输入时修改为“系统管理员”
+        public string Name
+        {
+            get => name;
+            set
+            {
+                if (name == "admin")
+                {
+                   name="系统管理员 ";
+                }
+                else
+                {
+                    name = value;
+                }
+            }
+        }
+
+
+        public User()
+        {
+
+        }
+        public User(string name)  //有参构造函数
+        {
+            Console.WriteLine($"你好！{name}，源栈欢迎你……");
+        }
         public static void Register()
         {
 
@@ -29,5 +59,6 @@
         {
 
         }
+
     }
 }
