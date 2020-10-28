@@ -16,7 +16,7 @@ namespace Csharp
 
 
 
-    sealed class User
+    sealed class User//1、让User类无法被继承
     {
 
         private string name;
@@ -33,7 +33,7 @@ namespace Csharp
             {
                 if (name == "admin")
                 {
-                   name="系统管理员 ";
+                    name = "系统管理员 ";
                 }
                 else
                 {
@@ -47,10 +47,12 @@ namespace Csharp
         {
 
         }
-        public User(string name)  //有参构造函数
+        public User(string name,string password)  //有参构造函数//赋值
         {
-            Console.WriteLine($"你好！{name}，源栈欢迎你……");
+            this.name = name;
+            this.password = password;
         }
+
         public static void Register()
         {
 

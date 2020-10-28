@@ -43,11 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Article.cs" />
+    <Compile Include="Content.cs" />
+    <Compile Include="ContentService.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="FactoryContext.cs" />
     <Compile Include="HelpMoney.cs" />
+    <Compile Include="MimicStack.cs" />
     <Compile Include="Problem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repoistory.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="Suggest.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,11 +17,13 @@ namespace Csharp
         private int availableNum;
         private int frozenNum;
         private string moneytype;
+        public  int helpmoney;
         
         public int AvailableNum { get => availableNum; set => availableNum = value; }//可用数量
        
         public int FrozenNum { get => frozenNum; set => frozenNum = value; }//冻结数量
      
         public string Moneytype { get => moneytype; set => moneytype = value; }//帮帮币种类
+       // public int Helpmoney { get => helpmoney; set => helpmoney = value; }
     }
 }

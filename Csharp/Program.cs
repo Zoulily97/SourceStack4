@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
-using System.Security.Permissions;
-using System.Threading;
 
 namespace Csharp
 {
@@ -9,6 +6,9 @@ namespace Csharp
     {
 
         static void Main(string[] args)
+        
+        
+        
         {
 
 
@@ -262,7 +262,7 @@ namespace Csharp
             {
                 //作业
                 //利用ref调用Swap()方法交换两个同学的床位号
-              //  Swap();
+                //  Swap();
                 //将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
                 //true / false，表示登陆是否成功
                 //string，表示登陆失败的原因
@@ -279,7 +279,7 @@ namespace Csharp
                 //传入一个有序（从大到小 / 从小到大）数组和数组中要查找的元素
                 //   如果找到，返回该元素所在的下标；否则，返回 - 1
 
-               // GetArray();
+                // GetArray();
 
             }
 
@@ -291,7 +291,7 @@ namespace Csharp
                 //IndexOf()，通过遍历在无序数组中
                 //--BinarySearch()，通过二分查找法在一个有序数组中
                 //--找到某个值的下标，找不到返回 - 1
-              //  BinarySearch();
+                //  BinarySearch();
             }
 
             //C#-面向对象：基础中的基础-类和对象 20201019 https://zhuanlan.zhihu.com/p/92362781
@@ -375,7 +375,8 @@ namespace Csharp
                 //4、设计一种方式，保证：
                 //  1、每一个Problem对象一定有Body赋值
                 //  2、每一个User对象一定有Name和Password赋值
-                User ywq = new User("fege");
+                User ywq = new User("fege","123");
+                Problem problem1 = new Problem("body问题");
             }
 
             //C#-面向对象：静态还是实例？20201025 https://zhuanlan.zhihu.com/p/95261748
@@ -398,6 +399,22 @@ namespace Csharp
                 //出 / 入栈检查，
                 //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
                 //如果已弹出所有数据，提示“栈已空”
+                MimicStack mimicStack1 = new MimicStack();
+                mimicStack1.Push(1);
+                mimicStack1.Push(2);
+                mimicStack1.Push(3);
+                mimicStack1.Push(4);
+                mimicStack1.Push(5);
+                //mimicStack1.Push(6);//溢出
+                mimicStack1.Pop();
+                mimicStack1.Pop();
+                mimicStack1.Pop();
+                mimicStack1.Pop();
+                mimicStack1.Pop();
+                mimicStack1.Pop();
+
+
+
             }
 
 
@@ -414,14 +431,28 @@ namespace Csharp
                 // 2、自己的属性和方法
                 //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，
                 //包含一个只读的Id属性。试一试，Suggest能有Id属性么？
+                Article a1 = new Article();
+                a1.Praise();// // 1、继承自父类的属性和方法
+                a1.Search("123");// 2、自己的属性和方法
+                
+
+
             }
             //C#-面向对象：你真的明白什么是多态吗  20201027 ?https://zhuanlan.zhihu.com/p/93053223
             {  //作业：
-                //添加一个新类ContentService，其中有一个发布（Publish()）方法：
-                //如果发布Article，需要消耗一个帮帮币
-                //如果发布Problem，需要消耗其设置悬赏数量的帮帮币
-                //如果发布Suggest，不需要消耗帮帮币
-                //最后将内容存到数据库中，三个类存数据库的方法是完全一样的，现在用Console.WriteLine()代替。根据我们学习的继承和多态知识，实现上述功能。
+               //添加一个新类ContentService，其中有一个发布（Publish()）方法：
+               //如果发布Article，需要消耗一个帮帮币
+               //如果发布Problem，需要消耗其设置悬赏数量的帮帮币
+               //如果发布Suggest，不需要消耗帮帮币
+               //最后将内容存到数据库中，三个类存数据库的方法是完全一样的，现在用Console.WriteLine()代替。根据我们学习的继承和多态知识，实现上述功能。
+
+                Article ch = new Article();
+                new ContentService().Publish(ch);
+                Problem p1 = new Problem("body");
+                new ContentService().Publish(p1);
+                Suggest s1 = new Suggest();
+                new ContentService().Publish();
+
             }
 
         }
@@ -437,11 +468,11 @@ namespace Csharp
         {
             //给随机数组赋值
             int[] arryasc = new int[10];
-            Random Rvalue = new Random();        
+            Random Rvalue = new Random();
             for (int i = 1; i < 10; i++)
-            { 
+            {
                 arryasc[i + 1] = Rvalue.Next(0, 100) + arryasc[i];
-                 
+
                 Console.WriteLine(arryasc[i]);
             }
             //冒泡排序
@@ -470,7 +501,7 @@ namespace Csharp
         private static void BinarySearch()
         {
 
-            
+
         }
 
         private static void Login()
@@ -525,7 +556,7 @@ namespace Csharp
         /// </summary>
         private static void Swap()
         {
-          
+
         }
 
         /// <summary>
@@ -590,7 +621,7 @@ namespace Csharp
             arryasc[0] = Rvalue.Next(5);
             for (int i = 1; i < 10; i++)
             {
-                arryasc[i + 1] = Rvalue.Next(0,100) + arryasc[i];
+                arryasc[i + 1] = Rvalue.Next(0, 100) + arryasc[i];
 
                 Console.WriteLine(arryasc[i]);
             }
@@ -598,7 +629,7 @@ namespace Csharp
             for (int i = 0; i < arryasc.Length; i++)
             {
                 //从小到大 
-                for (int j = 0; j < arryasc.Length-1; j++)
+                for (int j = 0; j < arryasc.Length - 1; j++)
                 {
                     if (arryasc[j] > arryasc[j + 1])
                     {
@@ -612,7 +643,7 @@ namespace Csharp
 
             }
 
-       
+
         }
         //传入一个数组返回最大值，最小值
 
@@ -641,8 +672,8 @@ namespace Csharp
             ///2.2到了10次,结束
             for (int i = 0; i < 20; i++)
             {
-                int   a = int.Parse(Console.ReadLine());
-                if (a!= b)
+                int a = int.Parse(Console.ReadLine());
+                if (a != b)
                 {
                     if (i <= 10)
                     {
@@ -655,7 +686,7 @@ namespace Csharp
                             Console.WriteLine("小了");
                         }
                     }
-                    else if(i>10)
+                    else if (i > 10)
                     {
                         Console.WriteLine("不能再输了");
                         break;
@@ -692,16 +723,16 @@ namespace Csharp
         /// 平均成绩
         /// </summary>
         /// <param name="score1"></param>
-        public static void GetAverage(double [] score1)
+        public static void GetAverage(double[] score1)
         {
             double sum = 0;
             double avg = 0;
-            
+
             for (int i = 0; i < score1.Length; i++)
-            { 
-                sum += score1[i];           
+            {
+                sum += score1[i];
             }
-             avg =Math.Round((sum / score1.Length),2);
+            avg = Math.Round((sum / score1.Length), 2);
             Console.WriteLine("分数是" + avg);
 
 
