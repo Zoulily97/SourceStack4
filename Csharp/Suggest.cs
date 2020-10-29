@@ -8,6 +8,16 @@ namespace Csharp
 {
     class Suggest:Content
     {
+        public override void Agree()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Disagree()
+        {
+            throw new NotImplementedException();
+        }
+
         //标题,内容，作者，评论，赞，踩
 
         public override void ReleseHelpMoney()

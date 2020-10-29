@@ -9,13 +9,15 @@ namespace test
 {
     public interface Ilearn//接口
     {
-        void GoLesson();
+        public double  Score { get; set; }
+        void GoLesson();//方法声明
+
     }
     public interface Iplay
     {
 
     }
-    class member : Person, Ilearn,Iplay
+    class member : Person, Iplay
     {
         public void GoLesson()
         {
@@ -30,13 +32,7 @@ namespace test
 {
  public    class Program
     {
-
-
-
-
-
-
-        public/* abstract*/  class Person {
+        public /*abstract*/ class Person {
             public Person()
             {
 
@@ -157,6 +153,14 @@ namespace test
             //{
             //    Console.WriteLine("开饭啦…小灶…");
             //}
+        }
+        public class Studet2 : Ilearn//实现接口，实现接口里所有方法
+        {
+            public void GoLesson()
+            {
+                throw new NotImplementedException();
+            }
+            public double  Score { get; set; }
         }
 
         static void ServeLunch( Person person)//多态  ---精简代码

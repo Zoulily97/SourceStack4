@@ -21,13 +21,13 @@ namespace Csharp
         { get => reward;
             set
             {
-                if (value > 0)
+                if (value<0)
                 {
-                    reward = value;
+                    Console.WriteLine("Reward不能为负数");
                 }
                 else
                 {
-                    Console.WriteLine("Reward不能为负数");
+                    reward = value;
                 }
             }
         }   
@@ -52,5 +52,14 @@ namespace Csharp
             Reward--;
         }
 
+        public override void Agree()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Disagree()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

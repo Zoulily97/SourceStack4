@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpLearn
+namespace Csharp
 {
-    class Program
+    class EmailMessage : ISendMessage
     {
-        static void Main(string[] args)
+        public void send()
         {
+            Console.WriteLine("EmailMessage");
         }
     }
 }

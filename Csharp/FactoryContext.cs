@@ -10,5 +10,10 @@ namespace Csharp
     //外部只能获得它的唯一的一个实例化对象。（提示：设计模式之单例）
     class FactoryContext
     {
+        private static FactoryContext factoryContext = new FactoryContext();
+        private FactoryContext()
+        {
+            Console.WriteLine("");
+        }
     }
 }

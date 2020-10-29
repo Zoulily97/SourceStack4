@@ -46,9 +46,13 @@
     <Compile Include="Article.cs" />
     <Compile Include="Content.cs" />
     <Compile Include="ContentService.cs" />
+    <Compile Include="DBMessage.cs" />
+    <Compile Include="EmailMessage.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FactoryContext.cs" />
     <Compile Include="HelpMoney.cs" />
+    <Compile Include="IChat.cs" />
+    <Compile Include="ISendMessage.cs" />
     <Compile Include="MimicStack.cs" />
     <Compile Include="Problem.cs" />
     <Compile Include="Program.cs" />

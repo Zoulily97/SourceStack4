@@ -4,14 +4,8 @@ namespace Csharp
 {
     class Program
     {
-
-        static void Main(string[] args)
-        
-        
-        
+        static void Main(string[] args)  
         {
-
-
             //C#:面向过程：变量和类型
             { //作业：
               //观察一起帮个人资料页面，用合适的变量类型存储页面用户输入信息，并解释为什么。
@@ -432,7 +426,7 @@ namespace Csharp
                 //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，
                 //包含一个只读的Id属性。试一试，Suggest能有Id属性么？
                 Article a1 = new Article();
-                a1.Praise();// // 1、继承自父类的属性和方法
+                a1.Agree();// // 1、继承自父类的属性和方法
                 a1.Search("123");// 2、自己的属性和方法
                 
 
@@ -455,6 +449,13 @@ namespace Csharp
 
             }
 
+
+            //C#-面向对象：抽象类和接口 20201027 https://zhuanlan.zhihu.com/p/93224519
+            { //思考之前的Content类，该将其抽象成抽象类还是接口？为什么？并按你的想法实现。
+              //一起帮里的求助总结、文章和意见建议，以及他们的评论，都有一个点赞（Agree）/ 踩（Disagree）的功能，赞和踩都会增减作者及评价者的帮帮点。能不能对其进行抽象？如何实现？
+              //引入两个子类EmailMessage和DBMessage，和他们继承的接口ISendMessage（含Send()方法声明），用Console.WriteLine()实现Send()。
+              //一起帮还可以在好友间发私信，所有又有了IChat接口，其中也有一个Send()方法声明。假设User类同时继承了ISendMessage和IChat，如何处理？
+            }
         }
 
         // 定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制：

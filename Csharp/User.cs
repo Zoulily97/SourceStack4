@@ -13,25 +13,23 @@ namespace Csharp
     //  1、每一个Problem对象一定有Body赋值
     //  2、每一个User对象一定有Name和Password赋值
 
-
-
-
-    sealed class User//1、让User类无法被继承
+    //1、让User类无法被继承
+    sealed class User:ISendMessage,IChat
     {
 
         private string name;
         private string password;
         private User invitesBy;
 
-        public string Password { private get; set; }//  1、user.Password在类的外部只能改不能读
+        public string Password { private get; set; }//  user.Password在类的外部只能改不能读
         public User InvitesBy { get; set; }
-        //   2、如果user.Name为“admin”，输入时修改为“系统管理员”
+        //如果user.Name为“admin”，输入时修改为“系统管理员”
         public string Name
         {
             get => name;
             set
             {
-                if (name == "admin")
+                if (value == "admin")
                 {
                     name = "系统管理员 ";
                 }
@@ -41,7 +39,6 @@ namespace Csharp
                 }
             }
         }
-
 
         public User()
         {
@@ -62,5 +59,15 @@ namespace Csharp
 
         }
 
+      
+        void ISendMessage.send()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void send()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

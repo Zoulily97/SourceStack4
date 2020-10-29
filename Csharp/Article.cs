@@ -16,6 +16,16 @@ namespace Csharp
         private string[] comments;
         public string[] Comments { get => comments; set => comments = value; }
 
+        public override void Agree()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Disagree()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void ReleseHelpMoney()
         {
             Console.WriteLine("需要消耗一个帮帮币");
@@ -24,5 +34,8 @@ namespace Csharp
         {
 
         }
+
+
+
     }
 }

@@ -14,6 +14,7 @@ namespace Csharp
     //为这些类的字段和方法设置合适的访问修饰符
     class HelpMoney
     {
+        private DateTime time;
         private int availableNum;
         private int frozenNum;
         private string moneytype;
@@ -24,6 +25,7 @@ namespace Csharp
         public int FrozenNum { get => frozenNum; set => frozenNum = value; }//冻结数量
      
         public string Moneytype { get => moneytype; set => moneytype = value; }//帮帮币种类
-       // public int Helpmoney { get => helpmoney; set => helpmoney = value; }
+        public DateTime Time { get => time; set => time = value; }
+        // public int Helpmoney { get => helpmoney; set => helpmoney = value; }
     }
 }
