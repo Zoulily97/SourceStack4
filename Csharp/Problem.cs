@@ -15,7 +15,7 @@ namespace Csharp
         private string body;
         private int reward;
         private DateTime publishDateTime;     
-        public string Body { get => body; set => body = value; }
+        public string Body { get; set ; }
         //  3、problem.Reward不能为负数
         public int Reward 
         { get => reward;
@@ -46,20 +46,13 @@ namespace Csharp
         {
             Id--;
         }
-        public override void ReleseHelpMoney()
+        public override void Publish()
         {
+            Author.HelpMoney -= Reward;//发布减少帮帮比
             Console.WriteLine("需要消耗其设置悬赏数量的帮帮币");
             Reward--;
         }
 
-        public override void Agree()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Disagree()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

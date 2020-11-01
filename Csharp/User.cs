@@ -14,12 +14,13 @@ namespace Csharp
     //  2、每一个User对象一定有Name和Password赋值
 
     //1、让User类无法被继承
-    sealed class User:ISendMessage,IChat
+    public  class User:/*Entity,*/ ISendMessage,IChat
     {
 
         private string name;
         private string password;
         private User invitesBy;
+        
 
         public string Password { private get; set; }//  user.Password在类的外部只能改不能读
         public User InvitesBy { get; set; }
@@ -39,6 +40,8 @@ namespace Csharp
                 }
             }
         }
+
+        public int HelpMoney { get; set; }
 
         public User()
         {
@@ -60,12 +63,12 @@ namespace Csharp
         }
 
       
-        void ISendMessage.send()
+        void ISendMessage.Send()
         {
             throw new NotImplementedException();
         }
 
-        public void send()
+        void IChat.Send()
         {
             throw new NotImplementedException();
         }

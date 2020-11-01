@@ -8,6 +8,6 @@ namespace Csharp
 {
     interface IChat
     {
-       void  send();
+       void  Send();
     }
 }

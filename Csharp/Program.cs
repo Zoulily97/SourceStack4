@@ -4,7 +4,7 @@ namespace Csharp
 {
     class Program
     {
-        static void Main(string[] args)  
+        static void Main(string[] args)
         {
             //C#:面向过程：变量和类型
             { //作业：
@@ -369,7 +369,7 @@ namespace Csharp
                 //4、设计一种方式，保证：
                 //  1、每一个Problem对象一定有Body赋值
                 //  2、每一个User对象一定有Name和Password赋值
-                User ywq = new User("fege","123");
+                User ywq = new User("fege", "123");
                 Problem problem1 = new Problem("body问题");
             }
 
@@ -393,19 +393,19 @@ namespace Csharp
                 //出 / 入栈检查，
                 //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
                 //如果已弹出所有数据，提示“栈已空”
-                MimicStack mimicStack1 = new MimicStack();
-                mimicStack1.Push(1);
-                mimicStack1.Push(2);
-                mimicStack1.Push(3);
-                mimicStack1.Push(4);
-                mimicStack1.Push(5);
-                //mimicStack1.Push(6);//溢出
-                mimicStack1.Pop();
-                mimicStack1.Pop();
-                mimicStack1.Pop();
-                mimicStack1.Pop();
-                mimicStack1.Pop();
-                mimicStack1.Pop();
+                //MimicStack mimicStack1 = new MimicStack();
+                //mimicStack1.Push(1);
+                //mimicStack1.Push(2);
+                //mimicStack1.Push(3);
+                //mimicStack1.Push(4);
+                //mimicStack1.Push(5);
+                ////mimicStack1.Push(6);//溢出
+                //mimicStack1.Pop();
+                //mimicStack1.Pop();
+                //mimicStack1.Pop();
+                //mimicStack1.Pop();
+                //mimicStack1.Pop();
+                //mimicStack1.Pop();
 
 
 
@@ -425,10 +425,10 @@ namespace Csharp
                 // 2、自己的属性和方法
                 //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，
                 //包含一个只读的Id属性。试一试，Suggest能有Id属性么？
-                Article a1 = new Article();
-                a1.Agree();// // 1、继承自父类的属性和方法
-                a1.Search("123");// 2、自己的属性和方法
-                
+                //Article a1 = new Article();
+                //a1.Agree();// // 1、继承自父类的属性和方法
+                //a1.Search("123");// 2、自己的属性和方法
+
 
 
             }
@@ -440,12 +440,33 @@ namespace Csharp
                //如果发布Suggest，不需要消耗帮帮币
                //最后将内容存到数据库中，三个类存数据库的方法是完全一样的，现在用Console.WriteLine()代替。根据我们学习的继承和多态知识，实现上述功能。
 
-                Article ch = new Article();
-                new ContentService().Publish(ch);
-                Problem p1 = new Problem("body");
-                new ContentService().Publish(p1);
-                Suggest s1 = new Suggest();
+                //Article ch = new Article();
+                //new ContentService().Publish(ch);
+                //Problem p1 = new Problem("body");
+                //new ContentService().Publish(p1);
+                //Suggest s1 = new Suggest();
                 new ContentService().Publish();
+                Problem problem = new Problem("body")
+                {
+                    Author = new User { Name = "feige" },
+                    Reward = 10
+                };
+                problem.Publish();
+
+
+                //
+                Article ch = new Article()
+                {
+                    Title = "",
+                    Author = new User()
+                };
+
+                ///
+
+                ///
+
+
+
 
             }
 
@@ -455,6 +476,128 @@ namespace Csharp
               //一起帮里的求助总结、文章和意见建议，以及他们的评论，都有一个点赞（Agree）/ 踩（Disagree）的功能，赞和踩都会增减作者及评价者的帮帮点。能不能对其进行抽象？如何实现？
               //引入两个子类EmailMessage和DBMessage，和他们继承的接口ISendMessage（含Send()方法声明），用Console.WriteLine()实现Send()。
               //一起帮还可以在好友间发私信，所有又有了IChat接口，其中也有一个Send()方法声明。假设User类同时继承了ISendMessage和IChat，如何处理？
+            }
+            //C#-面向对象-结构和日期  20201029 https://zhuanlan.zhihu.com/p/94590192
+            {//作业：
+             // 用代码证明struct定义的类型是值类型
+             //源栈的学费是按周计费的，所以请实现这两个功能：
+             //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
+             // 给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+                Bed bed;//结构变量 //值类型
+                bed.id = 14;
+                Console.WriteLine(bed.id);//14
+                Bed bed0 = new Bed();//new Bed()实际上给所有struct成员赋了默认值
+                Console.WriteLine(bed0.id);
+
+                //Bed1 bed1;
+                //bed1.id = 14;//报错：使用了未赋值的变量  //Bed1引用类型
+                //Console.WriteLine(bed1.id);
+                Bed1 bed11 = new Bed1();
+                bed11.id = 14;
+                Console.WriteLine(bed11.id);
+                Console.WriteLine(DateTime.Now.DayOfWeek);//周几
+                //Console.WriteLine(DateTime.Now(2019, 1, 1);
+                //GetDate(); 函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
+                //                                          string datetime = "2011-3-4";
+                //Console.WriteLine((DateTime.Parse(datetime)).DayOfWeek);//在c#中，如何给定一个日期，求出该日为星期几？
+                //Console.WriteLine("11");
+                //DateTime year = Convert.ToDateTime(Console.ReadLine());
+                //Console.WriteLine(year);
+                //GetDate(2020);
+
+
+
+
+                //DateTime d1 = new DateTime(now.Year, now.Month, 1);
+                //cw
+                GetDateWeek(2019);
+
+
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+        /// <summary>
+        ///  //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
+        /// </summary>
+        public static void GetDate()
+        {
+            //a = Console.ReadLine();
+            //a.DayOfWeek;
+            Console.WriteLine("请输入计算时间");
+            DateTime putTime = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("你要进行什么计算，日计算选择d,周计算选择w,月计算选择m");
+            string select = Console.ReadLine();
+            switch (select)
+            {
+                case "d":
+                    Console.WriteLine("请输入几月");
+                    var nextTimeD = putTime.AddDays(int.Parse(Console.ReadLine()));
+                    Console.WriteLine(nextTimeD);
+                    break;
+                case "w":
+                    Console.WriteLine("请输入几周");
+                    var nextTimeW = putTime.AddDays(int.Parse(Console.ReadLine()) * 7);
+                    Console.WriteLine(nextTimeW);
+                    break;
+                case "m":
+                    Console.WriteLine("请输入几月");
+                    var nextTimeM = putTime.AddMonths(int.Parse(Console.ReadLine()));
+                    Console.WriteLine(nextTimeM);
+                    break;
+                default:
+                    break;
+            }
+
+
+
+
+        }
+        /// <summary>
+        /// 给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+        /// </summary>
+        /// <param name="dateTime">年份</param>   
+        public static DateTime GetDate(int year)
+        {
+            //DateTime year = Convert.ToDateTime(Console.ReadLine());
+            //Console.WriteLine(year); 
+
+            //2019
+            //2019.1.1 
+
+            DateTime dt = new DateTime(year, 1, 1);
+            Console.WriteLine(dt);//20201.1
+
+            while (dt.DayOfWeek != DayOfWeek.Monday)
+            {
+
+                dt = dt.AddDays(1);//2020.1.6 周一
+            }
+
+            return dt;
+
+        }
+        public static void GetDateWeek(int year)
+        {
+            GetWeekBody(GetDate(year));
+        }
+        public static void GetWeekBody(DateTime dateTime)
+        {
+            int i = 1;
+            int year = dateTime.Year;
+            while (dateTime.Year == year)
+            {
+                Console.WriteLine($"第{i}周：{dateTime.ToString("yyyy年MM月dd日")}-{dateTime.AddDays(7).ToString("yyyy年MM月dd日")}");
+                dateTime = dateTime.AddDays(7);
+                i++;
             }
         }
 

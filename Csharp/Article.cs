@@ -10,23 +10,20 @@ namespace Csharp
     //3、实例化文章和意见建议，调用他们：
     // 1、继承自父类的属性和方法
     // 2、自己的属性和方法
-    class Article : Content
+    class Article : Content,IAgree
     {
         //标题,内容，关键字，评论，作者，赞，踩
         private string[] comments;
         public string[] Comments { get => comments; set => comments = value; }
 
-        public override void Agree()
+        public void Agree(User voter)
         {
-            throw new NotImplementedException();
+            voter.HelpMoney++;
+            Author.HelpMoney++;
+            //点赞数量++
         }
 
-        public override void Disagree()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void ReleseHelpMoney()
+        public override void Publish()
         {
             Console.WriteLine("需要消耗一个帮帮币");
         }

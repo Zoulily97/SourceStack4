@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Csharp
 {
-    class EmailMessage : ISendMessage
+    class Problemzongjie
     {
-        public void Send()
-        {
-            Console.WriteLine("EmailMessage");
-        }
     }
 }

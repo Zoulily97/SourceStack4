@@ -9,7 +9,7 @@ namespace test
 {
     public interface Ilearn//接口
     {
-        public double  Score { get; set; }
+        public double Score { get; set; }
         void GoLesson();//方法声明
 
     }
