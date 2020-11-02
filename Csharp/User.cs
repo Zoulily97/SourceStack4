@@ -42,15 +42,15 @@ namespace Csharp
         }
 
         public int HelpMoney { get; set; }
-
-        public User()
-        {
-
-        }
+        public TokenManager Tokens { get; set; }
         public User(string name,string password)  //有参构造函数//赋值
         {
             this.name = name;
             this.password = password;
+        }
+        public User( )
+        {
+           
         }
 
         public static void Register()
