@@ -522,18 +522,18 @@ namespace Csharp
             思考dynamic和var的区别，并用代码予以演示
             构造一个能装任何数据的数组，并完成数据的读写
             使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素*/
-            //Console.WriteLine(new Student());
-            //Console.WriteLine(typeof(Student).Name);  //Student //typeof 类型 传类名  编译时类型
-            
-            //// var 在编译阶段已经确定类型，在初始化时候，必须提供初始化的值，
-            ////而dynamic则可以不提供，它是在运行时才确定类型。
-            //dynamic num1;
-            //// var num2;// 报错：变量必须赋初值
-            //num1 = "99";
-            //Console.WriteLine(num1.GetType());//String 
-            //Console.WriteLine(num1 - 98);// 未经处理的异常:   运算符“-”无法应用于“string”和“int”类型的操作数
-            ////构造一个能装任何数据的数组，并完成数据的读写
-              GetanyArray();
+            Console.WriteLine(new Student());
+            Console.WriteLine(typeof(Student).Name);  //Student //typeof 类型 传类名  编译时类型
+
+            // var 在编译阶段已经确定类型，在初始化时候，必须提供初始化的值，
+            //而dynamic则可以不提供，它是在运行时才确定类型。
+            dynamic num1;
+            // var num2;// 报错：变量必须赋初值
+            num1 = "99";
+            Console.WriteLine(num1.GetType());//String 
+            Console.WriteLine(num1 - 98);// 未经处理的异常:   运算符“-”无法应用于“string”和“int”类型的操作数
+             //构造一个能装任何数据的数组，并完成数据的读写
+            GetanyArray();
             
 
 
