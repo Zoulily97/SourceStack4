@@ -10,9 +10,9 @@ namespace Csharp
     //如果已弹出所有数据，提示“栈已空”
     class MimicStack
     {
-        private int[] container = new int[5];//定义一个容器
+        private object[] container = new object[5];//定义一个容器
         int top = 0;//栈顶
-        public void Push(int value)//入栈
+        public void Push(object value)//入栈
         {
             if (top == container.Length)
             {
@@ -25,19 +25,24 @@ namespace Csharp
                 top++;
             }
         }
-        public int Pop()//出
+        public void  Pop()//出
         {
+
             if (top == 0)
             {
                 Console.WriteLine("栈已空");
             }
-            else
+            else 
             {
-                //int result = container[top];
-                Console.WriteLine(/*result +*/ "弹出");
+                
+                object result =container[top-1];
+                Console.WriteLine(result + "弹出");
                 top--;
+                  
+                
             }
-            return 1;
+            
+         //  return 1;
         }
     }
 }

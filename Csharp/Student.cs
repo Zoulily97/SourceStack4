@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Csharp
 {
-    class Student
+  public   class Student
     {
         public int age;
     }

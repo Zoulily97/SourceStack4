@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "函数", "函数\函数.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{E5B93010-A2A0-4CAE-8FFE-28A4922B6D70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTest", "NUnitTest\NUnitTest.csproj", "{A33061E4-AB72-493A-A717-1707BE481E3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{E5B93010-A2A0-4CAE-8FFE-28A4922B6D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5B93010-A2A0-4CAE-8FFE-28A4922B6D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5B93010-A2A0-4CAE-8FFE-28A4922B6D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33061E4-AB72-493A-A717-1707BE481E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33061E4-AB72-493A-A717-1707BE481E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33061E4-AB72-493A-A717-1707BE481E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33061E4-AB72-493A-A717-1707BE481E3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

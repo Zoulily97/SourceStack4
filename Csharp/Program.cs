@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Csharp
 {
@@ -206,26 +207,8 @@ namespace Csharp
             //思路： 求某个数N是不是素数？用for循环让N依次除以 从2~(N - 1)之间的数，
             // 如果能被整除，则N不是素数，反之则是。
             // 12345678910
-            //bool flag;//声明一个bool值用来判断是否是素数
-            //for (int i = 2; i < 101; i++)// 1、遍历100 内所有数
-            //{
-            //    //每次循环都把flag的值设置为true,
-            //    flag = true;
-            //    //2、开始第二次循环,让 i 依次除与 2 和小于它的数,当i= 2时(j < i 条件不成立),直接跳出循环输出:素数 2
-            //    for (int j = 2; j < i; j++)
-            //    {
-            //        //当 i 可以被 j 整除时跳出该循环,该数不是素数,不做输出
-            //        if (i % j == 0)
-            //        {
-            //            flag = false;
-            //            break;
-            //        }
-            //    }
-            //    if (flag)
-            //    {
-            //        Console.WriteLine("素数 " + i);
-            //    }
-            //}
+            // ZhiNum();
+
             //6、生成一个元素（值随机）从小到大排列的数组
             //ArraySort();
             //7-设立并显示一个多维数组的值，元素值等于下标之和。
@@ -396,19 +379,19 @@ namespace Csharp
             //出 / 入栈检查，
             //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
             //如果已弹出所有数据，提示“栈已空”
-            //MimicStack mimicStack1 = new MimicStack();
-            //mimicStack1.Push(1);
-            //mimicStack1.Push(2);
-            //mimicStack1.Push(3);
-            //mimicStack1.Push(4);
-            //mimicStack1.Push(5);
-            ////mimicStack1.Push(6);//溢出
-            //mimicStack1.Pop();
-            //mimicStack1.Pop();
-            //mimicStack1.Pop();
-            //mimicStack1.Pop();
-            //mimicStack1.Pop();
-            //mimicStack1.Pop();
+            MimicStack mimicStack1 = new MimicStack();
+            mimicStack1.Push(1);
+            mimicStack1.Push("1234");
+            mimicStack1.Push("中国");
+            mimicStack1.Push(4);
+            mimicStack1.Push(5);
+          //  mimicStack1.Push(6);//溢出
+            mimicStack1.Pop();
+            mimicStack1.Pop();
+            mimicStack1.Pop();
+            mimicStack1.Pop();
+            mimicStack1.Pop();
+            mimicStack1.Pop();
 
 
 
@@ -511,10 +494,10 @@ namespace Csharp
             Bed1 bed11 = new Bed1();
             bed11.id = 14;
             Console.WriteLine(bed11.id);//14
-            //Console.WriteLine(DateTime.Now.DayOfWeek);//周几
-             //GetDate(); //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
-            //string datetime = "2011-3-4";
-            //Console.WriteLine((DateTime.Parse(datetime)).DayOfWeek);//在c#中，如何给定一个日期，求出该日为星期几？     
+                                        //Console.WriteLine(DateTime.Now.DayOfWeek);//周几
+                                        //GetDate(); //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
+                                        //string datetime = "2011-3-4";
+                                        //Console.WriteLine((DateTime.Parse(datetime)).DayOfWeek);//在c#中，如何给定一个日期，求出该日为星期几？     
             GetDateWeek(2019);
             #endregion
 
@@ -525,18 +508,88 @@ namespace Csharp
              使用私有的Token枚举_tokens存储所具有的权限
               暴露Add(Token)、Remove(Token)和Has(Token)方法，可以添加、删除和判断其有无某个权限
               User类中添加一个Tokens属性，类型为TokenManager*/
+            TokenManager tokenManager = new TokenManager();
             Console.WriteLine("枚举");
-            User user = new User();
+            User user = new User() { Tokens = tokenManager };
             user.Tokens.Add(Token.Blogger);
-           
+            user.Tokens.Remove(Token.Blogger);
+            #endregion
 
+
+            //C#-面向对象-万物皆对象：Object和装箱拆箱2020111https://zhuanlan.zhihu.com/p/93458057
+            #region
+            /*在https://source.dot.net/中找到 Console.WriteLine(new Student()); 输出Student类名的源代码
+            思考dynamic和var的区别，并用代码予以演示
+            构造一个能装任何数据的数组，并完成数据的读写
+            使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素*/
+            //Console.WriteLine(new Student());
+            //Console.WriteLine(typeof(Student).Name);  //Student //typeof 类型 传类名  编译时类型
+            
+            //// var 在编译阶段已经确定类型，在初始化时候，必须提供初始化的值，
+            ////而dynamic则可以不提供，它是在运行时才确定类型。
+            //dynamic num1;
+            //// var num2;// 报错：变量必须赋初值
+            //num1 = "99";
+            //Console.WriteLine(num1.GetType());//String 
+            //Console.WriteLine(num1 - 98);// 未经处理的异常:   运算符“-”无法应用于“string”和“int”类型的操作数
+            ////构造一个能装任何数据的数组，并完成数据的读写
+              GetanyArray();
+            
+
+
+
+            #endregion
+
+
+
+
+        }
+        /// <summary>
+        /// 构造一个能装任何数据的数组，并完成数据的读写
+        /// </summary>
+        private static void GetanyArray()
+        {
+            object[] annyArray = new object[5] {2.344,1123, 2345, "中文",true };
+            for (int i = 0; i < annyArray.Length; i++)
+            { 
+                Console.WriteLine(annyArray[i]);
+                
+
+            }
+        }
+
+        
+
+        /// <summary>
+        /// 遍历100 内所有质数
+        /// </summary>
+        private static void ZhiNum()
+        {
+            bool flag;//声明一个bool值用来判断是否是素数
+            for (int i = 2; i < 101; i++)// 1、遍历100 内所有数
+            {
+                //每次循环都把flag的值设置为true,
+                flag = true;
+                //2、开始第二次循环,让 i 依次除与 2 和小于它的数,当i= 2时(j < i 条件不成立),直接跳出循环输出:素数 2
+                for (int j = 2; j < i; j++)
+                {
+                    //当 i 可以被 j 整除时跳出该循环,该数不是素数,不做输出
+                    if (i % j == 0)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    Console.WriteLine("素数 " + i);
+                }
+            }
         }
 
 
 
-        #endregion
-
-
+       
 
 
 

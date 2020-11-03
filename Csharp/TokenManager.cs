@@ -16,7 +16,10 @@
     {
         private Token _tokens;
 
-       
+       public TokenManager()
+        {
+
+        }
         public void   Add( Token token)
         {
             this._tokens = this._tokens | token;
