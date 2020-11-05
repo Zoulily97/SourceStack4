@@ -16,10 +16,11 @@ namespace Csharp
         private string[] comments;
         public string[] Comments { get => comments; set => comments = value; }
 
+       
         public void Agree(User voter)
         {
             voter.HelpMoney++;
-            Author.HelpMoney++;
+         //   Author.HelpMoney++;
             //点赞数量++
         }
 

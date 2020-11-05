@@ -11,7 +11,7 @@
     //Delete(int Id)：根据Id删除某个求助
     //repoistory：可用于在底层实现上述方法和数据库的连接操作等
 
-    public  class Repoistory//存取对象
+    public class Repoistory//存取对象
     {
         const int version = 1;
         static readonly string connection;

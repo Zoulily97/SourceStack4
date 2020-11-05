@@ -1,5 +1,7 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
+using System.Linq;
+using System.Reflection;
+using System.Resources;
 
 namespace Csharp
 {
@@ -355,8 +357,8 @@ namespace Csharp
             //4、设计一种方式，保证：
             //  1、每一个Problem对象一定有Body赋值
             //  2、每一个User对象一定有Name和Password赋值
-            User ywq = new User("fege", "123");
-            Problem problem1 = new Problem("body问题");
+            //User ywq = new User("fege", "123");
+            //Problem problem1 = new Problem("body问题");
             #endregion
 
             //C#-面向对象：静态还是实例？20201025 https://zhuanlan.zhihu.com/p/95261748
@@ -385,7 +387,7 @@ namespace Csharp
             mimicStack1.Push("中国");
             mimicStack1.Push(4);
             mimicStack1.Push(5);
-          //  mimicStack1.Push(6);//溢出
+            //  mimicStack1.Push(6);//溢出
             mimicStack1.Pop();
             mimicStack1.Pop();
             mimicStack1.Pop();
@@ -399,7 +401,8 @@ namespace Csharp
 
 
             //C#-面向对象：被多少人误解的继承？20201026   https://zhuanlan.zhihu.com/p/92535455
-            #region   //作业
+            #region 
+            //作业
             //1、让User类无法被继承
             //2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
             //  1、Content中有一个字段：kind，记录内容的种类（problem / article / suggest等），只能被子类使用
@@ -411,9 +414,11 @@ namespace Csharp
             // 2、自己的属性和方法
             //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，
             //包含一个只读的Id属性。试一试，Suggest能有Id属性么？
-            //Article a1 = new Article();
-            //a1.Agree();// // 1、继承自父类的属性和方法
-            //a1.Search("123");// 2、自己的属性和方法
+            User user1 = new User();
+            Article a1 = new Article();
+            a1.Agree(user1);// // 1、继承自父类的属性和方法
+            a1.Search("123");// 2、自己的属性和方法
+         
 
 
 
@@ -482,6 +487,7 @@ namespace Csharp
             //源栈的学费是按周计费的，所以请实现这两个功能：
             //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
             // 给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+            /*
             Bed bed;//结构变量 //值类型
             bed.id = 14;
             Console.WriteLine(bed.id);//14
@@ -494,11 +500,13 @@ namespace Csharp
             Bed1 bed11 = new Bed1();
             bed11.id = 14;
             Console.WriteLine(bed11.id);//14
-                                        //Console.WriteLine(DateTime.Now.DayOfWeek);//周几
-                                        //GetDate(); //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
-                                        //string datetime = "2011-3-4";
-                                        //Console.WriteLine((DateTime.Parse(datetime)).DayOfWeek);//在c#中，如何给定一个日期，求出该日为星期几？     
-            GetDateWeek(2019);
+             */                           //Console.WriteLine(DateTime.Now.DayOfWeek);//周几
+                                          //GetDate(); //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
+                                          //string datetime = "2011-3-4";
+                                          //Console.WriteLine((DateTime.Parse(datetime)).DayOfWeek);//在c#中，如何给定一个日期，求出该日为星期几？     
+            GetDateWeek(2020);
+            Console.WriteLine("20110526-4--week");
+            Console.WriteLine(GetDate("20110526", 4, TimeEnum.day));
             #endregion
 
             //C#-面向对象-不一样的权限管理：枚举和位运算 2020111 https://zhuanlan.zhihu.com/p/94590467
@@ -513,6 +521,7 @@ namespace Csharp
             User user = new User() { Tokens = tokenManager };
             user.Tokens.Add(Token.Blogger);
             user.Tokens.Remove(Token.Blogger);
+            Console.WriteLine();
             #endregion
 
 
@@ -522,44 +531,80 @@ namespace Csharp
             思考dynamic和var的区别，并用代码予以演示
             构造一个能装任何数据的数组，并完成数据的读写
             使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素*/
-            Console.WriteLine(new Student());
-            Console.WriteLine(typeof(Student).Name);  //Student //typeof 类型 传类名  编译时类型
+            //Console.WriteLine(new Student());
+            //Console.WriteLine(typeof(Student).Name);  //Student //typeof 类型 传类名  编译时类型
 
-            // var 在编译阶段已经确定类型，在初始化时候，必须提供初始化的值，
-            //而dynamic则可以不提供，它是在运行时才确定类型。
-            dynamic num1;
-            // var num2;// 报错：变量必须赋初值
-            num1 = "99";
-            Console.WriteLine(num1.GetType());//String 
-            Console.WriteLine(num1 - 98);// 未经处理的异常:   运算符“-”无法应用于“string”和“int”类型的操作数
-             //构造一个能装任何数据的数组，并完成数据的读写
-            GetanyArray();
-            
+            //// var 在编译阶段已经确定类型，在初始化时候，必须提供初始化的值，
+            ////而dynamic则可以不提供，它是在运行时才确定类型。
+            //dynamic num1;
+            //// var num2;// 报错：变量必须赋初值
+            //num1 = "99";
+            //Console.WriteLine(num1.GetType());//String 
+            //                                  // Console.WriteLine(num1 - 98);// 未经处理的异常:   运算符“-”无法应用于“string”和“int”类型的操作数
+            //                                  //构造一个能装任何数据的数组，并完成数据的读写
+            //GetanyArray();
+
 
 
 
             #endregion
 
+            //C#-面向对象-反射和特性 2020-11-2 https://zhuanlan.zhihu.com/p/93440022
+            #region
+            /*之前的Content类，其中的CreateTime（创建时间）和PublishTime（发布时间）都是只读的属性，想一想他们应该在哪里赋值比较好，并完成相应代码
+              在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+              自定义一个特性HelpMoneyChanged（帮帮币变化）：
+              该特性只能用于方法
+              有一个构造函数，可以接受一个int类型的参数amount，表示帮帮币变化的数量
+              有一个string类型的Message属性，记录帮帮币变化的原因
+              将HelpMoneyChanged应用于Publish()方法
+              用反射获取Publish()上的特性实例，输出其中包含的信息*/
+            Problem problem2 = new Problem() ;
+            Console.WriteLine("111");
+            Attribute attribute = HelpMoneyChangedAttribute.GetCustomAttribute(typeof(Problem)
+                .GetMethod("Pulish"),
+                typeof(HelpMoneyChangedAttribute)    
+                 );
+            //将基类的Attribute对象强转为子类
+            Console.WriteLine(((HelpMoneyChangedAttribute)attribute).Amount);
 
 
+
+            #endregion
+            //C#
+            #region
+            /*作业：为之前作业添加单元测试，包括但不限于：
+                     数组中找到最大值
+                     找到100以内的所有质数
+                     猜数字游戏
+                     二分查找
+                     栈的压入弹出
+                     继续完成双向链表的测试和开发，实现：
+                     node3.InsertAfter(node1); 场景
+                     InerstBefore()：在某个节点前插入
+                      Delete()：删除某个节点
+                     [选] Swap()：交互某两个节点
+                     [选] FindBy()：根据节点值查找到某个节点
+            */
+            #endregion
 
         }
+
+
+
         /// <summary>
         /// 构造一个能装任何数据的数组，并完成数据的读写
         /// </summary>
         private static void GetanyArray()
         {
-            object[] annyArray = new object[5] {2.344,1123, 2345, "中文",true };
+            object[] annyArray = new object[5] { 2.344, 1123, 2345, "中文", true };
             for (int i = 0; i < annyArray.Length; i++)
-            { 
+            {
                 Console.WriteLine(annyArray[i]);
-                
+
 
             }
         }
-
-        
-
         /// <summary>
         /// 遍历100 内所有质数
         /// </summary>
@@ -587,50 +632,28 @@ namespace Csharp
             }
         }
 
-
-
-       
-
-
-
         /// <summary>
         ///  //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
         /// </summary>
-        public static void GetDate()
+        public static DateTime GetDate(string dateString, int amount, TimeEnum unit)
         {
-            //a = Console.ReadLine();
-            //a.DayOfWeek;
-            Console.WriteLine("请输入计算时间");
-            DateTime putTime = Convert.ToDateTime(Console.ReadLine());
-            Console.WriteLine("你要进行什么计算，日计算选择d,周计算选择w,月计算选择m");
-            string select = Console.ReadLine();
-            switch (select)
+               DateTime basetime = DateTime.ParseExact(dateString, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
+            
+            switch (unit)
             {
-                case "d":
-                    Console.WriteLine("请输入几月");
-                    var nextTimeD = putTime.AddDays(int.Parse(Console.ReadLine()));
-                    Console.WriteLine(nextTimeD);
-                    break;
-                case "w":
-                    Console.WriteLine("请输入几周");
-                    var nextTimeW = putTime.AddDays(int.Parse(Console.ReadLine()) * 7);
-                    Console.WriteLine(nextTimeW);
-                    break;
-                case "m":
-                    Console.WriteLine("请输入几月");
-                    var nextTimeM = putTime.AddMonths(int.Parse(Console.ReadLine()));
-                    Console.WriteLine(nextTimeM);
-                    break;
+                case TimeEnum.day:
+                    return basetime.AddDays(amount);
+                case TimeEnum.week:
+                    return /*Convert.ToDateTime(*/basetime.AddDays(amount * 7);
+                case TimeEnum.mouth:
+                    return basetime.AddMonths(amount);
                 default:
                     break;
             }
-
-
-
-
+            return basetime;
         }
         /// <summary>
-        /// 给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+        /// 判定是一年的第一周，周一是几号
         /// </summary>
         /// <param name="dateTime">年份</param>   
         public static DateTime GetDate(int year)
@@ -650,14 +673,23 @@ namespace Csharp
                 dt = dt.AddDays(1);//2020.1.6 周一
             }
 
-            return dt;
+            return dt;   //2020/1/6
 
         }
+        /// <summary>
+        ///  给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+        /// </summary>
+        /// <param name="year"></param>
         public static void GetDateWeek(int year)
         {
-            GetWeekBody(GetDate(year));
+            GetWeekBody(GetDate(year));//2020/1/6
         }
-        public static void GetWeekBody(DateTime dateTime)
+
+        /// <summary>
+        /// 按周排列显示每周的起始日期
+        /// </summary>
+        /// <param name="dateTime"></param>
+        public static void GetWeekBody(DateTime dateTime)//2020/1/6
         {
             int i = 1;
             int year = dateTime.Year;

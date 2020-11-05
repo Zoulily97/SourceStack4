@@ -11,6 +11,10 @@ namespace Csharp
    public  class Entity
     {
         public  int Id { get; }
+        public Entity()
+        {
+
+        }
         public Entity( int number)
         {
             Id = number;

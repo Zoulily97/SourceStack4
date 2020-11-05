@@ -12,7 +12,7 @@ namespace Csharp
     {
         private  readonly static FactoryContext _context = new FactoryContext();
         //private FactoryContext _context;
-        private FactoryContext()
+        private FactoryContext()//私有，调用者不能new
         {
            
         }

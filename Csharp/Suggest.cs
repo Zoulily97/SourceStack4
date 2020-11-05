@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Csharp
 {
-    class Suggest:Content
+    class Suggest:Content, IAgree, IDisagree
     {
-      
+        public void Agree(User voter)
+        {
+            throw new NotImplementedException();
+        }
 
-      
+        public void Disagree()
+        {
+            throw new NotImplementedException();
+        }
 
         //标题,内容，作者，评论，赞，踩
 
