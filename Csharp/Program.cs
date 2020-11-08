@@ -72,25 +72,26 @@ namespace Csharp
 
 
             Console.WriteLine("hotfix上更改1次");
+            Console.WriteLine("hotfix上更改2次");
 
             #region
-           /* 作业：
-          使用VS git完成：
-            1、新建两个分支，如：hotfix和t1
-            2、切换到hotfix，在hotfix上进行若干提交
-            3、修改hotfix上再上一次的提交后重新提交
-            4、讲hotfix上的修改合并到master上
-            5、删除hotfix分支
-            6、将上述修改全部push到远程仓库，确保远程仓库和本地具有相同的分支
-            7、在远程仓库新建一个分支faq
-            8、在本地跟踪远程分支faq
-            9、在远程和本地faq上交错的提交更改，然后merge
-            使用VS和github
-            1、将其他某个同学添加成collaborator，让其能够直接push到你的repository
-            2、在github上fork一个项目成员的repoistory
-            3、克隆到本地，review其代码，进行一处修改（bug fix/ refactor / feature等均可），提交推送
-            4、发起 一个 pull request
-            5、当其他项目成员发起pull request时，检查并完成其请求*/
+            /* 作业：
+           使用VS git完成：
+             1、新建两个分支，如：hotfix和t1
+             2、切换到hotfix，在hotfix上进行若干提交
+             3、修改hotfix上再上一次的提交后重新提交
+             4、讲hotfix上的修改合并到master上
+             5、删除hotfix分支
+             6、将上述修改全部push到远程仓库，确保远程仓库和本地具有相同的分支
+             7、在远程仓库新建一个分支faq
+             8、在本地跟踪远程分支faq
+             9、在远程和本地faq上交错的提交更改，然后merge
+             使用VS和github
+             1、将其他某个同学添加成collaborator，让其能够直接push到你的repository
+             2、在github上fork一个项目成员的repoistory
+             3、克隆到本地，review其代码，进行一处修改（bug fix/ refactor / feature等均可），提交推送
+             4、发起 一个 pull request
+             5、当其他项目成员发起pull request时，检查并完成其请求*/
 
 
 
