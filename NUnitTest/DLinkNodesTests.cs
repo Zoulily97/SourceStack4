@@ -42,14 +42,14 @@ namespace NUnitTest
             Assert.AreEqual(node1, node2.Previous);
             // Assert.IsNull(node2.Next);
             // 1 2 [3]
-            //DoubleLinked node3 = new DoubleLinked();
+            
             node2.AddAfter(node3);
             Assert.AreEqual(node3, node2.Next);
             Assert.AreEqual(node2, node3.Previous);
             //Assert.IsNull(node3.Next);
 
             //1 2  [4] 3
-            //   DoubleLinked node4 = new DoubleLinked();
+             
             node3.AddAfter(node4);
             Assert.AreEqual(node4, node3.Next);
             Assert.AreEqual(node3, node4.Previous);
