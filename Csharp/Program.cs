@@ -74,6 +74,8 @@ namespace Csharp
             Console.WriteLine("hotfix上更改1次");
             Console.WriteLine("hotfix上更改2次");
             Console.WriteLine("t1上更改1次");
+              Console.WriteLine("github上更改1次");
+            
 
             #region
             /* 作业：
