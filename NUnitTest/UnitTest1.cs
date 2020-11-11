@@ -14,10 +14,35 @@ namespace NUnitTest
         {
             Assert.Pass();
         }
+      
+
+        /*  数组中找到最大值
+                       找到100以内的所有质数
+                       猜数字游戏
+                       二分查找
+                       栈的压入弹出*/
+
+        //  数组中找到最大值
         [Test]
-        public void MaxNum()
+        public void getMaxArrayttest()
         {
+            
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

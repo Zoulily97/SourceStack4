@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,10 +47,13 @@
   <ItemGroup>
     <Compile Include="作业\BeforeWork.cs" />
     <Compile Include="作业\Work.cs" />
+    <Compile Include="文章\Appraise.cs" />
     <Compile Include="文章\Article.cs" />
     <Compile Include="其他\Bed.cs" />
     <Compile Include="内容\Content.cs" />
     <Compile Include="内容\ContentService.cs" />
+    <Compile Include="文章\Comment.cs" />
+    <Compile Include="文章\Keyword.cs" />
     <Compile Include="消息\DBMessage.cs" />
     <Compile Include="消息\EmailMessage.cs" />
     <Compile Include="Entity.cs" />

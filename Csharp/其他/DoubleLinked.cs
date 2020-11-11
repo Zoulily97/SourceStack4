@@ -24,7 +24,7 @@
         }
 
         //在节点前插入节点node
-        public void InsertBefor(DoubleLinked node)
+        public void InsretBefor(DoubleLinked node)
         {
             if (this.Previous != null)
             {
@@ -36,17 +36,63 @@
         }
 
         //删除节点
-        public void Delete(DoubleLinked node)
-        { //  1 2 【3】 4
-            if (this.Previous != null)
+        public void Delete()
+        { //  1 2 【3】 4    1 2
+            DoubleLinked oldPre = this.Previous;
+            DoubleLinked oldNex = this.Next;
+            if(oldPre != null)
             {
-                node.Previous.Next = node.Next;
-                node.Next.Previous = node.Previous;
+                oldPre.Next = this.Next;
+
             }
-            node.Next = node.Next;
-            this.Previous = null;
+            if (oldNex != null)
+            {
+                oldNex.Previous = this.Previous;
+            }
+            this.Previous = this.Next = null;
 
 
+
+
+            //if (this.Previous != null && this.Next != null)
+            //{
+            //    this.Previous.Next = this;
+            //    this.Next.Previous = this;
+            //}
+            //else if (this.Previous == null)
+            //{
+            //   Next= Previous = null;
+            //}
+            //else
+            //{
+            //    Next = Previous = null;
+            //}
+
+
+
+
+        }
+
+
+        //交换节点
+        public void Swap(DoubleLinked targetNode)
+        {
+            //  1  2   3   4
+            //   4  1  2  3  
+            //   3   1  2   4 
+            //this  targetNode
+
+            //  1 2   2  1尾
+            if (targetNode.Next == null)
+            {
+                if (this.Next == targetNode)
+                {
+                    targetNode.Next = this;
+                    this.Next = null;
+                    this.Previous = targetNode;
+
+                }
+            }
         }
     }
 }
