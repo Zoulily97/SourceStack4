@@ -16,7 +16,7 @@ namespace 函数
             getFlbonac(0, 1);
             Console.ReadKey();
         }
-        static int find(int[] array, int target)
+        static int Find(int[] array, int target)
         {
 
             for (int i = 0; i < array.Length - 1; i++)
@@ -31,16 +31,16 @@ namespace 函数
 
 
         //快速排序
-        static void quickSort(int[] array)
+        static void QuickSort()
         {
-            int middle = array[0];
-            //从右往左进行比较
-            int right = array.Length - 1;
-            while (true)
-            {
-                right--;
+            //int middle = array[0];
+            ////从右往左进行比较
+            //int right = array.Length - 1;
+            //while (true)
+            //{
+            //    right--;
 
-            }
+            //}
                  
         }
 
