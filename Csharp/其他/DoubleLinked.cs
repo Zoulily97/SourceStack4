@@ -1,14 +1,18 @@
-﻿namespace Csharp.其他
+﻿using System;
+
+namespace Csharp.其他
 {
     public class DoubleLinked
     {
+        public int value;
+
         public DoubleLinked Next { get; set; }
         public DoubleLinked Previous { get; set; }
 
         //在节点后插入节点node
         public void AddAfter(DoubleLinked node)
         {
-
+            //1 2] 3 4
             if (this.Next != null)
             {
                 node.Next = this.Next;
@@ -23,7 +27,7 @@
 
         }
 
-        //在节点前插入节点node
+        //在该节点前插入节点node
         public void InsretBefor(DoubleLinked node)
         {
             if (this.Previous != null)
@@ -35,19 +39,19 @@
             this.Previous = node;
         }
 
-        //删除节点
+        //删除当前节点
         public void Delete()
-        { //  1 2 【3】 4    1 2
+        { //  1 2- 【3】
             DoubleLinked oldPre = this.Previous;
             DoubleLinked oldNex = this.Next;
-            if(oldPre != null)
+            if (oldPre != null)
             {
-                oldPre.Next = this.Next;
+                oldPre.Next = oldNex;
 
             }
             if (oldNex != null)
             {
-                oldNex.Previous = this.Previous;
+                oldNex.Previous = oldPre;
             }
             this.Previous = this.Next = null;
 
@@ -72,27 +76,43 @@
 
 
         }
-
-
         //交换节点
         public void Swap(DoubleLinked targetNode)
         {
-            //  1  2   3   4
-            //   4  1  2  3  
-            //   3   1  2   4 
-            //this  targetNode
-
-            //  1 2   2  1尾
-            if (targetNode.Next == null)
+           
+            DoubleLinked prethis = this.Previous;
+            DoubleLinked nextthis = this.Next;
+            this.Delete();
+            if (nextthis == targetNode)
             {
-                if (this.Next == targetNode)
+                targetNode.AddAfter(this);
+            }
+            else if (prethis == targetNode)
+            {
+                targetNode.InsretBefor(this);
+            }
+            else /*if (nextthis != targetNode && prethis != targetNode)*/
+            {
+                targetNode.AddAfter(this);
+                targetNode.Delete();
+                if (prethis == null)
                 {
-                    targetNode.Next = this;
-                    this.Next = null;
-                    this.Previous = targetNode;
+                    nextthis.InsretBefor(targetNode);
+                }
+                else
+                {
+                    prethis.AddAfter(targetNode);
 
                 }
             }
+
+
+
+
+
+
+
+
         }
     }
 }

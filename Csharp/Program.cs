@@ -1,59 +1,18 @@
 ﻿using Csharp.作业;
+using Csharp.其他;
 using System;
+using System.Linq;
 
 namespace Csharp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            //C#-面向对象-万物皆对象：Object和装箱拆箱2020111https://zhuanlan.zhihu.com/p/93458057
-            #region
-            /*在https://source.dot.net/中找到 Console.WriteLine(new Student()); 输出Student类名的源代码
-            思考dynamic和var的区别，并用代码予以演示
-            构造一个能装任何数据的数组，并完成数据的读写
-            使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素*/
-            //Console.WriteLine(new Student());
-            //Console.WriteLine(typeof(Student).Name);  //Student //typeof 类型 传类名  编译时类型
-
-            //// var 在编译阶段已经确定类型，在初始化时候，必须提供初始化的值，
-            ////而dynamic则可以不提供，它是在运行时才确定类型。
-            //dynamic num1;
-            //// var num2;// 报错：变量必须赋初值
-            //num1 = "99";
-            //Console.WriteLine(num1.GetType());//String 
-            //                                  // Console.WriteLine(num1 - 98);// 未经处理的异常:   运算符“-”无法应用于“string”和“int”类型的操作数
-            //                                  //构造一个能装任何数据的数组，并完成数据的读写
-            //GetanyArray();
 
 
 
-
-            #endregion
-
-            //C#-面向对象-反射和特性 2020-11-2 https://zhuanlan.zhihu.com/p/93440022
-            #region
-            /*之前的Content类，其中的CreateTime（创建时间）和PublishTime（发布时间）都是只读的属性，想一想他们应该在哪里赋值比较好，并完成相应代码
-              在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
-              自定义一个特性HelpMoneyChanged（帮帮币变化）：
-              该特性只能用于方法
-              有一个构造函数，可以接受一个int类型的参数amount，表示帮帮币变化的数量
-              有一个string类型的Message属性，记录帮帮币变化的原因
-              将HelpMoneyChanged应用于Publish()方法
-              用反射获取Publish()上的特性实例，输出其中包含的信息*/
-            Problem problem2 = new Problem();
-            Console.WriteLine("特性");
-            Attribute attribute = HelpMoneyChangedAttribute.GetCustomAttribute(typeof(Problem)
-                .GetMethod("Publish"),
-                typeof(HelpMoneyChangedAttribute)
-                 );
-            //将基类的Attribute对象强转为子类
-            Console.WriteLine(((HelpMoneyChangedAttribute)attribute).Amount);
-
-
-
-            #endregion
-            //C#
+            //C# 单元测试 双向链表
             #region
             /*作业：为之前作业添加单元测试，包括但不限于：
                      数组中找到最大值
@@ -71,11 +30,73 @@ namespace Csharp
             #endregion
 
 
-            Console.WriteLine("hotfix上更改1次");
-            Console.WriteLine("hotfix上更改2次");
-            Console.WriteLine("t1上更改1次");
-              Console.WriteLine("github上更改1次");
-            
+
+            //C#-面向对象：string还是StringBuilder？ https://zhuanlan.zhihu.com/p/93747718
+            #region
+            /*1、确保文章（Article）的标题不能为null值，也不能为一个或多个空字符组成的字符串；
+                 而且如果标题前后有空格，将空格予以删除
+               2、设计一个适用的机制，能确保用户（User）的昵称（Name）不能含有admin、17bang、管理员等敏感词。
+              3、确保用户（User）的密码（Password）：
+                   长度不低于6
+                   必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
+            4、实现 int GetCount(string container, string target)方法，可以统计出container中有多少个target
+            5、不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
+                比如：mimicJoin("-", "a", "b", "c", "d")，其运行结果为：a - b - c - d*/
+            //Con("P@ss12345");
+            //Console.WriteLine(Work.GetCount("1234445678", "4"));
+            //string[] vs = new string[] { "a", "b", "c", "d" };
+            //Console.WriteLine(Work.MimicJoin("-", vs));
+
+            #endregion
+
+
+
+
+            //泛型：声明/使用/约束/继承
+            #region
+            /*作业：
+             改造Entity类，让其Id可以为任意类型
+             用泛型改造二分查找、堆栈和双向链表
+             用泛型改造“取数组中最大值”（提示：IComparable）
+             用代码演示泛型接口的协变/逆变*/
+            //int[] seek = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            //Console.WriteLine(SomeArray<int>.BinarySeek(seek, 17));
+            //MimicStack<object> mimicStack1 = new MimicStack<object>();
+            // mimicStack1.Push(1);
+            // mimicStack1.Push("1234");
+            // mimicStack1.Push("中国");
+            // mimicStack1.Push(4);
+            // mimicStack1.Push(5);
+            // //  mimicStack1.Push(6);//溢出
+            // mimicStack1.Pop();
+            // mimicStack1.Pop();
+            // mimicStack1.Pop();
+            // mimicStack1.Pop();
+            // mimicStack1.Pop();
+            // mimicStack1.Pop();
+
+
+            #endregion
+
+
+            // 集合：List / Dictionary ……
+            #region
+            /*
+             * 在现有作业的基础上，观察一起帮的文章板块，以此为蓝本，补充（如果还没有的话）声明：
+               评论（Comment）类
+               评价（Appraise）类：包括“赞（Agree）”和“踩（Disagree）”
+                关键字（Keyword）类
+            并构建以下关系：
+               一篇文章可以有多个评论
+               一个评论必须有一个它所评论的文章
+                每个文章和评论都有一个评价
+               一篇文章可以有多个关键字，一个关键字可以对应多篇文章
+
+             */
+            #endregion
+
+
+
 
             #region
             /* 作业：
@@ -96,10 +117,76 @@ namespace Csharp
              4、发起 一个 pull request
              5、当其他项目成员发起pull request时，检查并完成其请求*/
 
-
+            // SomeArray.ArraySort();
 
 
             #endregion
+
+            //C#进阶：集合：foreach背后
+            #region
+            //让之前的双向链表，能够：被foreach迭代
+            #endregion
+
+            //扩展（extension）方法
+            #region
+            //调用扩展方法Max()：能够返回之前双向链表中存贮着最大值的节点
+            #endregion
+            // C#进阶 ： 委托和事件 匿名方法 / Lambda / 闭包
+            #region
+            /*
+             声明一个委托：打水（ProvideWater），可以接受一个Person类的参数，返回值为int类型
+                使用：
+                  方法
+                  匿名方法
+                  lambda表达式
+                  给上述委托赋值，并运行该委托
+                  声明一个方法GetWater()，该方法接受ProvideWater作为参数，并能将ProvideWater的返回值输出*/
+            #endregion
+
+
+
+
+        }
+
+
+
+
+        private static void Con(string passeord)
+        {
+
+
+            //var zz = new Regex(@"^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+])).{6,20}$");
+            //if (passeord.Contains(zz.ToString ()))
+            //{
+            //    Console.WriteLine("ok");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("错误");
+            //}
+
+
+
+            ///666
+            string Str = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@#$%^&*()_+";
+
+            if (passeord.Length > 6)
+            {
+                for (int i = 0; i < passeord.Length; i++)
+                {
+                    if (!Str.Contains(passeord[i]))
+                    {
+                        Console.WriteLine("输入有误");
+                        break;
+                    }
+
+                }
+                Console.WriteLine("正确" + passeord);
+            }
+            else
+            {
+                Console.WriteLine("输入有误");
+            }
 
         }
         /// <summary>
@@ -142,75 +229,8 @@ namespace Csharp
             }
         }
 
-        /// <summary>
-        ///  //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
-        /// </summary>
-        public static DateTime GetDate(string dateString, int amount, TimeEnum unit)
-        {
-            DateTime basetime = DateTime.ParseExact(dateString, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
 
-            switch (unit)
-            {
-                case TimeEnum.day:
-                    return basetime.AddDays(amount);
-                case TimeEnum.week:
-                    return /*Convert.ToDateTime(*/basetime.AddDays(amount * 7);
-                case TimeEnum.mouth:
-                    return basetime.AddMonths(amount);
-                default:
-                    break;
-            }
-            return basetime;
-        }
-        /// <summary>
-        /// 判定是一年的第一周，周一是几号
-        /// </summary>
-        /// <param name="dateTime">年份</param>   
-        public static DateTime GetDate(int year)
-        {
-            //DateTime year = Convert.ToDateTime(Console.ReadLine());
-            //Console.WriteLine(year); 
 
-            //2019
-            //2019.1.1 
-
-            DateTime dt = new DateTime(year, 1, 1);
-            Console.WriteLine(dt);//20201.1
-
-            while (dt.DayOfWeek != DayOfWeek.Monday)
-            {
-
-                dt = dt.AddDays(1);//2020.1.6 周一
-            }
-
-            return dt;   //2020/1/6
-
-        }
-        /// <summary>
-        ///  给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
-        /// </summary>
-        /// <param name="year"></param>
-        public static void GetDateWeek(int year)
-        {
-            GetWeekBody(GetDate(year));//2020/1/6
-        }
-
-        /// <summary>
-        /// 按周排列显示每周的起始日期
-        /// </summary>
-        /// <param name="dateTime"></param>
-        public static void GetWeekBody(DateTime dateTime)//2020/1/6
-        {
-            int i = 1;
-            int year = dateTime.Year;
-            while (dateTime.Year == year)
-            {
-                Console.WriteLine($"第{i}周：{dateTime.ToString("yyyy年MM月dd日")}-" +
-                    $"{dateTime.AddDays(6).ToString("yyyy年MM月dd日")}");
-                dateTime = dateTime.AddDays(7);
-                i++;
-            }
-        }
 
         // 定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制：
         //最小值min（默认为1）
@@ -289,216 +309,7 @@ namespace Csharp
             }
         }
 
-        /// <summary>
-        /// 设立并显示一个多维数组的值，元素值等于下标之和。
-        /// </summary>
-        private static void MarreyXB()
-        {
-            int[,] Marrey = new int[3, 4];
-            // GetLength(0) 获得第一维的长度(行数) GetLength(1) 获得第二维的长度(列数)
-            for (int i = 0; i < Marrey.GetLength(0); i++)
-            {
-                for (int j = 0; j < Marrey.GetLength(1); j++)
-                {
-                    Console.Write(i + j + "---");
-                }
-                Console.WriteLine("\n");
-            }
-        }
-
-        /// <summary>
-        ///  利用ref调用Swap()方法交换两个同学的床位号
-        /// </summary>
-        private static void Swap()
-        {
-
-        }
-
-        /// <summary>
-        ///   //传入一个数组返回最小值
-        /// </summary>
-        private static void getMinArray()
-        {
-            int[] arraymax = { 2, 5, 7, 8, 9 };
-            for (int i = 0; i < arraymax.Length; i++)
-            {
-                //从小到大 
-                for (int j = 0; j < arraymax.Length - 1; j++)
-                {
-                    if (arraymax[j] < arraymax[j + 1])
-                    {
-                        int temp = arraymax[j];
-                        arraymax[j] = arraymax[j + 1];
-                        arraymax[j + 1] = temp;
-
-                    }
-
-                }
-
-            }
-
-            Console.WriteLine(arraymax[arraymax.Length - 1]);
-
-        }
-        /// <summary>
-        ///   //传入一个数组返回最大值
-        /// </summary>
-        private static void getMaxArray()
-        {
-            int[] arraymax = { 2, 5, 7, 8, 9 };
-            for (int i = 0; i < arraymax.Length; i++)
-            {
-                //从小到大 
-                for (int j = 0; j < arraymax.Length - 1; j++)
-                {
-                    if (arraymax[j] > arraymax[j + 1])
-                    {
-                        int temp = arraymax[j];
-                        arraymax[j] = arraymax[j + 1];
-                        arraymax[j + 1] = temp;
-
-                    }
-
-                }
-
-            }
-
-            Console.WriteLine(arraymax[arraymax.Length - 1]);
-        }
-        /// <summary>
-        ///  生成一个元素（值随机）从小到大排列的数组
-        /// </summary>
-        public static void ArraySort()
-        {
-            //给随机数组赋值
-            int[] arryasc = new int[10];
-            Random Rvalue = new Random();
-            arryasc[0] = Rvalue.Next(5);
-            for (int i = 1; i < 10; i++)
-            {
-                arryasc[i + 1] = Rvalue.Next(0, 100) + arryasc[i];
-
-                Console.WriteLine(arryasc[i]);
-            }
-            //冒泡排序
-            for (int i = 0; i < arryasc.Length; i++)
-            {
-                //从小到大 
-                for (int j = 0; j < arryasc.Length - 1; j++)
-                {
-                    if (arryasc[j] > arryasc[j + 1])
-                    {
-                        int temp = arryasc[j];
-                        arryasc[j] = arryasc[j + 1];
-                        arryasc[j + 1] = temp;
-
-                    }
-
-                }
-
-            }
-
-
-        }
-        //传入一个数组返回最大值，最小值
-
-        /// <summary>
-        /// 猜数游戏
-        /// </summary>
-        //完成“猜数字”游戏，方法名GuessMe()：
-        //随机生成一个大于0小于1000的整数
-        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了”
-        //没猜中可以继续猜，但最多不能超过10次
-        //如果5次之内猜中，输出：你真牛逼！
-        //如果8次之内猜中，输出：不错嘛！
-        //10次还没猜中，输出：(～￣(OO)￣)ブ  
-        public static void GuessMe()
-        {
-
-            Random r = new Random();
-            int b = r.Next(0, 1000);//随机数
-            Console.WriteLine(b);
-            Console.WriteLine("请输入您猜的数字：");
-
-            ///1、猜中
-            ///1.1检查次数
-            ///2、未猜中
-            ///2.1未到10次，继续
-            ///2.2到了10次,结束
-            for (int i = 0; i < 20; i++)
-            {
-                int a = int.Parse(Console.ReadLine());
-                if (a != b)
-                {
-                    if (i <= 10)
-                    {
-                        if (a > b)
-                        {
-                            Console.WriteLine("大了");
-                        }
-                        else if (a < b)
-                        {
-                            Console.WriteLine("小了");
-                        }
-                    }
-                    else if (i > 10)
-                    {
-                        Console.WriteLine("不能再输了");
-                        break;
-                    }
-                }
-                else
-                {
-                    if (i <= 5)
-                    {
-                        Console.WriteLine("你真牛逼");
-                    }
-                    else if (i <= 8)
-                    {
-                        Console.WriteLine("不错嘛！");
-                    }
-                    else if (i <= 10)
-                    {
-                        Console.WriteLine("这么多次才中，加油哦");
-                    }
-                }
-
-            }
-
-        }
-
-        /// <summary>
-        /// 平均成绩
-        /// </summary>
-        /// <param name="score1"></param>
-        public static void GetAverage(double[] score1)
-        {
-            double sum = 0;
-            double avg = 0;
-
-            for (int i = 0; i < score1.Length; i++)
-            {
-                sum += score1[i];
-            }
-            avg = Math.Round((sum / score1.Length), 2);
-            Console.WriteLine("分数是" + avg);
-
-
-
-        }
-        public static void grow(Student student)//2、18
-        {
-            // student = new Student();
-            student.age++;
-            Console.WriteLine(student.age);//3、19
-
-        }
-        public static void grow(ref Student student)
-        {
-            student = new Student();
-            student.age++;
-            Console.WriteLine(student.age);
-        }
+      
     }
 }
 

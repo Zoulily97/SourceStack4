@@ -11,12 +11,12 @@ namespace Csharp
      //改造Entity类，让其Id可以为任意类型
    public  class Entity<T>
     {
-        public int  Id { get; }
+        public T Id { get; }
         public Entity()
         {
 
         }
-        public Entity( int number)
+        public Entity( T number)
         {
             Id = number;
         }

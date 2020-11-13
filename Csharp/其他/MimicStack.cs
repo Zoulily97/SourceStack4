@@ -8,11 +8,11 @@ namespace Csharp
     //出 / 入栈检查，
     //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
     //如果已弹出所有数据，提示“栈已空”
-    class MimicStack
+    class MimicStack<T>
     {
-        private object[] container = new object[5];//定义一个容器
+        private T[] container = new T[5];//定义一个容器
         int top = 0;//栈顶
-        public void Push(object value)//入栈
+        public void Push(T value)//入栈
         {
             if (top == container.Length)
             {
@@ -35,7 +35,7 @@ namespace Csharp
             else 
             {
                 
-                object result =container[top-1];
+                T result =container[top-1];
                 Console.WriteLine(result + "弹出");
                 top--;
                   
