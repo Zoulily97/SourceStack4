@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Csharp.文章
 {
-    class Keyword
+  public   class Keyword
     {
+        //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
+        public IList<Article> Articles { get; set; }
     }
 }
