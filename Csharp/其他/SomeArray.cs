@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Csharp.其他
 {
@@ -11,23 +13,24 @@ namespace Csharp.其他
         //         如果找到，返回该元素所在的下标；否则，返回 - 1
         //用泛型改造二分查找、堆栈和双向链表
         //  用泛型改造“取数组中最大值”（提示：IComparable）
-        public static int BinarySeek(int[] numbers, int target)
+        public static int BinarySeek(IList<T> numbers, T target)
         {
             int left = 0;
-            int right = numbers.Length - 1;
+            int right = numbers.Count();
             int middle;
             while (left <= right)
             {
                 middle = (left + right) / 2;
-                if (target > numbers[middle])
+                int v = string.Compare(numbers[middle].ToString(), target.ToString());
+                if ( v<0)
                 {
                     left = middle + 1;
                 }
-                else if (target < numbers[middle])
+                else if (v>0)
                 {
                     right = middle - 1;
                 }
-                else
+                else if (v == 0)
                 {
                     return middle;
                 }
@@ -93,17 +96,21 @@ namespace Csharp.其他
         /// <summary>
         ///   //传入一个数组返回最大值
         /// </summary>
-        private static void getMaxArray()
+        ///  
+        /// //  用泛型改造“取数组中最大值”（提示：IComparable）
+        public  static T getMaxArray<T>(IList <T> arraymax)
         {
-            int[] arraymax = { 2, 5, 7, 8, 9 };
-            for (int i = 0; i < arraymax.Length; i++)
+           // IList<T> arraymax = new IList<int> { 2, 5, 7, 8, 9 };
+            for (int i = 0; i < arraymax.Count-1; i++)
             {
                 //从小到大 
-                for (int j = 0; j < arraymax.Length - 1; j++)
+                for (int j =0; j < arraymax.Count-1; j++)
                 {
-                    if (arraymax[j] > arraymax[j + 1])
+                    //  if (arraymax[j] > arraymax[j + 1])
+                    int v = string.Compare(arraymax[i].ToString(), arraymax[j].ToString());
+                    if(v<0)
                     {
-                        int temp = arraymax[j];
+                        T temp = arraymax[j];
                         arraymax[j] = arraymax[j + 1];
                         arraymax[j + 1] = temp;
 
@@ -112,8 +119,9 @@ namespace Csharp.其他
                 }
 
             }
-
-            Console.WriteLine(arraymax[arraymax.Length - 1]);
+            return arraymax[arraymax.Count-1];
+            
+            
         }
         /// <summary>
         ///  生成一个元素（值随机）从小到大排列的数组

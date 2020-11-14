@@ -277,12 +277,13 @@ namespace NUnitTest
         [Test]
         public void BinarySeekTest()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 8, 9 };
+            int[] array =  { 1, 2, 3, 4, 5, 8, 9 };
             Assert.AreEqual(0, SomeArray<int>.BinarySeek(array, 1));
             Assert.AreEqual(6, SomeArray<int>.BinarySeek(array, 9));
             Assert.AreEqual(5, SomeArray<int>.BinarySeek(array, 8));
             Assert.AreEqual(3, SomeArray<int>.BinarySeek(array, 4));
             Assert.AreEqual(1, SomeArray<int>.BinarySeek(array, 2));
+           
         }
     }
 }

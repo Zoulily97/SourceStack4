@@ -74,6 +74,8 @@ namespace Csharp
             // mimicStack1.Pop();
             // mimicStack1.Pop();
             // mimicStack1.Pop();
+            //int[] seek1 = { 1, 11, 13, 15, 17, 193, 5, 7, 10};
+            //Console.WriteLine( SomeArray<int>.getMaxArray(seek1));
 
 
             #endregion

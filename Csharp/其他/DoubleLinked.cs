@@ -2,6 +2,7 @@
 
 namespace Csharp.其他
 {
+      //用泛型改造二分查找、堆栈和双向链表
     public class DoubleLinked
     {
         public int value;
