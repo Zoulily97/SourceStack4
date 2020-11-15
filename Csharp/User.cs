@@ -19,15 +19,7 @@ namespace Csharp
     // 3、确保用户（User）的密码（Password）：
     //    长度不低于6
     //  必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
-    /*import re
-    def checkPwd(pwd):
-    compilePwd=re.compile('^.*(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*?])\w{6,}')
-    if compilePwd.match(pwd):
-    return True
-    else:
-    return False
-    print(checkPwd("X19950611@a"))*/
-
+   
 
     public sealed class User : Entity<int>, ISendMessage, IChat
     {
