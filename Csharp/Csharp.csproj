@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="test\BeforeWork.cs" />
     <Compile Include="test\Work.cs" />
+    <Compile Include="其他\Person.cs" />
     <Compile Include="其他\SomeArray.cs" />
     <Compile Include="内容\文章\Appraise.cs" />
     <Compile Include="内容\文章\Article.cs" />

@@ -143,6 +143,7 @@ namespace Csharp
                   lambda表达式
                   给上述委托赋值，并运行该委托
                   声明一个方法GetWater()，该方法接受ProvideWater作为参数，并能将ProvideWater的返回值输出*/
+               Person.ExecuteWeituo();
             #endregion
 
 
@@ -151,6 +152,10 @@ namespace Csharp
         }
 
 
+     
+
+        
+    
 
 
         private static void Con(string passeord)
