@@ -19,7 +19,8 @@ namespace Csharp
         // 每个文章和评论都有一个评价
         public IList<Appraise> Appraise { get; set; }
         //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
-        public IList<Keyword> keyword{ get; set; }
+        public IList<Keyword> Keyword { get; set; }
+        // public User Author { get; set; }
         public void Agree(User voter)
         {
             voter.HelpMoney++;
@@ -29,13 +30,17 @@ namespace Csharp
 
         public override void Publish()
         {
-            Console.WriteLine("需要消耗一个帮帮币");
+            PublishTime = DateTime.Now;
+            //Console.WriteLine("需要消耗一个帮帮币");
         }
         public void Search(string keword)
         {
 
         }
-
+        //public Article(string title)
+        //{
+        //    this.Title=title;
+        //}
 
 
     }

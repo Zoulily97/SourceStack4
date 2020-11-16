@@ -16,8 +16,9 @@ namespace Csharp
         }
         public  void Publish(Content content)
         {
+            
             content.Publish();
-            Console.WriteLine("存到数据库");
+           // Console.WriteLine("存到数据库");
             
 
         }

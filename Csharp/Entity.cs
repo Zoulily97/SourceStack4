@@ -11,7 +11,7 @@ namespace Csharp
      //改造Entity类，让其Id可以为任意类型
    public  class Entity<T>
     {
-        public T Id { get; }
+        public T Id { get; set; }
         public Entity()
         {
 

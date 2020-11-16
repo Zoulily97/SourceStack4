@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Csharp
@@ -27,8 +28,6 @@ namespace Csharp
         private string name;
         private string _password;
         //private User invitesBy;
-
-
         public string Password
         {
             set
@@ -89,9 +88,10 @@ namespace Csharp
                  
             }
         }
-
         public int HelpMoney { get; set; }
         public TokenManager Tokens { get; set; }
+
+        public IList<Article> Article { get; set; }
         public User(string name, string password)  //有参构造函数//赋值
         {
             this.name = name;

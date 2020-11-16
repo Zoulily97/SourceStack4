@@ -1,6 +1,7 @@
-﻿using Csharp.作业;
-using Csharp.其他;
+﻿using Csharp.其他;
+using Csharp.文章;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Csharp
@@ -28,29 +29,6 @@ namespace Csharp
                      [选] FindBy()：根据节点值查找到某个节点
             */
             #endregion
-
-
-
-            //C#-面向对象：string还是StringBuilder？ https://zhuanlan.zhihu.com/p/93747718
-            #region
-            /*1、确保文章（Article）的标题不能为null值，也不能为一个或多个空字符组成的字符串；
-                 而且如果标题前后有空格，将空格予以删除
-               2、设计一个适用的机制，能确保用户（User）的昵称（Name）不能含有admin、17bang、管理员等敏感词。
-              3、确保用户（User）的密码（Password）：
-                   长度不低于6
-                   必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
-            4、实现 int GetCount(string container, string target)方法，可以统计出container中有多少个target
-            5、不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
-                比如：mimicJoin("-", "a", "b", "c", "d")，其运行结果为：a - b - c - d*/
-            //Con("P@ss12345");
-            //Console.WriteLine(Work.GetCount("1234445678", "4"));
-            //string[] vs = new string[] { "a", "b", "c", "d" };
-            //Console.WriteLine(Work.MimicJoin("-", vs));
-
-            #endregion
-
-
-
 
             //泛型：声明/使用/约束/继承
             #region
@@ -80,7 +58,6 @@ namespace Csharp
 
             #endregion
 
-
             // 集合：List / Dictionary ……
             #region
             /*
@@ -97,9 +74,7 @@ namespace Csharp
              */
             #endregion
 
-
-
-
+            //git
             #region
             /* 作业：
            使用VS git完成：
@@ -133,6 +108,7 @@ namespace Csharp
             #region
             //调用扩展方法Max()：能够返回之前双向链表中存贮着最大值的节点
             #endregion
+
             // C#进阶 ： 委托和事件 匿名方法 / Lambda / 闭包
             #region
             /*
@@ -143,38 +119,180 @@ namespace Csharp
                   lambda表达式
                   给上述委托赋值，并运行该委托
                   声明一个方法GetWater()，该方法接受ProvideWater作为参数，并能将ProvideWater的返回值输出*/
-               Person.ExecuteWeituo();
+            //Person.ExecuteWeituo();
             #endregion
 
+            // C#进阶 Linq-1：where/order/group/select
+            #region
+            /*作业：
+             在之前“文章/评价/评论/用户/关键字”对象模型的基础上，添加相应的数据，然后完成以下操作：
 
+             找出“飞哥”发布的文章
+
+             找出2019年1月1日以后“小鱼”发布的文章
+            \
+             按发布时间升序/降序排列显示文章
+
+             统计每个用户各发布了多少篇文章
+
+             找出包含关键字“C#”或“.NET”的文章
+
+             找出评论数量最多的文章
+
+             找出每个作者评论数最多的文章*/
+
+            //作者
+            User fg = new User { Name = "飞哥", Id = 1, };
+            User xuaoyu = new User { Name = "小鱼", Id = 2 };
+            IEnumerable<User> teachers = new List<User> { fg, xuaoyu };
+            // //文章
+            Article articleCsharp = new Article() { Title = "C#学习",Author = fg };
+            Article articleCsharp2 = new Article() { Title = "C#学习从入门到放弃", Author = fg };
+            Article articlejava = new Article() { Title = "JAVA学习", Author = fg };
+            Article articleui = new Article() { Title = "UI学习", Author = xuaoyu };
+            Article articleps = new Article() { Title = "PS学习", Author = xuaoyu };
+            Article articleai = new Article() { Title = "测试学习", Author = xuaoyu };
+            IEnumerable<Article> articles = new List<Article> { articleCsharp, articleCsharp2,articlejava, articleui, articleps, articleai };
+
+            var result = from a in articles
+                         where a.Author == fg
+                         select a;
+            foreach (var item in result)
+            {
+                Console.WriteLine("飞哥发布的文章" + item.Title);
+            }
+
+            //找出2019年1月1日以后“小鱼”发布的文章
+           // articleCsharp
+           ContentService fb = new ContentService();//ContentService，其中有一个发布（Publish()）方法：
+            fb.Publish(articleCsharp);
+            fb.Publish(articleui);
+            fb.Publish(articleps);
+            fb.Publish(articleai);
+            articleui.UpdatePublishTime(articleui, new DateTime(2018,9,9));//修改articleui发布时间  
+            articleps.UpdatePublishTime(articleps, new DateTime(2019, 9, 19));
+            articleai.UpdatePublishTime(articleai, new DateTime(2019, 9, 29));
+            var result1 = from a in articles
+                          where a.Author == xuaoyu && a.PublishTime > new DateTime(2019, 1, 1)
+                          select a;
+            foreach (var item in result1)
+            {
+                Console.WriteLine($"2019年1月1日以后“小鱼”发布文章：《《{ item.Title}》》");//ps 测试
+
+            }
+            // 按发布时间升序 / 降序排列显示文章
+            var result2 = from a in articles
+                          orderby a.PublishTime descending
+                          select a;
+            foreach (var item in result2)
+            {
+                Console.WriteLine($"文章{item.Title}发布时间 {item.PublishTime}");
+            }
+
+            //统计每个用户各发布了多少篇文章
+
+            var result3 = from a in articles
+                          group a by a.Author
+                        //接下来对分组结果集再运算（统计）
+                        into ga  //into类似于命名，将之前的结果集命名为：gm
+                          select new  //利用投影
+                          {
+                              AuthorName = ga.Key.Name,
+                              num=ga.Count()
+
+                          };
+            foreach (var item in result3)
+            {
+                Console.WriteLine($"作者名：{item.AuthorName},有{item.num}文章");
+
+            }
+
+            //找出包含关键字“C#”或“.NET”的文章
+            var result4 = from a in articles
+                          where a.Title.Contains("C#") || a.Title.Contains(".NET")
+                          select a;
+            foreach (var item in result4)
+            {
+                Console.WriteLine($"关键字包含C#,.NET的文章是<<{item.Title}>>");
+            }
+            //评论
+            Comment comment1 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment2 = new Comment { Article = articleui, Title = "小鱼老师说的好" };
+            Comment comment3 = new Comment { Article = articleui, Title = "小鱼老师说的特好" };
+            Comment comment4 = new Comment { Article = articleui, Title = "小鱼老师说的特别好" };
+            Comment comment5 = new Comment { Article = articleui, Title = "小鱼老师说的特别别好" };
+            Comment comment6 = new Comment { Article = articleCsharp2, Title = "飞哥说得好" };
+            Comment comment7 = new Comment { Article = articlejava, Title = "飞哥articlejava说得好" };
+            Comment comment8 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment9 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment10 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment11= new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment12= new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment13 = new Comment { Article = articleCsharp2, Title = "飞哥说得好" };
+
+
+            IEnumerable<Comment> comments = new List<Comment> { comment1, comment2, comment3, comment4, comment5 ,comment6,comment7,comment8,comment9,comment10,comment11,comment12, comment13 };
+            //找出评论数量最多的文章
+            var result5 = from c in comments
+                          group c by c.Article//分组依据
+                          into gc
+                          select new
+                          {
+                              title=gc.Key.Title,
+                              commentnum = gc.Count()
+                          };
+
+            foreach (var item in result5)
+            {
+                if (item.commentnum == result5.Max(g => g.commentnum))
+                {
+                    Console.WriteLine($"数量最多的文章<{item.title}>的评论有{item.commentnum}篇");
+                }
+            }
+
+            //找出每个作者评论数最多的文章*/
+
+            var result7 = from c in comments
+                          join a in articles
+                          on c.Article equals a
+                          group c by c.Article                
+                          into gc           
+                          select new
+                          {
+                             articl =gc.Key.Title,
+                              cnum = gc.Count(),
+                             author=gc.Key.Author
+
+                          } ;
+            foreach (var item in result7)
+            {
+                //if (item.cnum == result7.Max(g => g.cnum))
+                //{
+                    Console.WriteLine($"作者{item.author.Name}---文章---{item.articl}----评论数量是{item.cnum}");
+                //}
+            }
+
+
+
+
+
+
+
+
+            #endregion
 
 
         }
 
 
-     
 
-        
-    
+
+
+
 
 
         private static void Con(string passeord)
         {
-
-
-            //var zz = new Regex(@"^(?:(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*()_+])).{6,20}$");
-            //if (passeord.Contains(zz.ToString ()))
-            //{
-            //    Console.WriteLine("ok");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("错误");
-            //}
-
-
-
-            ///666
             string Str = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@#$%^&*()_+";
 
             if (passeord.Length > 6)
@@ -235,9 +353,6 @@ namespace Csharp
                 }
             }
         }
-
-
-
 
         // 定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制：
         //最小值min（默认为1）
@@ -316,7 +431,7 @@ namespace Csharp
             }
         }
 
-      
+
     }
 }
 

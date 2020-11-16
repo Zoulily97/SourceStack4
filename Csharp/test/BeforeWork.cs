@@ -576,5 +576,23 @@ namespace Csharp.作业
         //Console.WriteLine(((HelpMoneyChangedAttribute)attribute).Amount);
         #endregion
 
+        //C#-面向对象：string还是StringBuilder？ https://zhuanlan.zhihu.com/p/93747718
+        #region
+        /*1、确保文章（Article）的标题不能为null值，也不能为一个或多个空字符组成的字符串；
+             而且如果标题前后有空格，将空格予以删除
+           2、设计一个适用的机制，能确保用户（User）的昵称（Name）不能含有admin、17bang、管理员等敏感词。
+          3、确保用户（User）的密码（Password）：
+               长度不低于6
+               必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
+        4、实现 int GetCount(string container, string target)方法，可以统计出container中有多少个target
+        5、不使用string自带的Join()方法，定义一个mimicJoin()方法，能将若干字符串用指定的分隔符连接起来，
+            比如：mimicJoin("-", "a", "b", "c", "d")，其运行结果为：a - b - c - d*/
+        //Con("P@ss12345");
+        //Console.WriteLine(Work.GetCount("1234445678", "4"));
+        //string[] vs = new string[] { "a", "b", "c", "d" };
+        //Console.WriteLine(Work.MimicJoin("-", vs));
+
+        #endregion
+
     }
 }

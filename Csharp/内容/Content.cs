@@ -28,10 +28,8 @@ namespace Csharp
             get { return keyword[index]; }
             set { keyword[index] = value; }
         }
-        public DateTime PulishTime
-        {
-            get { return createTime; }
-        }
+        public DateTime PublishTime { get; protected set; }
+
         public User Author { get; set; }
         //User Author { get; set; }
 
@@ -39,17 +37,20 @@ namespace Csharp
        // 而且如果标题前后有空格，将空格予以删除
         public string Title
         {
-            
-            set 
+            get { return _title; }
+            set
             {
-                if (_title.Contains("") )
+
+                if (value.Contains(""))
                 {
-                    _title=_title.Trim();      
+                    _title = value.Trim();
 
                 }
                 _title = value;
 
-            } }
+            }
+
+        }
         public Content()//createTime赋值
         {
             createTime = DateTime.Now;
@@ -72,14 +73,14 @@ namespace Csharp
              用反射获取Publish()上的特性实例，输出其中包含的信息*/
         public void UpdateCreateTime(Content content,DateTime dateTime)
         {
-            typeof(Content).GetProperty(nameof(Content.createTime), BindingFlags.NonPublic | BindingFlags.Instance)
+            typeof(Content).GetProperty(nameof(Content.createTime), BindingFlags.Public | BindingFlags.Instance)
                 .SetValue(content, dateTime);
            
 
         }
         public void UpdatePublishTime(Content content, DateTime dateTime)
         {
-            typeof(Content).GetProperty(nameof(Content.PulishTime), BindingFlags.NonPublic | BindingFlags.Instance)
+            typeof(Content).GetProperty(nameof(Content.PublishTime), BindingFlags.Public | BindingFlags.Instance)
                 .SetValue(content, dateTime);
         }
 
