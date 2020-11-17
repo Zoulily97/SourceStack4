@@ -145,17 +145,54 @@ namespace Csharp
             User fg = new User { Name = "飞哥", Id = 1, };
             User xuaoyu = new User { Name = "小鱼", Id = 2 };
             IEnumerable<User> teachers = new List<User> { fg, xuaoyu };
+
+            //关键字
+            Keyword k1 = new Keyword { Word = "C#" };
+            Keyword k2 = new Keyword { Word = ".NET" };
+            Keyword k3 = new Keyword { Word = "PS" };
+            Keyword k4 = new Keyword { Word = "C#" };
+            Keyword k5 = new Keyword { Word = "JAVA" };
+            IEnumerable<Keyword> keywords = new List<Keyword>
+            {
+                k1,k2,k3,k4,k5
+            };
             // //文章
-            Article articleCsharp = new Article() { Title = "C#学习",Author = fg };
-            Article articleCsharp2 = new Article() { Title = "C#学习从入门到放弃", Author = fg };
-            Article articlejava = new Article() { Title = "JAVA学习", Author = fg };
-            Article articleui = new Article() { Title = "UI学习", Author = xuaoyu };
-            Article articleps = new Article() { Title = "PS学习", Author = xuaoyu };
-            Article articleai = new Article() { Title = "测试学习", Author = xuaoyu };
+            Article articleCsharp = new Article() { Title = "C#学习", Author = fg, Keyword = new List<Keyword>() { k1, k2 } };
+            Article articleCsharp2 = new Article() { Title = "C#学习从入门到放弃", Author = fg, Keyword = new List<Keyword>() { k1, k2, k3 } };
+            Article articlejava = new Article() { Title = "JAVA学习", Author = fg, Keyword = new List<Keyword>() { k4, k5, k3 } };
+            Article articleui = new Article() { Title = "UI学习", Author = xuaoyu, Keyword = new List<Keyword>() { k5, k4, k3 } };
+            Article articleps = new Article() { Title = "PS学习", Author = xuaoyu, Keyword = new List<Keyword>() { k5, k4, k3 } };
+            Article articleai = new Article() { Title = "测试学习", Author = xuaoyu, Keyword = new List<Keyword>() { k5, k4, k3 } };
             IEnumerable<Article> articles = new List<Article> { articleCsharp, articleCsharp2,articlejava, articleui, articleps, articleai };
 
+            ContentService fb = new ContentService();//ContentService，其中有一个发布（Publish()）方法：
+            fb.Publish(articleCsharp);
+            fb.Publish(articleui);
+            fb.Publish(articleps);
+            fb.Publish(articleai);
+            articleui.UpdatePublishTime(articleui, new DateTime(2018, 9, 9));//修改articleui发布时间  
+            articleps.UpdatePublishTime(articleps, new DateTime(2019, 9, 19));
+            articleai.UpdatePublishTime(articleai, new DateTime(2019, 9, 29));
+
+            //评论
+            Comment comment1 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment2 = new Comment { Article = articleui, Title = "小鱼老师说的好" };
+            Comment comment3 = new Comment { Article = articleui, Title = "小鱼老师说的特好" };
+            Comment comment4 = new Comment { Article = articleui, Title = "小鱼老师说的特别好" };
+            Comment comment5 = new Comment { Article = articleui, Title = "小鱼老师说的特别别好" };
+            Comment comment6 = new Comment { Article = articleCsharp2, Title = "飞哥说得好" };
+            Comment comment7 = new Comment { Article = articlejava, Title = "飞哥articlejava说得好" };
+            Comment comment8 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment9 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment10 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment11 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment12 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
+            Comment comment13 = new Comment { Article = articleCsharp2, Title = "飞哥说得好" };
+            IEnumerable<Comment> comments = new List<Comment> { comment1, comment2, comment3, comment4, comment5, comment6, comment7, comment8, comment9, comment10, comment11, comment12, comment13 };
+
+            //找出“飞哥”发布的文章
             var result = from a in articles
-                         where a.Author == fg
+                         where a.Author.Name == "飞哥"
                          select a;
             foreach (var item in result)
             {
@@ -164,14 +201,7 @@ namespace Csharp
 
             //找出2019年1月1日以后“小鱼”发布的文章
            // articleCsharp
-           ContentService fb = new ContentService();//ContentService，其中有一个发布（Publish()）方法：
-            fb.Publish(articleCsharp);
-            fb.Publish(articleui);
-            fb.Publish(articleps);
-            fb.Publish(articleai);
-            articleui.UpdatePublishTime(articleui, new DateTime(2018,9,9));//修改articleui发布时间  
-            articleps.UpdatePublishTime(articleps, new DateTime(2019, 9, 19));
-            articleai.UpdatePublishTime(articleai, new DateTime(2019, 9, 29));
+        
             var result1 = from a in articles
                           where a.Author == xuaoyu && a.PublishTime > new DateTime(2019, 1, 1)
                           select a;
@@ -208,30 +238,25 @@ namespace Csharp
             }
 
             //找出包含关键字“C#”或“.NET”的文章
-            var result4 = from a in articles
-                          where a.Title.Contains("C#") || a.Title.Contains(".NET")
-                          select a;
-            foreach (var item in result4)
+            //var result4 = from a in articles
+            //              where a.Title.Contains("C#") || a.Title.Contains(".NET")
+            //              select a;
+            //foreach (var item in result4)
+            //{
+            //    Console.WriteLine($"关键字包含C#,.NET的文章是<<{item.Title}>>");
+            //}
+
+            var result41 = from a in articles
+                           where a.Keyword.Any(k => k.Word == "C#") || a.Keyword.Any(k => k.Word == ".NET")
+                           select a;
+            foreach (var item in result41)
             {
-                Console.WriteLine($"关键字包含C#,.NET的文章是<<{item.Title}>>");
+                Console.WriteLine($"关键字包含C#,.NET的文章是{item.Title}");
             }
-            //评论
-            Comment comment1 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
-            Comment comment2 = new Comment { Article = articleui, Title = "小鱼老师说的好" };
-            Comment comment3 = new Comment { Article = articleui, Title = "小鱼老师说的特好" };
-            Comment comment4 = new Comment { Article = articleui, Title = "小鱼老师说的特别好" };
-            Comment comment5 = new Comment { Article = articleui, Title = "小鱼老师说的特别别好" };
-            Comment comment6 = new Comment { Article = articleCsharp2, Title = "飞哥说得好" };
-            Comment comment7 = new Comment { Article = articlejava, Title = "飞哥articlejava说得好" };
-            Comment comment8 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
-            Comment comment9 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
-            Comment comment10 = new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
-            Comment comment11= new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
-            Comment comment12= new Comment { Article = articleCsharp, Title = "飞哥说的特别好" };
-            Comment comment13 = new Comment { Article = articleCsharp2, Title = "飞哥说得好" };
 
 
-            IEnumerable<Comment> comments = new List<Comment> { comment1, comment2, comment3, comment4, comment5 ,comment6,comment7,comment8,comment9,comment10,comment11,comment12, comment13 };
+
+
             //找出评论数量最多的文章
             var result5 = from c in comments
                           group c by c.Article//分组依据
@@ -268,10 +293,20 @@ namespace Csharp
             {
                 //if (item.cnum == result7.Max(g => g.cnum))
                 //{
-                    Console.WriteLine($"作者{item.author.Name}---文章---{item.articl}----评论数量是{item.cnum}");
+                    Console.WriteLine($"评论作者{item.author.Name}---评论数多的文章是---{item.articl}----评论数量是{item.cnum}");
                 //}
             }
+            var result8 = from i in result7
+                          group i by i.author;
 
+
+            foreach (var item in result8)
+            {
+                var kkk = from i in item
+                          orderby i.cnum descending
+                          select i;
+                Console.WriteLine($"{kkk.First().author.Name}的{kkk.First().articl}文章第一是{kkk.First().cnum}");
+            }
 
 
 
