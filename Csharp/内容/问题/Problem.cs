@@ -17,29 +17,32 @@ namespace Csharp
         private DateTime publishDateTime;     
         public string Body { get; set ; }
         //  3、problem.Reward不能为负数
-        public int Reward 
-        { get => reward;
+        //为求助（Problem）添加悬赏（Reward）属性，并找出每一篇求助的悬赏都大于5个帮帮币的求助作者*/
+        public int Reward
+        {
+            get => reward;
             set
             {
-                if (value<0)
+                //1、修改之前的属性验证：problem.Reward为负数时直接抛出“参数越界”异常
+                if (value < 0)
                 {
-                    Console.WriteLine("Reward不能为负数");
+                    throw new  Exception("参数越界");
                 }
                 else
                 {
                     reward = value;
                 }
             }
-        }   
+        } 
         public DateTime PublishDateTime { get => publishDateTime; set => publishDateTime = value; }
         public Problem()
         {
 
         }
 
-        public Problem(string body)
+        public Problem(int a)
         {
-            this.body = body;
+            this.reward = a;
 
         }
         public static  void  Load(int Id)//根据Id从数据库获取一条求助

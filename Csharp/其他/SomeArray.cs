@@ -4,7 +4,8 @@ using System.Linq;
 
 namespace Csharp.其他
 {
-    public class SomeArray<T>
+
+    public class SomeArray
     {
 
 
@@ -13,7 +14,7 @@ namespace Csharp.其他
         //         如果找到，返回该元素所在的下标；否则，返回 - 1
         //用泛型改造二分查找、堆栈和双向链表
         //  用泛型改造“取数组中最大值”（提示：IComparable）
-        public static int BinarySeek(IList<T> numbers, T target)
+        public static int BinarySeek<T>(IList<T> numbers, T target)
         {
             int left = 0;
             int right = numbers.Count();
@@ -98,7 +99,7 @@ namespace Csharp.其他
         /// </summary>
         ///  
         /// //  用泛型改造“取数组中最大值”（提示：IComparable）
-        public  static T getMaxArray<T>(IList <T> arraymax)
+        public  static T getMaxArray<T>(IList <T> arraymax)where T:IComparable
         {
            // IList<T> arraymax = new IList<int> { 2, 5, 7, 8, 9 };
             for (int i = 0; i < arraymax.Count-1; i++)
@@ -107,8 +108,8 @@ namespace Csharp.其他
                 for (int j =0; j < arraymax.Count-1; j++)
                 {
                     //  if (arraymax[j] > arraymax[j + 1])
-                    int v = string.Compare(arraymax[i].ToString(), arraymax[j].ToString());
-                    if(v<0)
+                   // int v = string.Compare(arraymax[i].ToString(), arraymax[j].ToString());
+                    if(arraymax[i].CompareTo(arraymax[j]) < 0)
                     {
                         T temp = arraymax[j];
                         arraymax[j] = arraymax[j + 1];
@@ -256,6 +257,146 @@ namespace Csharp.其他
             student = new Student();
             student.age++;
             Console.WriteLine(student.age);
+        }
+
+
+        /// <summary>
+        /// 构造一个能装任何数据的数组，并完成数据的读写
+        /// </summary>
+        private static void GetanyArray()
+        {
+            object[] annyArray = new object[5] { 2.344, 1123, 2345, "中文", true };
+            for (int i = 0; i < annyArray.Length; i++)
+            {
+                Console.WriteLine(annyArray[i]);
+
+
+            }
+        }
+        /// <summary>
+        /// 遍历100 内所有质数
+        /// </summary>
+        private static void ZhiNum()
+        {
+            bool flag;//声明一个bool值用来判断是否是素数
+            for (int i = 2; i < 101; i++)// 1、遍历100 内所有数
+            {
+                //每次循环都把flag的值设置为true,
+                flag = true;
+                //2、开始第二次循环,让 i 依次除与 2 和小于它的数,当i= 2时(j < i 条件不成立),直接跳出循环输出:素数 2
+                for (int j = 2; j < i; j++)
+                {
+                    //当 i 可以被 j 整除时跳出该循环,该数不是素数,不做输出
+                    if (i % j == 0)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    Console.WriteLine("素数 " + i);
+                }
+            }
+        }
+
+        // 定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制：
+        //最小值min（默认为1）
+        //相邻两个元素之间的最大差值gap（默认为5）
+        //元素个数length（默认为10个）
+        /// <summary>
+        /// 生成数组的方法,元素随机生成从小到大排列
+        /// </summary>
+        private static void GetArray()
+        {
+            //给随机数组赋值
+            int[] arryasc = new int[10];
+            Random Rvalue = new Random();
+            for (int i = 1; i < 10; i++)
+            {
+                arryasc[i + 1] = Rvalue.Next(0, 100) + arryasc[i];
+
+                Console.WriteLine(arryasc[i]);
+            }
+            //冒泡排序
+            for (int i = 0; i < arryasc.Length; i++)
+            {
+                //从小到大 
+                for (int j = 0; j < arryasc.Length - 1; j++)
+                {
+                    if (arryasc[j] > arryasc[j + 1])
+                    {
+                        int temp = arryasc[j];
+                        arryasc[j] = arryasc[j + 1];
+                        arryasc[j + 1] = temp;
+
+                    }
+
+                }
+
+            }
+
+        }
+        /// <summary>
+        /// 通过二分查找法在一个有序数组中找到某个值的下标，找不到返回 - 1
+        /// </summary>
+        private static void BinarySearch()
+        {
+
+
+        }
+
+        private static void Login()
+        {
+            Console.WriteLine("请输入验证码");
+            if (Console.ReadLine() != "1234")
+            {
+                Console.WriteLine("*验证码错误");
+            }
+            else
+            {
+                Console.WriteLine("请输入用户名");
+                if (Console.ReadLine() != "zl")
+                {
+                    Console.WriteLine("用户名不存在");
+                }
+                else
+                {
+                    Console.WriteLine("请输入密码");
+                    if (Console.ReadLine() != "123456")
+                    {
+                        Console.WriteLine("用户名或密码错误");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("恭喜！登录成功！");
+                    }
+                }
+            }
+        }
+        private static void Con(string passeord)
+        {
+            string Str = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@#$%^&*()_+";
+
+            if (passeord.Length > 6)
+            {
+                for (int i = 0; i < passeord.Length; i++)
+                {
+                    if (!Str.Contains(passeord[i]))
+                    {
+                        Console.WriteLine("输入有误");
+                        break;
+                    }
+
+                }
+                Console.WriteLine("正确" + passeord);
+            }
+            else
+            {
+                Console.WriteLine("输入有误");
+            }
+
         }
     }
 }
