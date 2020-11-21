@@ -2,6 +2,8 @@
 using Csharp.文章;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.Linq;
 
 namespace Csharp
@@ -299,7 +301,7 @@ namespace Csharp
              4、ContentService中无论是否捕获异常，均要Console.WriteLine()输出：XXXX年XX月XX日 XX点XX分XX秒（当前时间），请求发布内容（Id = XXX）
               在Main()函数调用ContentService时，捕获一切异常，并记录异常的消息和堆栈信息*/
 
-             //  Problem p41 = new Problem(1) { Author = problemer3 };
+            //  Problem p41 = new Problem(1) { Author = problemer3 };
             // Problem p5 = new Problem(1);
             //fb1.Publish(p5);
             ////  p41.Publish();
@@ -311,10 +313,13 @@ namespace Csharp
 
             #endregion
 
-
-
-
-
+            // C#进阶：IO和文件操作
+            #region
+            //参考一起帮的登录页面，绘制一个验证码图片，存放到当前项目中。验证码应包含：
+            //随机字符串
+            //混淆用的各色像素点
+            //混淆用的直线（或曲线）
+            #endregion
 
 
         }
@@ -326,13 +331,13 @@ namespace Csharp
 
 
 
-       
-        
-       
 
-       
 
-      
+
+
+
+
+
 
 
     }
