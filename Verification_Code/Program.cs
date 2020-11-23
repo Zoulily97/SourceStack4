@@ -23,11 +23,26 @@ namespace Verification_Code
             g.Clear(Color.White);
 
             //随机字符串
+            //Random r = new Random();
+            //string str = null;
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    str += r.Next(0, 9);
+            //}
             Random r = new Random();
-            string str = null;
+            char[] constant =
+        {
+        '0','1','2','3','4','5','6','7','8','9',
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+         };
+
+            System.Text.StringBuilder newRandom = new System.Text.StringBuilder(62);
+
+            //随机字符串
             for (int i = 0; i < 5; i++)
             {
-                str += r.Next(0, 9);
+                newRandom.Append(constant[r.Next(0, 62)]);
             }
             ////画验证码
             ///
@@ -36,28 +51,28 @@ namespace Verification_Code
             FontFamily myFontFamily3 = new FontFamily("等线");
 
             FontFamily[] fontFamily = { myFontFamily1, myFontFamily2, myFontFamily3, myFontFamily3, myFontFamily1 };
-            Color[] color = { Color.DarkSlateGray, Color.White, Color.Red, Color.LightGreen, Color.Aquamarine, Color.BurlyWood, Color.DarkRed };
+            Color[] color = { Color.DarkSlateGray,Color.DarkCyan, Color.Black,Color.Chartreuse, Color.White, Color.Red, Color.LightGreen, Color.Aquamarine, Color.BurlyWood, Color.DarkRed };
             int a = 20;
             for (int i = 0; i < 5; i++)
             {
                 a += 20;
-                g.DrawString(str[i].ToString(),            //绘制字符串
+                g.DrawString(newRandom[i].ToString(),            //绘制字符串
                       new Font(fontFamily[r.Next(0, 3)], 24), //指定字体
-                      new SolidBrush(color[r.Next(0, 7)]),      //绘制时使用的刷子
+                      new SolidBrush(color[r.Next(0, 10)]),      //绘制时使用的刷子
                       new PointF(a, 20)//左上角定位
                   );
             }
             for (int i = 0; i < 200; i++)
             {
-                image.SetPixel(r.Next(0, 150), r.Next(0, 100), color[r.Next(0, 7)]); //绘制色素点
+                image.SetPixel(r.Next(0, 200), r.Next(0, 100), color[r.Next(0, 7)]); //绘制色素点
 
 
             }
-            for (int i = 0; i < 20; i++)
-            {
-                g.DrawLine(new Pen(color[r.Next(0, 7)]), new Point(r.Next(0, 100), r.Next(0, 100)), new Point(r.Next(0, 50), r.Next(50, 100)));  //混淆用的直线（或曲线）
+            for (int i = 0; i < 10; i++)
+            {//绘制线条
+                g.DrawLine(new Pen(color[r.Next(0, 10)]), new Point(r.Next(0, 100), r.Next(10, 50)), new Point(r.Next(50, 200), r.Next(50, 100)));  //混淆用的直线（或曲线）
             }
-            Console.WriteLine(str[0]);
+            Console.WriteLine(newRandom[0]);
 
             image.Save(@"C:\Users\zouzou\Pictures\Screenshots\code2.jpg", ImageFormat.Jpeg);
         }

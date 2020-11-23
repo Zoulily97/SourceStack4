@@ -1,0 +1,29 @@
+﻿@page
+@model YqBang.Pages.candleModel
+@{
+}
+@{
+    int i, j;
+}
+<div style="text-align: center">
+    @for (i = 1; i <= 5; i++)
+    {
+        for (j = 1; j <= 10 - i; j++)
+        {
+            @*<span style="visibility:hidden" >i</span>*@
+            <span></span>
+        }
+
+        for (j = 1; j <= 2 * i - 1; j++)
+        {
+            string color = "red";
+            if (i % 2 == 0)
+            {
+                color = "blue";
+            }
+            <span style="color:@color">i</span>
+
+        }
+        <p> </p>
+    }
+</div>
