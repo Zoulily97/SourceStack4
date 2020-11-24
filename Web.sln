@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTest", "NUnitTest\NUni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Verification_Code", "Verification_Code\Verification_Code.csproj", "{CD1C8C6A-8501-4922-A729-4B6FBB7001E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YqBang", "YqBang\YqBang.csproj", "{DB45ABBD-C97A-4844-8D78-1DD467B97FEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YqBang", "YqBang\YqBang.csproj", "{DB45ABBD-C97A-4844-8D78-1DD467B97FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

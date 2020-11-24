@@ -1,0 +1,83 @@
+﻿@page
+@model YqBang.Pages.Task.History.MonthModel
+@{
+}
+
+
+@{
+    DateTime dateTime = new DateTime(2020, 1, 11);
+    string  datemouth = dateTime.Year.ToString()+"年" +dateTime.Month.ToString()+"月";
+
+
+}
+
+
+@functions
+{
+    DateTime GetDate1(DateTime datetime)
+    {
+
+        DateTime dt = new DateTime(datetime.Year, datetime.Month, 1);
+        Console.WriteLine(dt);//2020,1.1
+
+        while (dt.DayOfWeek != DayOfWeek.Monday)
+        {
+
+            dt = dt.AddDays(1);//2020.1.6 周一
+        }
+
+        return dt;   //2020/1/6
+
+    }
+
+    /// <summary>
+    /// 显示每周的日期
+    /// </summary>
+    /// <param name="dateTime"></param>
+    DateTime GetWeekBody1(DateTime dateTime)//2020/1/6
+    {
+        int i = 1;
+        int month = dateTime.Month;
+        while (dateTime.Month == month)
+        {
+            //Console.WriteLine($"第{i}周：" +
+            //    $"{dateTime.ToString("yyyy年MM月dd日")}-" +
+            //  $"{dateTime.AddDays(6).ToString("yyyy年MM月dd日")}");
+           
+            <table>
+                <tr>
+                    @for (int j = 0; j < 7; j++)
+                    {
+                        <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">@dateTime.ToString("MM月dd日")</td>
+                        dateTime = dateTime.AddDays(1);
+                    }
+                </tr>
+            </table>
+            i++;
+        }
+        return dateTime;
+    }
+    string  GetDateWeek1(DateTime time)
+    {
+        GetWeekBody1(GetDate1(time));//2020/1/6
+        return null;
+    }
+}
+
+<div style=" width:580px;height:200px;border:10px solid #726c04;text-align :center">
+    <p>@(datemouth)</p>
+    <table>
+        <tr>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周一</td>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周二</td>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周三</td>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周四</td>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周五</td>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周六</td>
+            <td style=" width:80px;font-size:8px;border:2px solid #988f8f;">周天</td>
+        </tr>
+    </table>
+    @(GetDateWeek1(dateTime))
+    
+</div>
+

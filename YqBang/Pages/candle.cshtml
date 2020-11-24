@@ -8,12 +8,11 @@
 <div style="text-align: center">
     @for (i = 1; i <= 5; i++)
     {
-        for (j = 1; j <= 10 - i; j++)
+        for (j = 1; j <= (2*5) - i; j++)
         {
             @*<span style="visibility:hidden" >i</span>*@
             <span></span>
         }
-
         for (j = 1; j <= 2 * i - 1; j++)
         {
             string color = "red";

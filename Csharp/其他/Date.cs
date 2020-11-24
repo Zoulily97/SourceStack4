@@ -73,5 +73,59 @@ namespace Csharp.其他
                 i++;
             }
         }
+
+
+
+        //获取一个月的第一个周一的日期
+        public static DateTime GetDate1(DateTime  datetime)
+        {
+            //DateTime year = Convert.ToDateTime(Console.ReadLine());
+            //Console.WriteLine(year); 
+
+            //2019
+            //2019.1.1 
+           // int month = datetime.Month;
+            DateTime dt = new DateTime(datetime.Year, datetime.Month, 1);
+            Console.WriteLine(dt);//2020,1.1
+
+            while (dt.DayOfWeek != DayOfWeek.Monday)
+            {
+
+                dt = dt.AddDays(1);//2020.1.6 周一
+            }
+
+            return dt;   //2020/1/6
+
+        }
+
+        /// <summary>
+        /// 显示每周的日期
+        /// </summary>
+        /// <param name="dateTime"></param>
+        public static void GetWeekBody1(DateTime dateTime)//2020/1/6
+        {
+            int i = 1;
+            int month = dateTime.Month;
+            while (dateTime.Month == month)
+            {
+                //Console.WriteLine($"第{i}周：" +
+                //    $"{dateTime.ToString("yyyy年MM月dd日")}-" +
+                //    $"{dateTime.AddDays(6).ToString("yyyy年MM月dd日")}");
+                
+                for (int j = 0; j < 7; j++)
+                {
+                    
+                    Console.WriteLine($"{dateTime.ToString("yyyy年MM月dd日")}");
+                    dateTime = dateTime.AddDays(1);
+                }
+                Console.WriteLine("---------");
+                i++;
+            }
+        }
+
+        public static void GetDateWeek1(DateTime  time)
+        {
+            GetWeekBody1(GetDate1(time));//2020/1/6
+        }
     }
 }

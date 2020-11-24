@@ -322,6 +322,12 @@ namespace Csharp
             #endregion
 
 
+
+
+           // Date.GetDateWeek(2019);
+            DateTime date = new DateTime(2020, 1,6);
+            Date.GetDateWeek1(date);
+
         }
 
 
