@@ -1,9 +1,20 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+@{ @*ViewData["Title"] = "";*@
+    }
+<img src="~/images/htmlcreate.png" />
+<img src="~/images/htmlcreate.png" asp-append-version="true" />
+<a asp-page="/Article/Single" asp-route-id="3">文章6</a>
+@*使用以下TagHelper，将*@
+<pager path="/Index" pageIndex="3">第3页</pager>
+@*生成：*@
+<a href="/Index/Page-3">第3页</a>
 
-<div class="text-center" style=" height:330px;">
-   11111
-</div>
+@*声明一个自定义的TagHelper：DateTimeTagHelper，在Razor中使用*@：
+<datetime>@DateTime.Now</datetime>
+<small>2019年7月8日 14点59分</small>
+
+
+
+
+

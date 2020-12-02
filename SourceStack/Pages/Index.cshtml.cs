@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SourceStack.Entities;
+using SourceStack.Repository;
 
 namespace SourceStack.Pages
 {
@@ -16,8 +18,15 @@ namespace SourceStack.Pages
         {
             _logger = logger;
         }
+        public string Name { get; set; }
+
+      
 
         public void OnGet()
+        {
+            
+        }
+        public void OnPost()
         {
 
         }

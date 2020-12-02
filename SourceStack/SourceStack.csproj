@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+    <Folder Include="新文件夹\" />
   </ItemGroup>
 
 </Project>
