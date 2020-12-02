@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Verification_Code", "Verifi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YqBang", "YqBang\YqBang.csproj", "{DB45ABBD-C97A-4844-8D78-1DD467B97FEC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceStack", "SourceStack\SourceStack.csproj", "{815F501C-5C9D-46D6-94AC-193835F0DEEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{DB45ABBD-C97A-4844-8D78-1DD467B97FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB45ABBD-C97A-4844-8D78-1DD467B97FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB45ABBD-C97A-4844-8D78-1DD467B97FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815F501C-5C9D-46D6-94AC-193835F0DEEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815F501C-5C9D-46D6-94AC-193835F0DEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815F501C-5C9D-46D6-94AC-193835F0DEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815F501C-5C9D-46D6-94AC-193835F0DEEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{0540068F-921B-4433-929A-8C7AF096CAAA} = {5358B51A-23A1-4457-AD17-2EDD20B0EF52}
 		{3AB03171-C90C-4165-A242-2B400D43EEB9} = {4DD60349-7B1F-4AE9-9BED-5977B8F6B2B7}
 		{DB45ABBD-C97A-4844-8D78-1DD467B97FEC} = {4DD60349-7B1F-4AE9-9BED-5977B8F6B2B7}
+		{815F501C-5C9D-46D6-94AC-193835F0DEEA} = {4DD60349-7B1F-4AE9-9BED-5977B8F6B2B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE59FF9A-7E17-406C-BBE5-78FC6C901A3B}

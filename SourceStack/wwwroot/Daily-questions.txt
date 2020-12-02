@@ -1,0 +1,100 @@
+﻿Sql server
+1.主流数据库以及对应的语言
+  Oracle推出的被称为PL/SQL
+  mysql还是叫mysql
+  SQL Server推出的，就叫做：T-SQL
+2.mdf和.ldf的区别
+  .mdf（Master Database File）: 存储用户录入数据库的数据
+  .ldf（Log Database File）: 存储每一次用户对数据库进行操作的记录，这些记录被称之为“日志（log）”
+3.删除
+  DROP DATABASE [17BANG]
+
+  alter database [17bang]
+  set single_user with rollback immediate --将数据库回滚到原始配置状态
+4.备份
+  -- 将数据库备份到C盘17bang.bak
+  BACKUP DATABASE [17bang] TO DISK = 'C:\\17bang.bak' 
+  -- 根据C盘17bang.bak恢复数据库
+  RESTORE DATABASE [17bang] FROM DISK = 'C:\\17bang.bak' 
+5.批处理
+  GO
+6.修改表结构
+  ALTER TABLE Student ADD Score DECIMAL(3,1);
+  ALTER TABLE Student DROP COLUMN Score;
+  ALTER TABLE Student
+  ALTER COLUMN SCORE FLOAT NULL;
+7.数据类型
+  数据识别
+  运算
+  校验
+  高效
+8.文本类型
+  NCHAR NVARCHAR
+  VAR CHAR
+  TEXT NTEXT
+  加N为Unicode编码格式
+9.数值类型
+  整数
+  INT，其他还有tinyint，smallint和bigint 
+  小数
+  decimal和numeric：可以精确地指定小数的整体长度和位数
+  float和real：小数位数可变的（非精确的）存储方式
+10.
+  日期 datatime
+  判断 bit
+11.增删改查
+12.运算符
+13.exists
+14.null
+15.like
+16.IDENTITY
+17.ORDER BY
+18.ORDER BY
+19.函数
+20.
+索引
+索引规划
+索引失效
+外键引入
+外键约束
+ER模型
+三大范式
+join引入
+on where和on and
+自连接去重
+视图与基表
+视图join
+option
+索引视图、
+表变量
+临时表
+异常
+抛出异常
+指定回滚
+事务特性
+隔离级别
+锁
+死锁
+循环
+变量
+函数
+存储过程
+触发器
+循环
+条件选择运算符
+数组
+循环
+遍历
+越界
+交错
+类 命名 namespace using
+访问修饰符 有哪些 特点
+封装的好处
+字段 变量
+对象的实例
+属性
+多态
+重写
+抽象类
+接口
+object
