@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using E = SourceStack.Entities;
 using SourceStack.Repository;
+using SourceStack.Filters;
 
 namespace SourceStack.Pages.Article
 {
+    //[ContextPerRequest]//需要登录才能访问
     public class IndexModel : PageModel 
     {
         private ArticleRepository ArticleRepository;

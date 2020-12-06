@@ -12,7 +12,7 @@ using SourceStack.Filters;
 namespace SourceStack.Pages.Register
 {
     [BindProperties]
-   
+    [ModelValidation]
     public class HomeModel : PageModel
     {
         private UserRepository userRepository;

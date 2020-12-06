@@ -10,7 +10,7 @@ using E = SourceStack.Entities;
 namespace SourceStack.Pages.Message
 {
     [IgnoreAntiforgeryToken]
-    
+    [ContextPerRequest]//需要登录才能访问
     public class IndexModel : PageModel
     {
         private MessageRepository messageRepository;
@@ -24,39 +24,44 @@ namespace SourceStack.Pages.Message
         public IList<E.Message> Messages { get; set; }
 
 
-        public override void OnPageHandlerSelected(PageHandlerSelectedContext context)
-        {
-            base.OnPageHandlerSelected(context);
-        }
-        public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
-        {
+        //public override void OnPageHandlerSelected(PageHandlerSelectedContext context)
+        //{
+        //    base.OnPageHandlerSelected(context);
+        //}
+        //public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
+        //{
+
+        //    //登录才能访问，不然就是访问指定页面
+        //    if (string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
 
 
-            if (string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+        //        context.Result = new RedirectToPageResult("/Log/On");
 
+        //    }
+        //    base.OnPageHandlerExecuting(context);
+        //}
+        //public override void OnPageHandlerExecuted(PageHandlerExecutedContext context)
+        //{
+        //    base.OnPageHandlerExecuted(context);
+        //}
+        //public override Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
+        //{
+        //    return base.OnPageHandlerSelectionAsync(context);
 
-                context.Result = new RedirectToPageResult("/Log/On");
-
-            }
-            base.OnPageHandlerExecuting(context);
-        }
-        public override void OnPageHandlerExecuted(PageHandlerExecutedContext context)
-        {
-            base.OnPageHandlerExecuted(context);
-        }
-        public override Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
-        {
-            return base.OnPageHandlerSelectionAsync(context);
-
-        }
-        public override Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
-        {
-            return base.OnPageHandlerExecutionAsync(context, next);
-        }
+        //}
+        //public override Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
+        //{
+        //    return base.OnPageHandlerExecutionAsync(context, next);
+        //}
 
         public IActionResult OnGet()
 
         {
+            //导航栏显示
+            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+                ViewData["HasLogOn"] = true;
+            }
+
             Messages = messageRepository.GetMine(true);
 
 
@@ -78,9 +83,9 @@ namespace SourceStack.Pages.Message
                     // messageRepository.GetMine();
                 }
             }
-            // Messages = messageRepository.GetMine(true);//为读的
+            // Messages = messageRepository.GetMine(true);//未读的，当前页，就可以注释了
             //return RedirectToPage("/Article/Index", new { id=3});
-            return RedirectToPage();//当前页面
+            return RedirectToPage();//重定向当前页面，没有给参数   //PRG模式
         }
     }
 }

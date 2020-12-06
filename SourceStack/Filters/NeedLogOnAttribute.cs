@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace SourceStack.Filters
@@ -31,7 +33,13 @@ namespace SourceStack.Filters
 
         public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
         {
-           
+            //登录才能访问，不然就是访问指定页面
+            HttpContext httpContext = context.HttpContext;
+            if (string.IsNullOrEmpty(httpContext.Request.Cookies[Keys.UserId])) {
+                context.Result = new RedirectToPageResult("/Log/On");
+
+            }
+
         }
 
         public void OnPageHandlerSelected(PageHandlerSelectedContext context)
