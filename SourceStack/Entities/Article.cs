@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SourceStack.Entities
 {
-    public class Article: Entity
+    public class Article: Content
     {
-        public string Title { get; set; }
-        public string Body { get; set; }
-        public User Author { get; set; }
-        public IList<Comment> Comments { get; set; }
-        public IList<Keyword > keywords { get; set; }
-
+        public string Series { set; get; }
+        public override void Publish()
+        {
+            //base.Publish();
+            HelpMoney--;
+        }
 
     }
 }

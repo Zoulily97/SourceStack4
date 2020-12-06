@@ -9,9 +9,9 @@ namespace SourceStack.Repository
     public class MessageRepository
     {
         private static IList<Message> messages;
-        public MessageRepository()
+        static    MessageRepository()
         {
-            messages= new List<Message>() {
+            messages = new List<Message>() {
              new Message() {
                      Id=1,
                      Content="欢迎你加入“一起帮”！记得完成“新手任务”获得 帮帮点 奖励哟。O(∩_∩)O~",
@@ -34,14 +34,27 @@ namespace SourceStack.Repository
                  },
             };
         }
-        public IList<Message> GetMine()
+        public IList<Message> GetMine(bool onlyNotRead = false)
         {
-            return messages;
+
+
+            var result = messages;
+            if (onlyNotRead) {
+                //  return messages.Where(m => !m.HasRead).ToList();
+                result = messages.Where(m => !m.HasRead).ToList();//未读的
+            }
+
+            //else {
+            //    return messages;
+            //}
+            //else nothig
+            return result;
 
         }
         public Message Find(int id)
         {
             return messages.Where(m => m.Id == id).SingleOrDefault();
+
         }
 
     }

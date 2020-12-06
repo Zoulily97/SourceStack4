@@ -24,7 +24,10 @@ namespace SourceStack.Pages
 
         public void OnGet()
         {
-            
+            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+                ViewData["HasLogOn"] = true;
+            }
+
         }
         public void OnPost()
         {

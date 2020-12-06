@@ -11,6 +11,8 @@ namespace SourceStack.Pages.Password
     {
         public void OnGet()
         {
+
+           
         }
     }
 }

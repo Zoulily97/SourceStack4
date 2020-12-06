@@ -68,10 +68,26 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                未登录
-                            </a>
+
+
+                            @if (ViewData["HasLogOn"] == null)
+                            {
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    未登录
+                                </a>
+
+                            }
+                            else
+                            {
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    已登录
+                                </a>
+                                <a href="/Log/Off">退出登录</a>
+
+                            }
+
                             <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/Log/On"><i class="fa fa-sign-in" aria-hidden="true"></i> 登录</a>
                                 <a class="dropdown-item" href="/Register/Home"> <i class="fa fa-registered" aria-hidden="true"></i> 注册</a>

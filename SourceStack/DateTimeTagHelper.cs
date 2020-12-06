@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace SourceStack
 {
-    
+
 
 
     /// <summary>
@@ -21,6 +21,12 @@ namespace SourceStack
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "small";   //原生标签名
+
+            //可以添加属性：asp-showicon
+            //< datetime asp - showicon = "true" > @DateTime.Now </ datetime >
+
+
+
 
             ////分别取出pageIndex和path的值
             //object pageIndex = context.AllAttributes["pageIndex"].Value;

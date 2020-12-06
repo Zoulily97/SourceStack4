@@ -8,7 +8,7 @@
 @foreach (var item in Model.Articles)
 {
     <div>
-        <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  2020年08月20日 21点02分</small> <span style="float:right">作者：<a href="#">@item.Author.Name</a></span>
+        <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  @item.PublishTime</small> <span style="float:right">作者：<a href="#">@item.Author.Name</a></span>
         @*  <h5><a href="/Article/Single?id=@item.Id">@item.Title</a></h5>*@
         @*<h5><a href="/Article/@item.Id">@item.Title</a></h5>*@
         <h5><a asp-page="/Article/Single" asp-route-id="@item.Id">@item.Title</a></h5>
@@ -17,15 +17,32 @@
         </p>
         <div>
             <span class="font-weight-bold"><i class="fa fa-tags"></i>关键字：</span>
-            @if(item.keywords!=null){
-            for (int i = 0; i < item.keywords.Count; i++)
+            @if (item.keywords != null)
             {
-                <span class="badge badge-pill badge-secondary">@item.keywords[i].Name</span>
-            }
+                for (int i = 0; i < item.keywords.Count; i++)
+                {
+                    <span class="badge badge-pill badge-secondary">@item.keywords[i].Name</span>
+                }
             }
         </div>
         <div style="text-align:right">
-            <a href="#" class="ml-3"><i class="fa fa-commenting" aria-hidden="true"></i>评论:<span>  0</span></a>
+
+
+            <a href="#" class="ml-3">
+                <i class="fa fa-commenting" aria-hidden="true"></i>评论:
+
+                @if (item.Comments != null)
+                {
+                    <span>
+                        @item.Comments.Count
+                    </span>
+                }
+                else
+                {
+                    <span>0</span>
+                }
+
+            </a>
             <a href="#" class="text-success ml-3"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>赞:<span>  0</span></a>
             <a href="#" class="text-secondary ml-3">
                 <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>踩:<span>
@@ -69,6 +86,8 @@
 
         @for (int i = 0; i < pages; i++)
         {
+
+
             if (currentPageIndex == (i + 1))
             {
                 <li class="page-item active"><a class="page-link" asp-page="/Article/Index" asp-route-id="@(i+1)">@(i+1)</a></li>

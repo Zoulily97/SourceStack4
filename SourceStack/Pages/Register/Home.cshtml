@@ -4,38 +4,58 @@
     Layout = "Layout/_Dual";
     ViewData["Title"] = "注册";
 }
+<style>
+    .field-validation-error {
+        color: orangered;
+        font-size: 12px;
+    }
+</style>
+<div asp-validation-summary="ModelOnly" >
 
+</div>
     @*<a href="" style="float:right;margin-top:-25px; background-color:#a6ffe1;border-radius:5px;"><i class="fa fa-reply" aria-hidden="true"></i> 返回</a>
     <hr />*@
   
-        <form class="">
+        <form  method ="post" class="">
             <section style="padding:10px;border:2px dashed #f1f1f1;background-color:lightyellow;border-radius: 5px;margin-bottom:20px;">
                 <div class="text-right" style="padding-bottom:15px;"><a><i class="fa fa-question-circle"></i>为什么需要邀请</a></div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">邀请人：（* 必填，<a href="#">没有邀请人</a>） </label>
-                    <input type="text" class="form-control" placeholder="他的用户名，模糊查询只能从头开始">
+                    <input type="text" class="form-control" asp-for=" NewUser.Inviter.Name">
+                    <span asp-validation-for="NewUser.Inviter.Name"></span>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">邀请码：（* 必填） </label>
-                    <input type="text" class="form-control" placeholder="4位数字">
+                    <input type="text" class="form-control" asp-for="InviteCode" >
+                    <span asp-validation-for="InviteCode"></span>
                 </div>
             </section>
             <div class="form-group">
                 <label for="exampleInputEmail1">用户名：（* 必填） </label>
-                <input type="text" class="form-control" placeholder="登录用户名，可修改，不能重复">
+                <input type="text" class="form-control" asp-for="NewUser.Name" >
+                <span asp-validation-for="NewUser.Name"></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">密码：（* 必填） </label>
-                <input type="password" class="form-control" placeholder="不少于4个字符">
+                <input type="password" class="form-control"asp-for="NewUser.Password" >
+                <span asp-validation-for="NewUser.Password"></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">验证密码：（* 必填） </label>
-                <input type="password" class="form-control" placeholder="和密码相同">
+                <input type="password" class="form-control" asp-for="ComfirmPassword" placeholder="和密码相同">
+                <span asp-validation-for="ComfirmPassword"></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">验证码：（* 必填） </label>
-                <input type="text" class="form-control" style="width:100px"><span style="display:inline-block">点击输入框显示</span>
+                <input type="text" class="form-control" style="width:100px"asp-for="VerifyCode">
+                <span asp-validation-for="VerifyCode"></span>
+                <span style="display:inline-block">点击输入框显示</span>
             </div>
+            @*<div class="form-group">
+                <label for="exampleInputEmail1">个人主页：（* 必填） </label>
+                <input type="text" class="form-control" asp-for="HomeUrl">
+                <span asp-validation-for="HomeUrl"></span>
+            </div>*@
             <button class="btn btn-primary" type="submit">提交</button>
             <button class="btn btn-light" type="reset">重置</button>
             <a href="logon.html" class=" btn float-right text-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>

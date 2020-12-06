@@ -20,6 +20,10 @@ namespace SourceStack.Pages.Article
         public int sumofArticles { get; set; } 
         public void OnGet()
         {
+            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+                ViewData["HasLogOn"] = true;
+            }
+
 
             sumofArticles = ArticleRepository.ArticleCount;
             //int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);

@@ -28,13 +28,24 @@ namespace SourceStack.Pages.Article
 
         public void OnGet()
         {
+
+            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+                ViewData["HasLogOn"] = true;
+            }
+
+
             // int id = Convert.ToInt32(Request.Query["id"][0]);
             int id = Convert.ToInt32(RouteData.Values["id"]);
-            PreID = id - 1;
-            NextID = id + 1;
+            //PreID = id - 1;
+            //NextID = id + 1;
+            if (id > 1) {
+                PreTitle = ArticleRepository.Find(id - 1).Title;
+            }
             Article = ArticleRepository.Find(id);
-            PreTitle = ArticleRepository.Find(PreID).Title;
-            NextTitle = ArticleRepository.Find(NextID).Title;
+            if (id <ArticleRepository.ArticleCount) {
+                NextTitle = ArticleRepository.Find(id + 1).Title;
+            }
+
             ViewData["AgreeCount"] = 3;
         }
     }

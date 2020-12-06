@@ -5,7 +5,7 @@
     ViewData["Title"]= "注册";
 }
 
-@*<form method="post" asp-page="~/Register1">
+<form method="post" asp-page="~/Register1">
         <label>用户名：</label>
         <input placeholder="'''" asp-for="NewUser.Name" />
         <label>密码 </label>
@@ -19,41 +19,9 @@
         <select asp-for="BirthMonth" asp-items="Html.GetEnumSelectList(typeof(DayOfWeek))"></select>
         <button type="submit">提交</button>
 
-    </form>*@
+    </form>
 
-<form class="">
-    <section style="padding:10px;border:2px dashed #f1f1f1;background-color:lightyellow;border-radius: 5px;margin-bottom:20px;">
-        <div class="text-right" style="padding-bottom:15px;"><a><i class="fa fa-question-circle"></i>为什么需要邀请</a></div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">邀请人：（* 必填，<a href="#">没有邀请人</a>） </label>
-            <input type="text" class="form-control" placeholder="他的用户名，模糊查询只能从头开始">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">邀请码：（* 必填） </label>
-            <input type="text" class="form-control" placeholder="4位数字">
-        </div>
-    </section>
-    <div class="form-group">
-        <label for="exampleInputEmail1">用户名：（* 必填） </label>
-        <input type="text" class="form-control" placeholder="登录用户名，可修改，不能重复">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">密码：（* 必填） </label>
-        <input type="password" class="form-control" placeholder="不少于4个字符">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">验证密码：（* 必填） </label>
-        <input type="password" class="form-control" placeholder="和密码相同">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">验证码：（* 必填） </label>
-        <input type="text" class="form-control" style="width:100px"><span style="display:inline-block">点击输入框显示</span>
-    </div>
-    <button class="btn btn-primary" type="submit">提交</button>
-    <button class="btn btn-light" type="reset">重置</button>
-    <a href="logon.html" class=" btn float-right text-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>
 
-</form>
 
 @section Description{
     <ol>

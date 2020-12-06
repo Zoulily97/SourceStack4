@@ -13,19 +13,21 @@
     <img src="~/images/adv.jpg" style="margin-bottom:20px;" />
     <h4 style="color:cornflowerblue"><a href="/Firsthtml.html">@Model.Article.Title</a></h4>
 </header>
-<i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  2020年08月20日 21点02分</small> <span style="float:right">作者：<a href="#">@Model.Article.Author.Name</a></span>
+<i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary"> @Model.Article.PublishTime</small> <span style="float:right">作者：<a href="#">@Model.Article.Author.Name</a></span>
 <article>
     @Model.Article.Body
 </article>
 <br />
 <div>
     <span class="font-weight-bold"><i class="fa fa-tags"></i>关键字：</span>
-    <span class="badge badge-pill badge-secondary">VS</span>
-    <span class="badge badge-pill badge-secondary">html</span>
-    <span class="badge badge-pill badge-secondary">入门</span>
+    @for (int i = 0; i < @Model.Article.keywords.Count; i++)
+    {
+        <span class="badge badge-pill badge-secondary">@Model.Article.keywords[i].Name</span>
+    }
+
 </div>
 <div style="text-align:right">
-    <a href="#" class="ml-3"><i class="fa fa-commenting" aria-hidden="true"></i>评论:<span>  0</span></a>
+    @*<a href="#" class="ml-3"><i class="fa fa-commenting" aria-hidden="true"></i>评论:<span>  0</span></a>*@
     <a href="#" class="text-success ml-3"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>赞:<span>@ViewData["AgreeCount"]</span></a>
     <a href="#" class="text-secondary ml-3">
         <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>踩:<span>
@@ -73,15 +75,12 @@
     <input class="btn btn-light" type="reset" value="重填">
 </from>
 <div style="margin-top:20px;">
-
     <lable><input type="checkbox" />在系列<a href="">源栈培训：ASP.NET全栈开发</a> 的:</lable>
     <span style=" border: 1px outset #eee; border-radius: 4px 5px;float:right" href="">全系列阅读</span>
     <div style=" border:2px dashed #eee; border-radius: 4px 5px;margin-top:20px">
         @{
             int currentPageIndex = Convert.ToInt32(RouteData.Values["id"]);//当前页
 
-            //int pages;//页数
-          
         }
         <div>
             上一篇：@if (currentPageIndex > 1)
@@ -106,27 +105,33 @@
         </div>
     </div>
 </div>
-<h3 style="margin-top:20px;">评论@*（0/@Model.Article.Commonts.Count）*@</h3>
-@if (Model.Article.keywords != null)
+
+@if (Model.Article.Comments != null)
 {
-    @foreach (var item in@*Model.Article.Commonts*@ Model.Article.keywords)
+    <h3 style="margin-top:20px;">评论数量 @Model.Article.Comments.Count</h3>
+    for (int i = 0; i < Model.Article.Comments.Count; i++)
     {
-<div>
-    <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary"> @*@item.PublishTime.ToString*@("yyyy年MM月dd日 hh点mm分")</small>
-    <span style="float:right">作者：<a href="#">  @*@item.Author.Name*@ </a></span>
-    <div>@*@item.content*@</div>
-    <div style="text-align:right">
-        <a href="#" class="ml-3"><i class="fa fa-commenting" aria-hidden="true"></i>回复</a>
-        <a href="#" class="text-success ml-3"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>赞:<span>  @*@item.AgreeAmount*@</span></a>
-        <a href="#" class="text-secondary ml-3">
-            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>踩:<span>
-                @*@item.DisagreeAmount*@
-            </span>
-        </a>
-    </div>
-</div>
+        <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">
+            @Model.Article.Comments[i].PublishTime.ToString("yyyy年MM月dd日 hh点mm分")
+        </small>
+        <span style="float:right;font-size:10px;">
+            作者：<a>@Model.Article.Comments[i].Author.Name</a>
+
+        </span>
+        <div>
+            <a href="#"> @Model.Article.Comments[i].Content </a>
+        </div>
+        <div style="text-align:right">
+            <a href="#" class="ml-3" style="font-size: 12px;"><i class="fa fa-commenting" aria-hidden="true"></i>回复</a>
+            <a href="#" class="text-success ml-3" style="font-size: 12px;"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>赞:<span>--</span></a>
+            <a href="#" class="text-secondary ml-3" style="font-size: 12px;"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>踩:<span></span> </a>
+         </div>
     }
 }
+
+                
+
+                            
 
 @section Description{
 
