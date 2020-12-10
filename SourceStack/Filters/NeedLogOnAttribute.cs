@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SourceStack.Filters
 {
@@ -24,6 +25,8 @@ namespace SourceStack.Filters
         }
     }
 
+
+    
     public class ContextPerRequestAttribute : Attribute,IPageFilter
     {
         public void OnPageHandlerExecuted(PageHandlerExecutedContext context)
@@ -33,8 +36,11 @@ namespace SourceStack.Filters
 
         public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
         {
-            //登录才能访问，不然就是访问指定页面
+
+          
+            
             HttpContext httpContext = context.HttpContext;
+            //登录才能访问，不然就是访问指定页面
             if (string.IsNullOrEmpty(httpContext.Request.Cookies[Keys.UserId])) {
                 context.Result = new RedirectToPageResult("/Log/On");
 

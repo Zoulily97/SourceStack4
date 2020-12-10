@@ -11,6 +11,7 @@ namespace SourceStack.Pages.Message
 {
     [IgnoreAntiforgeryToken]
     [ContextPerRequest]//需要登录才能访问
+  //  [IsShowLogOn]//  页面显示登录状态
     public class IndexModel : PageModel
     {
         private MessageRepository messageRepository;

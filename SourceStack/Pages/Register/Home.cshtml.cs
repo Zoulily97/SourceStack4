@@ -12,7 +12,8 @@ using SourceStack.Filters;
 namespace SourceStack.Pages.Register
 {
     [BindProperties]
-    [ModelValidation]
+   // [ModelValidation]
+   // [IsShowLogOn]//  页面显示登录状态
     public class HomeModel : PageModel
     {
         private UserRepository userRepository;
@@ -37,33 +38,33 @@ namespace SourceStack.Pages.Register
         {
            
         }
-        public void OnPost()
+        public IActionResult OnPost()
         {
 
-          
             E.User invitedBy = userRepository.GetByName(NewUser.Inviter.Name);
+
             //自定义验证
-            if (invitedBy==null) {
+            if (invitedBy == null) {
                 ModelState.AddModelError("NewUser.Inviter.Name", "邀请人不能为空");
-                return;
+                return Page();
             }
             if (InviteCode != invitedBy.InviterNumber) {
                 ModelState.AddModelError("InviteCode", "邀请码不对");
-                return;
+                return Page();
             }
-            if (ComfirmPassword!=NewUser.Password) {
+            if (ComfirmPassword != NewUser.Password) {
                 ModelState.AddModelError("ComfirmPassword", "两次输入密码不一致");
-                return;
+                return Page();
             }
 
             //if (!ModelState.IsValid) {
 
-            //    return;
+            //    return Page();
             //}
             //ModelState.AddModelError("", "全都错了");
-
             NewUser.Register();
             userRepository.Save(NewUser);
+            return RedirectToPage("/index");//登录成功跳转到主页
         }
     }
 }

@@ -7,21 +7,23 @@
 
 @foreach (var item in Model.Articles)
 {
-    <div>
-        <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  @item.PublishTime</small> <span style="float:right">作者：<a href="#">@item.Author.Name</a></span>
+    <partial name="_ListItemArticle" for="@item" />
+    <!--<div>
+        <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  item.PublishTime</small> <span style="float:right">作者：<a href="#">item.Author.Name</a></span>-->
         @*  <h5><a href="/Article/Single?id=@item.Id">@item.Title</a></h5>*@
         @*<h5><a href="/Article/@item.Id">@item.Title</a></h5>*@
-        <h5><a asp-page="/Article/Single" asp-route-id="@item.Id">@item.Title</a></h5>
+        <!--<h5><a asp-page="/Article/Single" asp-route-id="item.Id">item.Title</a></h5>
         <p>
-            @item.Body
+            item.Body
         </p>
         <div>
             <span class="font-weight-bold"><i class="fa fa-tags"></i>关键字：</span>
-            @if (item.keywords != null)
+            if (item.keywords != null)
+
             {
                 for (int i = 0; i < item.keywords.Count; i++)
                 {
-                    <span class="badge badge-pill badge-secondary">@item.keywords[i].Name</span>
+                    <span class="badge badge-pill badge-secondary">item.keywords[i].Name</span>
                 }
             }
         </div>
@@ -31,10 +33,10 @@
             <a href="#" class="ml-3">
                 <i class="fa fa-commenting" aria-hidden="true"></i>评论:
 
-                @if (item.Comments != null)
+                if (item.Comments != null)
                 {
                     <span>
-                        @item.Comments.Count
+                        item.Comments.Count
                     </span>
                 }
                 else
@@ -51,8 +53,8 @@
             </a>
 
         </div>
-    </div>
-    <hr />
+    </div>-->
+   // <hr />
 }
 @*Model.Articles.Count*@
 

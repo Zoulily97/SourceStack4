@@ -11,7 +11,8 @@ using SourceStack.Filters;
 namespace SourceStack.Pages.Article
 {
     //[ContextPerRequest]//需要登录才能访问
-    public class IndexModel : PageModel 
+     // [IsShowLogOn]//  页面显示登录状态
+    public class IndexModel : PageModel
     {
         private ArticleRepository ArticleRepository;
         public IndexModel()
@@ -19,19 +20,19 @@ namespace SourceStack.Pages.Article
             ArticleRepository = new ArticleRepository();
         }
         public IList<E.Article> Articles { get; set; }
-        public int sumofArticles { get; set; } 
+        public int sumofArticles { get; set; }
         public void OnGet()
         {
-            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
-                ViewData["HasLogOn"] = true;
-            }
+            //if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+            //    ViewData["HasLogOn"] = true;
+            //}
 
 
             sumofArticles = ArticleRepository.ArticleCount;
             //int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
             int pageIndex = Convert.ToInt32(RouteData.Values["id"]);
-            Articles = ArticleRepository.Get(pageIndex,3);
-           
+            Articles = ArticleRepository.Get(pageIndex, 3);
+
         }
     }
 }

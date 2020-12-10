@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using System;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using SourceStack.Entities;
 
@@ -9,62 +13,53 @@ namespace SourceStack.Repository
         public static IList<User> users;
         static UserRepository()
         {
-
-            users = new List<User> {
-                new User {
-                    Id=1,
-                    Name="小鱼",
-                    //Inviter=new User{Name="yefei",InviterNumber="1234"},
-                    InviterNumber="1234",
-                    IsMale=false,
-                    Password="Zou123456"
-
-                },
-                 new User {
-                    Id=2,
-                    Name="飞哥",
-                    IsMale=true,
-                     InviterNumber="1786",
-                      Password="Dfg123456"
-                    //Inviter=new User{Name="DK",InviterNumber="1234"},
-
-                },
-                   new User {
-                    Id=3,
-                    Name="阿瑞",
-                     InviterNumber="1997",
-                    IsMale=true,
-
-                },
-            };
-
-
-        }
-
+            
+        }    
         public User Find(int id)
         {
-            //    Article Article = new Article()
-            //    {
-            //        Title = "田田",
-            //        Body = "hgcbsjhfcoevffdovhdfrv",
-            //        Id = 9
-            //};
-            return users.Where(a => a.Id == id).SingleOrDefault();
-            //return Article;
+            return users.Where(a => a.Id == id).SingleOrDefault();   
         }
 
+        //获取登录用户信息
         internal User GetByName(string name)
         {
-            return users.Where(a => a.Name == name).SingleOrDefault();
-        }
+            User user = new User();
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"select * from User1 where name='{name}'";
+                IDataReader reader = command.ExecuteReader();
+                if (reader.Read()) {
+                    user.Name =(string) reader["Name"];
+                    user.Id = (int)reader["Id"];
+                    user.Password = (string)reader["Password"];
+                    user.InviterNumber = (string)reader["InviterNumber"];
+                }
+            }
+            return user;
 
-        public void Save(User user)
-        {
-            users.Add(user);
         }
+    
+        //注册保存用户信息
+        public void  Save(User user)
+        {
+
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"INSERT INTO user1 (name,password,inviterName,inviterNumber) VALUES ('{user.Name}','{user.Password}','{user.Inviter.Name}','{user.InviterNumber}');";
+                command.ExecuteNonQuery();
+            }
+        }
+   
 
     }
 }
+
 
 
 

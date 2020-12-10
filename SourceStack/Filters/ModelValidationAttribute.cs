@@ -32,6 +32,10 @@ namespace SourceStack.Filters
                             .FirstOrDefault(s => s != null));
                 //2. Post 将Error信息存放到TempData
                 ((PageModel)(context.HandlerInstance)).TempData[Keys.ErrorInfo] = errors;
+
+                //有error重定向
+
+                context.Result = new RedirectToPageResult("Log/on");
                 if (httpContext.Request.Method == "Get") {
                     // 3.Get 从TempData里取出Error信息
                     Dictionary<string, string> errors1 = ((PageModel)(context.HandlerInstance)).TempData[Keys.ErrorInfo] as Dictionary<string, string>;
@@ -41,7 +45,7 @@ namespace SourceStack.Filters
                             context.ModelState.AddModelError(item.Key, item.Value);
                         }
                     }
-                    context.Result = new RedirectToPageResult("Log/on");
+                    
                 }
 
 

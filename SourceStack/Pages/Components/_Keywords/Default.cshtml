@@ -1,0 +1,12 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using SourceStack.Entities
+@model IList<Keyword>
+@{
+}
+<h1>关键字</h1>
+@foreach (var item in Model)
+	{
+		 <a href="/User/@item.Id">@item.Name</a>
+	}

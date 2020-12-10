@@ -1,0 +1,51 @@
+﻿
+@model SourceStack.Entities.Article
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  @Model.PublishTime</small>
+ <span style="float:right">作者：<a href="#">@Model.Author.Name</a></span>
+<h5><a asp-page="/Article/Single" asp-route-id="@Model.Id" >@Model.Title</a></h5>
+<p>
+    @Model.Body
+</p>
+<div>
+    <span class="font-weight-bold"><i class="fa fa-tags"></i>关键字：</span>
+    @if (Model.keywords != null)
+
+    {
+        for (int i = 0; i < Model.keywords.Count; i++)
+        {
+            <span class="badge badge-pill badge-secondary">@Model.keywords[i].Name</span>
+        }
+    }
+</div>
+<div style="text-align:right">
+
+
+    <a href="#" class="ml-3">
+        <i class="fa fa-commenting" aria-hidden="true"></i>评论:
+
+        @if (Model.Comments != null)
+        {
+            <span>
+                @Model.Comments.Count
+            </span>
+        }
+        else
+        {
+            <span>0</span>
+        }
+
+    </a>
+    <a href="#" class="text-success ml-3"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>赞:<span>  0</span></a>
+    <a href="#" class="text-secondary ml-3">
+        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>踩:<span>
+            0
+        </span>
+    </a>
+
+</div>
+    

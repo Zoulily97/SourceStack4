@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SourceStack.Filters;
 
 namespace SourceStack
 {
@@ -26,12 +27,14 @@ namespace SourceStack
             //services.AddRazorPages();
 
             services.AddRazorPages()
+                .AddMvcOptions(opt=>opt.Filters.Add<IsShowLogOnAttribute>())//添加全局Filter 调用泛型方法
+                 // .AddMvcOptions(opt => opt.Filters.Add(typeof(IsShowLogOnAttribute)))//添加全局Filter 调用普通方法
               .AddRazorPagesOptions(opt =>
        {
            opt.Conventions.AddPageRoute("/Log/On", "/LogOn");
            //opt.Conventions.AddPageRoute("/Article/Index", "/Article/Categary-{id:int}");
             opt.Conventions.AddPageRoute("/Article/Index", "/Article/Paged{id}");
-           opt.Conventions.AddPageRoute("/Article/Single", "/Article/{id:int}");
+           opt.Conventions.AddPageRoute("/Article/Single", "/Article/{id}");
        });
 
 

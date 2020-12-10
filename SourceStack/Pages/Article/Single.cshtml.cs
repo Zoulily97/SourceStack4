@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SourceStack.Filters;
 using SourceStack.Repository;
 using E = SourceStack.Entities;
 
 namespace SourceStack.Pages.Article
 {
+  //  [IsShowLogOn]//  Ò³ÃæÏÔÊ¾µÇÂ¼×´Ì¬
     public class SingleModel : PageModel
     {
         private ArticleRepository ArticleRepository;
@@ -29,9 +31,9 @@ namespace SourceStack.Pages.Article
         public void OnGet()
         {
 
-            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
-                ViewData["HasLogOn"] = true;
-            }
+            //if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+            //    ViewData["HasLogOn"] = true;
+            //}
 
 
             // int id = Convert.ToInt32(Request.Query["id"][0]);
