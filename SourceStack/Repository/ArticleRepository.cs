@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using SourceStack.Entities;
 
@@ -6,257 +9,117 @@ namespace SourceStack.Repository
 {
     public class ArticleRepository
     {
-        private static IList<Article> Articles;
-        public int ArticleCount { get; set; } = Articles.Count;
+        private static IList<Article> articles;
+        //  public int ArticleCount { get; set; } = Articles.Count;
         static ArticleRepository()
         {
-            UserRepository userRepository = new UserRepository();
             KeywordRepository keywordRepository = new KeywordRepository();
-            CommentRepository commentRepository = new CommentRepository();
-            Articles = new List<Article>
-            {
-                      new Article()
-                {
-                     Id=1,
-                     Title="1《高阶：泛型 / 集合 / Lambda / 异常 / IO / 多线程》",
-                     Body = "泛型可以有泛型方法/类等，同C#可以有约束public class Student<T extends IMajor> extends Person {子类继承时：public class OnlineStudent<T extends IMajor> extends Student<T > {协变/逆变通配符：？实现extends：协变（out）super：逆变（in）Optional 类对应NullableOptional<Integer> age = …",
-                     Author=userRepository.Find(2),
-                      keywords=new List<Keyword>()
-                      {
-                       keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                          },
-                      Comments=new List<Comment> {
-                          commentRepository.Find(1),
-                           commentRepository.Find(4),
-                            commentRepository.Find(5),
+            articles = new List<Article>();
 
-                      }
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"select * from Article";
+                DbDataReader reader = (DbDataReader)command.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        Article article = new Article {
+                            //  Author.Name = (string)reader["Name"],
+                            Body = (string)reader["Body"],
+                            Id = (int)reader["ID"],
+                            //  PublishTime = (DataSetDateTime) reader["datetime"],
+                            Title = (string)reader["Title"],
+                        };
+                        int articleId = article.Id;
 
 
+                       
 
-                },
-                      new Article()
-                {
-                    Id=2,
-                    Title="2《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                        Author=userRepository.Find(2),
-                       keywords=new List<Keyword>(){
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(1),
-                       keywordRepository.Find(3),},
-                        Comments=new List<Comment> {
-                          commentRepository.Find(2),
-                           commentRepository.Find(6),
-                          
-                      }
+                        //article.keywords = new List<Keyword>() {
+                        //    //  keywordRepository.FindArticle(articleId)
+                        //};
+                       
+                        articles.Add(article);
 
-                },
-                      new Article()
-                {
-                    Id=3,
-                    Title="3《ASP.NET：SEO：JavaScript/静态URL/链接权重》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                      Author=userRepository.Find(2),
-                       keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                },
-                        Comments=new List<Comment> {
-                          commentRepository.Find(3),
-                          
 
-                      }
-
-                },
-                      new Article()
-                {
-                    Id=4,
-                    Title="4《UI设计》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                       Author=userRepository.Find(1),
-                        keywords=new List<Keyword>(){
-                         keywordRepository.Find(4),
-                       keywordRepository.Find(5),
-                       keywordRepository.Find(6),
+                    }
                 }
-
-                },
-                      new Article()
-                {
-                    Id=5,
-                    Title="5《前端之家》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                        Author=userRepository.Find(1),
-                         keywords=new List<Keyword>(){
-                         keywordRepository.Find(4),
-                       keywordRepository.Find(5),
-
-                         }
-
-                },
-                      new Article()
-                {
-                    Id=6,
-                    Title="6《PS设计》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                    Author=userRepository.Find(1),
-                     keywords=new List<Keyword>(){
-                       keywordRepository.Find(6), }
-
-                },
-                      new Article()
-                {
-                    Id=7,
-                    Title="7《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                     Author=userRepository.Find(3),
-                      keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=8,
-                    Title="8《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                      Author=userRepository.Find(3),
-                       keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=9,
-                    Title="9《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                     Author=userRepository.Find(3),
-                      keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=10,
-                    Title="10《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                   Author=userRepository.Find(1),
-                    keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-
-                }
-
-                },
-                      new Article()
-                {
-                    Id=11,
-                    Title="11《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                     Author=userRepository.Find(1),
-                      keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=12,
-                    Title="12《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                     Author=userRepository.Find(2),
-                      keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=13,
-                    Title="13《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                     Author=userRepository.Find(3),
-                      keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=14,
-                    Title="14《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                   Author=userRepository.Find(1),
-                    keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=15,
-                    Title="15《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                   Author=userRepository.Find(3),
-                    keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
-                      new Article()
-                {
-                    Id=16,
-                    Title="16《异步方法和TPL： async / await / Parallel》",
-                     Body = "封装我们要把上面这个Task封装成方法，怎么办？最重要的一点，这个方法要能返回生成的random，后面的代码要用！public static Task<int> getRandom(){return Task<int>.Run(() =>{Thread.Sleep(500); //模拟耗时return new Random().Next();});}@想一想@：应该如何调用这个方法？（提示：不要",
-                     Author=userRepository.Find(2),
-                      keywords=new List<Keyword>(){
-                         keywordRepository.Find(1),
-                       keywordRepository.Find(2),
-                       keywordRepository.Find(3),
-                }
-
-                },
+            }
 
 
-            };
+
+
+
+
+
+            //   UserRepository userRepository = new UserRepository();
+            //KeywordRepository keywordRepository = new KeywordRepository();
+            //CommentRepository commentRepository = new CommentRepository();
+            //Articles = new List<Article>
+            //{
+            //          new Article()
+            //    {
+            //         Id=1,
+            //         Title="1《高阶：泛型 / 集合 / Lambda / 异常 / IO / 多线程》",
+            //         Body = "泛型可以有泛型方法/类等，同C#可以有约束public class Student<T extends IMajor> extends Person {子类继承时：public class OnlineStudent<T extends IMajor> extends Student<T > {协变/逆变通配符：？实现extends：协变（out）super：逆变（in）Optional 类对应NullableOptional<Integer> age = …",
+            //         Author=userRepository.Find(2),
+            //          keywords=new List<Keyword>()
+            //          {
+            //           keywordRepository.Find(1),
+            //           keywordRepository.Find(2),
+            //           keywordRepository.Find(3),
+            //              },
+            //          Comments=new List<Comment> {
+            //              commentRepository.Find(1),
+            //               commentRepository.Find(4),
+            //                commentRepository.Find(5),
+
+            //          }
+
+
+
+            //    },
+            //         
+
+            //    },
+
+
+            //};
+
+
+
+
+
         }
-
+        public int ArticleCount()
+        {
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"select * from Article";
+                return command.ExecuteNonQuery();
+            }
+        }
         internal IList<Article> Get(int pageIndex, int pageSize)
         {
-            return Articles.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+            return articles.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
         }
 
         public Article Find(int id)
         {
-            return Articles.Where(a => a.Id == id).SingleOrDefault();
+
+            return articles.Where(a => a.Id == id).SingleOrDefault();
 
         }
         void Delete() { }
         void Save(Article Article)
         {
-            Articles.Add(Article);
+            articles.Add(Article);
         }
 
     }

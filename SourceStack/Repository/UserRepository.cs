@@ -29,7 +29,9 @@ namespace SourceStack.Repository
                 connection.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = $"select * from User1 where name='{name}'";
+                command.CommandText = $"select * from User1 where name=@name";
+                IDataParameter pname = new SqlParameter("@name", name);
+                command.Parameters.Add(pname);
                 IDataReader reader = command.ExecuteReader();
                 if (reader.Read()) {
                     user.Name =(string) reader["Name"];
@@ -51,7 +53,9 @@ namespace SourceStack.Repository
                 connection.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = $"INSERT INTO user1 (name,password,inviterName,inviterNumber) VALUES ('{user.Name}','{user.Password}','{user.Inviter.Name}','{user.InviterNumber}');";
+                command.CommandText =
+                    $"INSERT INTO user1 (name,password,inviterName,inviterNumber) " +
+                    $"VALUES ('{user.Name}','{user.Password}','{user.Inviter.Name}','{user.Inviter.InviterNumber}');";
                 command.ExecuteNonQuery();
             }
         }

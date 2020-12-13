@@ -28,10 +28,14 @@ namespace SourceStack.Pages.Article
             //}
 
 
-            sumofArticles = ArticleRepository.ArticleCount;
+            sumofArticles = ArticleRepository.ArticleCount();
             //int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
             int pageIndex = Convert.ToInt32(RouteData.Values["id"]);
-            Articles = ArticleRepository.Get(pageIndex, 3);
+            Articles = ArticleRepository.Get(pageIndex, 2);
+            foreach (var item in Articles) {
+                item.keywords = new KeywordRepository().FindArticle(item.Id);
+                //item.Comments=new CommentRepository().
+            }
 
         }
     }

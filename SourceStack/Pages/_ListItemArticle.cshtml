@@ -6,7 +6,7 @@
 @{
 }
 <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  @Model.PublishTime</small>
- <span style="float:right">作者：<a href="#">@Model.Author.Name</a></span>
+ <span style="float:right">作者：<a href="#">Model.Author.Name</a></span>
 <h5><a asp-page="/Article/Single" asp-route-id="@Model.Id" >@Model.Title</a></h5>
 <p>
     @Model.Body
@@ -28,10 +28,10 @@
     <a href="#" class="ml-3">
         <i class="fa fa-commenting" aria-hidden="true"></i>评论:
 
-        @if (Model.Comments != null)
+        if (Model.Comments != null)
         {
             <span>
-                @Model.Comments.Count
+                Model.Comments.Count
             </span>
         }
         else

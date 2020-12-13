@@ -24,7 +24,7 @@ namespace SourceStack.Pages.Article
 
         public SingleModel()
         {
-            ArticleRepository = new ArticleRepository();
+           ArticleRepository = new ArticleRepository();
 
         }
 
@@ -44,7 +44,7 @@ namespace SourceStack.Pages.Article
                 PreTitle = ArticleRepository.Find(id - 1).Title;
             }
             Article = ArticleRepository.Find(id);
-            if (id <ArticleRepository.ArticleCount) {
+            if (id <ArticleRepository.ArticleCount()) {
                 NextTitle = ArticleRepository.Find(id + 1).Title;
             }
 

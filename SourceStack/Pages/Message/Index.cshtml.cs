@@ -59,9 +59,9 @@ namespace SourceStack.Pages.Message
 
         {
             //µº∫Ω¿∏œ‘ æ
-            if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
-                ViewData["HasLogOn"] = true;
-            }
+            //if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
+            //    ViewData["HasLogOn"] = true;
+            //}
 
             Messages = messageRepository.GetMine(true);
 

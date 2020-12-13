@@ -13,7 +13,7 @@
     <img src="~/images/adv.jpg" style="margin-bottom:20px;" />
     <h4 style="color:cornflowerblue"><a href="/Firsthtml.html">@Model.Article.Title</a></h4>
 </header>
-<i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary"> @Model.Article.PublishTime</small> <span style="float:right">作者：<a href="#">@Model.Article.Author.Name</a></span>
+<i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary"> Model.Article.PublishTime</small> <span style="float:right">作者：<a href="#">Model.Article.Author.Name</a></span>
 <article>
     @Model.Article.Body
 </article>
@@ -108,18 +108,18 @@
 
 @if (Model.Article.Comments != null)
 {
-    <h3 style="margin-top:20px;">评论数量 @Model.Article.Comments.Count</h3>
+    <h3 style="margin-top:20px;">评论数量 Model.Article.Comments.Count</h3>
     for (int i = 0; i < Model.Article.Comments.Count; i++)
     {
         <i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">
-            @Model.Article.Comments[i].PublishTime.ToString("yyyy年MM月dd日 hh点mm分")
+            Model.Article.Comments[i].PublishTime.ToString("yyyy年MM月dd日 hh点mm分")
         </small>
         <span style="float:right;font-size:10px;">
-            作者：<a>@Model.Article.Comments[i].Author.Name</a>
+            作者：<a>Model.Article.Comments[i].Author.Name</a>
 
         </span>
         <div>
-            <a href="#"> @Model.Article.Comments[i].Content </a>
+            <a href="#"> Model.Article.Comments[i].Content </a>
         </div>
         <div style="text-align:right">
             <a href="#" class="ml-3" style="font-size: 12px;"><i class="fa fa-commenting" aria-hidden="true"></i>回复</a>
