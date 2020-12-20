@@ -50,8 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitmap.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="test\BeforeWork.cs" />
     <Compile Include="test\Work.cs" />
+    <Compile Include="_17bang1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_17bang1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="其他\Person.cs" />
     <Compile Include="其他\SomeArray.cs" />
     <Compile Include="内容\文章\Appraise.cs" />
@@ -88,6 +98,21 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="_17bang1.xsc">
+      <DependentUpon>_17bang1.xsd</DependentUpon>
+    </None>
+    <None Include="_17bang1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_17bang1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="_17bang1.xss">
+      <DependentUpon>_17bang1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

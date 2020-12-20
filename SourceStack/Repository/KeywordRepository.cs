@@ -101,6 +101,15 @@ namespace SourceStack.Repository
                     command.CommandText = $"SELECT [ArticleId],[KeywordId] FROM ArticletoKeyword WHERE ArticleId = @ArticleId ";
                     IDataParameter pArticleId = new SqlParameter("@ArticleId", ArticleId);
                     command.Parameters.Add(pArticleId);
+
+                    //DBHelper helper = new DBHelper();
+                    //string cmd = $"SELECT [ArticleId],[KeywordId] FROM ArticletoKeyword WHERE ArticleId = @ArticleId ";
+                    //IDataParameter pArticleId = new SqlParameter("@ArticleId", ArticleId);
+                    ////command.Parameters.Add(pArticleId);
+
+                    //IDataReader reader = helper.ExecuteScalar(cmd,pArticleId);
+
+
                     IDataReader reader = command.ExecuteReader();
                     while (reader.Read()) {
 
@@ -109,19 +118,21 @@ namespace SourceStack.Repository
 
 
 
+
+
+                    return keywords;
+
                 }
 
-                return keywords;
 
+
+                // return keywords;
             }
 
 
 
-           // return keywords;
+
         }
-
-
-
-      
     }
-}
+    }
+

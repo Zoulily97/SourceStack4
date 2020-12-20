@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -23,8 +26,6 @@ namespace SourceStack.Pages.Message
         public int Id { get; set; }
         [BindProperty]
         public IList<E.Message> Messages { get; set; }
-
-
         //public override void OnPageHandlerSelected(PageHandlerSelectedContext context)
         //{
         //    base.OnPageHandlerSelected(context);
@@ -62,8 +63,17 @@ namespace SourceStack.Pages.Message
             //if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
             //    ViewData["HasLogOn"] = true;
             //}
+            //DataSet
+           // string conStr = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+           // string queryStr = @"select * from message";
+           //// SqlConnection connection = new SqlConnection(conStr);
+           // DataAdapter adapter = new SqlDataAdapter(queryStr, conStr);
+           // DataSet dsmessage = new DataSet();
+           // adapter.Fill(dsmessage);
+           // adapter.Update(dsmessage);
 
-            Messages = messageRepository.GetMine(true);
+        //    Messages
+             Messages = messageRepository.GetMine(true);
 
 
             //登录才能访问，不然就是访问指定页面

@@ -14,10 +14,10 @@ namespace SourceStack.Pages.Article
      // [IsShowLogOn]//  Ò³ÃæÏÔÊ¾µÇÂ¼×´Ì¬
     public class IndexModel : PageModel
     {
-        private ArticleRepository ArticleRepository;
+        private ArticleRepository articleRepository;
         public IndexModel()
         {
-            ArticleRepository = new ArticleRepository();
+            articleRepository = new ArticleRepository();
         }
         public IList<E.Article> Articles { get; set; }
         public int sumofArticles { get; set; }
@@ -28,10 +28,10 @@ namespace SourceStack.Pages.Article
             //}
 
 
-            sumofArticles = ArticleRepository.ArticleCount();
+            sumofArticles = articleRepository.ArticleCount();
             //int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
             int pageIndex = Convert.ToInt32(RouteData.Values["id"]);
-            Articles = ArticleRepository.Get(pageIndex, 2);
+            Articles = articleRepository.Get(pageIndex, 2);
             foreach (var item in Articles) {
                 item.keywords = new KeywordRepository().FindArticle(item.Id);
                 //item.Comments=new CommentRepository().

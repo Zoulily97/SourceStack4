@@ -9,44 +9,47 @@ namespace SourceStack.Repository
 {
     public class ArticleRepository
     {
+
+
+        
         private static IList<Article> articles;
         //  public int ArticleCount { get; set; } = Articles.Count;
         static ArticleRepository()
         {
-            KeywordRepository keywordRepository = new KeywordRepository();
-            articles = new List<Article>();
+            //KeywordRepository keywordRepository = new KeywordRepository();
+            //articles = new List<Article>();
 
-            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
-            using (IDbConnection connection = new SqlConnection(connectionString)) {
-                connection.Open();
-                IDbCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandText = $"select * from Article";
-                DbDataReader reader = (DbDataReader)command.ExecuteReader();
-                if (reader.HasRows) {
-                    while (reader.Read()) {
-                        Article article = new Article {
-                            //  Author.Name = (string)reader["Name"],
-                            Body = (string)reader["Body"],
-                            Id = (int)reader["ID"],
-                            //  PublishTime = (DataSetDateTime) reader["datetime"],
-                            Title = (string)reader["Title"],
-                        };
-                        int articleId = article.Id;
-
-
-                       
-
-                        //article.keywords = new List<Keyword>() {
-                        //    //  keywordRepository.FindArticle(articleId)
-                        //};
-                       
-                        articles.Add(article);
+            //string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            //using (IDbConnection connection = new SqlConnection(connectionString)) {
+            //    connection.Open();
+            //    IDbCommand command = new SqlCommand();
+            //    command.Connection = connection;
+            //    command.CommandText = $"select * from Article";
+            //    DbDataReader reader = (DbDataReader)command.ExecuteReader();
+            //    if (reader.HasRows) {
+            //        while (reader.Read()) {
+            //            Article article = new Article {
+            //                Author.Name = (string)reader["Name"],
+            //                Body = (string)reader["Body"],
+            //                Id = (int)reader["ID"],
+            //                PublishTime = (DataSetDateTime)reader["datetime"],
+            //                Title = (string)reader["Title"],
+            //            };
+            //            int articleId = article.Id;
 
 
-                    }
-                }
-            }
+
+
+            //            article.keywords = new List<Keyword>() {
+            //                //  keywordRepository.FindArticle(articleId)
+            //            };
+
+            //            articles.Add(article);
+
+
+            //        }
+            //    }
+            //}
 
 
 
@@ -100,19 +103,66 @@ namespace SourceStack.Repository
                 connection.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = $"select * from Article";
-                return command.ExecuteNonQuery();
+                command.CommandText = $"select count(*) from Article";
+                return (int)command.ExecuteScalar();
             }
         }
         internal IList<Article> Get(int pageIndex, int pageSize)
         {
+            articles = new List<Article>();
+
+            //DBHelper helper = new DBHelper();
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"select * from Article";
+                DbDataReader reader = (DbDataReader)command.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        Article article = new Article {
+                            //  Author.Name = (string)reader["Name"],
+                            Body = (string)reader["Body"],
+                            Id = (int)reader["ID"],
+                            //  PublishTime = (DataSetDateTime) reader["datetime"],
+                            Title = (string)reader["Title"],
+                        };
+                        articles.Add(article);
+                    }                   
+                }
+             
+            } 
+
+
 
             return articles.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
         }
 
         public Article Find(int id)
         {
+            articles = new List<Article>();
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"select * from Article";
+                DbDataReader reader = (DbDataReader)command.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        Article article = new Article {
+                            //  Author.Name = (string)reader["Name"],
+                            Body = (string)reader["Body"],
+                            Id = (int)reader["ID"],
+                            //  PublishTime = (DataSetDateTime) reader["datetime"],
+                            Title = (string)reader["Title"],
+                        };
+                        articles.Add(article);
+                    }
+                }
 
+            }
             return articles.Where(a => a.Id == id).SingleOrDefault();
 
         }
