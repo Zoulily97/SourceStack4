@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceStack", "SourceStack\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADO", "ADO\ADO.csproj", "{51B65419-9D95-4351-A8B2-688643B55996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoeTest", "EFCoeTest\EFCoeTest.csproj", "{6D24AB6C-0DBB-464F-AF1A-58ACC8D8EB53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoeTest", "EFCoeTest\EFCoeTest.csproj", "{6D24AB6C-0DBB-464F-AF1A-58ACC8D8EB53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

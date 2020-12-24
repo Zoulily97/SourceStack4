@@ -9,7 +9,15 @@ namespace EFCoeTest
     {
         //通过声明Dbset 哪些Enbtity需要是映射
         public DbSet<User> Users { get; set; }
-        public DbSet<User1> User1s { get; set; }
+        public DbSet <Message> Messages { get; set; }
+        public DbSet <Article > Articles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Keyword> Keywords { get; set; }
+        public DbSet <Email > Emails { get; set; }
+
+
+       // public DbSet<User1> User1s { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)//配置数据库
         {
             string constr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=yqbang6;Integrated Security=True;";
@@ -42,7 +50,15 @@ namespace EFCoeTest
                 .HasKey(u => u.Id);
 
 
+            //modelBuilder.Entity<Article>().HasBaseType((Type)null);//分表 不建议用  取消继承关系
+            //modelBuilder.Entity<Comment >().HasBaseType((Type)null);
+            //modelBuilder.Entity<Keyword >().HasBaseType((Type)null);
+            //modelBuilder.Entity<Message>().HasBaseType((Type)null);
 
+            modelBuilder.Entity<User>()
+              .HasOne<Email>(s => s.SendTo)
+              .WithOne(b => b.EmailAuthor)
+              .HasForeignKey<User>(s => s.SendToId);
 
 
             base.OnModelCreating(modelBuilder);

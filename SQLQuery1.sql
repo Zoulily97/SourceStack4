@@ -1,10 +1,7 @@
-﻿select * from User1;
-
-select * from Article
-
+﻿--select * from User1;
+select * from Articles
 select * from Keywords
-
-select * from ArticletoKeyword
-SELECT [ArticleId],[KeywordId] FROM ArticletoKeyword WHERE ArticleId = 1;
-select * from Message
 select * from register
+select * from Comments
+select * from Messages 
+

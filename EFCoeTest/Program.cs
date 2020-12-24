@@ -9,6 +9,13 @@ namespace EFCoeTest
         {
             Console.WriteLine("Hello World!");
             SqlDbContext context = new SqlDbContext();
+            var db = context.Database;
+            //类似于Update - Database: apply all pending migrations
+            //本身不生成Migrations
+            //    db.Migrate();
+            db.EnsureDeleted();
+            db.EnsureCreated();
+
 
             //User user1 = new User()
             //{
@@ -49,10 +56,10 @@ namespace EFCoeTest
             //context.AddRange(users);
 
 
-            User u1 = context.Find<User>(1);
+         //   User u1 = context.Find<User>(1);
             //   u1.Name = "刘伟";
             // context.Update<User>(u1);
-            context.Remove(u1);
+         //   context.Remove(u1);
             context.SaveChanges();
 
 
