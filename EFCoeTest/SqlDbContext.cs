@@ -14,6 +14,8 @@ namespace EFCoeTest
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Keyword> Keywords { get; set; }
         public DbSet <Email > Emails { get; set; }
+        public DbSet<Problem> Problems { get; set; }
+
 
 
        // public DbSet<User1> User1s { get; set; }

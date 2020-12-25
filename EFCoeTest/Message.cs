@@ -11,6 +11,7 @@ namespace EFCoeTest
         public DateTime CreateTime { get; set; }
         public string Content { get; set; }
         public bool HasRead { get; set; }
+        public User Owner { get; set; }
        
         //public void Read()
         //{

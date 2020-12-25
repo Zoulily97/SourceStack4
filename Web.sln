@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADO", "ADO\ADO.csproj", "{5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoeTest", "EFCoeTest\EFCoeTest.csproj", "{6D24AB6C-0DBB-464F-AF1A-58ACC8D8EB53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YQBangMVC", "YQBangMVC\YQBangMVC.csproj", "{7C9F2673-383C-4948-BFFB-32AB44156ADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{6D24AB6C-0DBB-464F-AF1A-58ACC8D8EB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D24AB6C-0DBB-464F-AF1A-58ACC8D8EB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D24AB6C-0DBB-464F-AF1A-58ACC8D8EB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9F2673-383C-4948-BFFB-32AB44156ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9F2673-383C-4948-BFFB-32AB44156ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9F2673-383C-4948-BFFB-32AB44156ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9F2673-383C-4948-BFFB-32AB44156ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
