@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Sale";
+  
+    Layout = "~/Views/Shared/_Dual_55.cshtml";
+}
+
+<h2>Sale</h2>
+@*<div class="dualcolumns-container">
+    <div class="page-header">
+        <h2>
+
+            <span class="iconfont icon-pack"></span> 帮帮币装箱
+            <a class="btn" href="/Contact/Us"><span class="fa fa-envelope"></span> 联系我们</a>
+
+        </h2>
+    </div>*@
+    
+            <div class="yellow-highlight" style="padding:10px; margin-bottom:20px;">
+                <p>
+                    系统要求的最低出售门槛为： 50 枚
+                </p>
+                <p>
+                    目前，你的
+                    <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="点击了解">
+                        <span class="iconfont icon-money"></span> 帮帮币
+                    </a>
+                    ：
+                </p>
+                <table class="table" style="margin-bottom:0px;">
+                    <tr>
+                        <th>结余：</th>
+                        <td>0 枚</td>
+                    </tr>
+                    <tr title="可出售 = 结余 - 门槛" data-toggle="tooltip">
+                        <th>可出售：</th>
+                        <td><span zyf-current-available>-50</span> 枚</td>
+                    </tr>
+                </table>
+            </div>
+            <p><span class="fa fa-exclamation-triangle text-warning"></span> 对不起，你的可出售帮帮币数量不够……</p>
+            <p class="lead text-primary">继续努力吧，(ง •_•)ง,加油！</p>
+            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="introductionLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="introductionLabel"></h4>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">知道了</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+  @section Description{}
