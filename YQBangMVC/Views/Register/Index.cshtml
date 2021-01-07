@@ -1,55 +1,74 @@
-﻿
+﻿@model YQBangMVC.Models.RegisterModel
 @{
     ViewBag.Title = "注册";
     Layout = "~/Views/Shared/_Dual_551.cshtml";
     ViewData["Title"] = "注册";
 }
 
-<form method="post" class="">
+
+@using (Html.BeginForm())
+{
     <section style="padding:10px;border:2px dashed #f1f1f1;background-color:lightyellow;border-radius: 5px;margin-bottom:20px;">
         <div class="text-right" style="padding-bottom:15px;"><a><i class="fa fa-question-circle"></i>为什么需要邀请</a></div>
         <div class="form-group">
             <label for="exampleInputEmail1">邀请人：（* 必填，<a href="#">没有邀请人</a>） </label>
-            <input type="text" class="form-control" asp-for=" NewUser.Inviter.Name">
-            <span asp-validation-for="NewUser.Inviter.Name"></span>
+            @Html.TextBoxFor(m => m.InviterName ,new { type = "text", @class="form-control"})
+            @Html.ValidationMessageFor(m => m.InviterName)
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">邀请码：（* 必填） </label>
             <input type="text" class="form-control" asp-for="InviteCode">
-            <span asp-validation-for="InviteCode"></span>
+            @Html.TextBoxFor(m => m.InviterNumber, new { ype = "text", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.InviterNumber)
+        </div>xc
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名：（* 必填） </label>
+            @*<input type="text" class="form-control" asp-for="NewUser.Name">
+                <span asp-validation-for="NewUser.Name"></span>*@
+            @Html.TextBoxFor(m => m.Name,new { type = "text" ,@class="form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
         </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">密码：（* 必填） </label>
+            @*<input type="password" class="form-control" asp-for="NewUser.Password">
+                <span asp-validation-for="NewUser.Password"></span>*@
+            @Html.TextBoxFor(m => m.Password,new { type = "password" ,@class="form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">验证密码：（* 必填） </label>
+            <input type="password" class="form-control" asp-for="ComfirmPassword" placeholder="和密码相同">
+            <span asp-validation-for="ComfirmPassword"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">验证码：（* 必填） </label>
+            <input type="text" class="form-control" style="width:100px" asp-for="VerifyCode">
+            <span asp-validation-for="VerifyCode"></span>
+            <span style="display:inline-block">点击输入框显示</span>
+        </div>
+
+        <button class="btn btn-primary" type="submit">提交</button>
+        <button class="btn btn-light" type="reset">重置</button>
+        <a href="logon.html" class=" btn float-right text-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>
+
     </section>
-    <div class="form-group">
-        <label for="exampleInputEmail1">用户名：（* 必填） </label>
-        <input type="text" class="form-control" asp-for="NewUser.Name">
-        <span asp-validation-for="NewUser.Name"></span>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">密码：（* 必填） </label>
-        <input type="password" class="form-control" asp-for="NewUser.Password">
-        <span asp-validation-for="NewUser.Password"></span>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">验证密码：（* 必填） </label>
-        <input type="password" class="form-control" asp-for="ComfirmPassword" placeholder="和密码相同">
-        <span asp-validation-for="ComfirmPassword"></span>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">验证码：（* 必填） </label>
-        <input type="text" class="form-control" style="width:100px" asp-for="VerifyCode">
-        <span asp-validation-for="VerifyCode"></span>
-        <span style="display:inline-block">点击输入框显示</span>
-    </div>
+
+}
+<!--<form method="post" class="">-->
+
+
+
+
+
     @*<div class="form-group">
             <label for="exampleInputEmail1">个人主页：（* 必填） </label>
             <input type="text" class="form-control" asp-for="HomeUrl">
             <span asp-validation-for="HomeUrl"></span>
         </div>*@
-    <button class="btn btn-primary" type="submit">提交</button>
-    <button class="btn btn-light" type="reset">重置</button>
-    <a href="logon.html" class=" btn float-right text-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>
 
-</form>
+
+<!--</form>-->
 @section Description{
     <ol>
         <li>我们希望通过<a>一起帮</a>，能<span class="text-bold">直接解决</span>大家在<span class="text-primary">电脑操作/软件使用/编程学习</span>等方面的<span class="text-bold">具体问题</span>。</li>
