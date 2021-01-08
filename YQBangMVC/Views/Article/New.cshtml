@@ -1,0 +1,493 @@
+﻿@model SRV.ViewModel.Article.NewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Dual_93.cshtml";
+}
+
+
+<h2 class="page-header">
+
+    <span class="fa fa-pencil-square-o " aria-hidden="true"></span> 文章发布
+
+</h2>
+
+<div zyf-old-draft-check="">
+    <div class="yellow-highlight" style="padding:10px 10px 0 10px; margin-bottom:15px;">
+        <p>你还有未使用的草稿（<a href="/Draft">查看全部</a>）。</p>
+        <p>点击 <a href="/Article/Edit/54"><span class="fa fa-refresh"></span>这里</a> 使用最近一次生成的草稿。</p>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //检查是否有未使用的草稿并提示
+        $.ajax({
+            url: "/Draft/_CheckArticle",
+            method: "GET",
+            cache: false,
+            dataType: "html",
+            success: function (data) {
+                $("[zyf-old-draft-check]").append(data);
+            },
+            error: JqueryAjaxError
+        })
+    })
+</script>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>标题：（* 必填）</label>
+        @Html.TextBoxFor(m => m.Title, new { placeholder = "来一个醒目的标题吧", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>内容：（* 必填）</label>
+        @*<div class="ke-container ke-container-default" style="width: 100%;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="source" title="HTML代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="formatblock" title="段落" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-formatblock" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="strikethrough" title="删除线" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-strikethrough" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="table" title="表格" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-table" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="unlink" title="取消超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-unlink" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="code" title="插入程序代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code" unselectable="on"></span></span><span class="ke-outline" data-name="quote" title="插入引用" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-quote" unselectable="on"></span></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div style="display: block; height: 569px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" tabindex="" style="width: 100%; height: 569px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" tabindex="" style="width: 100%; height: 569px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea class="form-control" cols="20" data-val="true" data-val-length="* 正文的长度不能小于25，大于2147483647" data-val-length-min="25" data-val-required="* 正文不能为空" id="Body" name="Body" placeholder="请直接粘贴原生HTML代码" rows="30" zyf-kindeditor="" style="display: none;"></textarea>*@
+        @* <span class="field-validation-valid" data-valmsg-for="Body" data-valmsg-replace="true"></span>*@
+
+        @Html.TextAreaFor(m => m.Body, new
+        {
+            style = "background-color:lightyellow",
+            @class = "form-control"
+           })
+    </div>
+    <div class="form-group">
+        <label>添加到系列：</label>
+        <a href="/Category/Manage" class="pull-right"><span class="fa fa-cog"></span>管理</a>
+        <div class="input-group">
+            <select class="form-control" data-val="true" data-val-number="字段 SelectedCategoryId 必须是一个数字。" data-val-required="SelectedCategoryId 字段是必需的。" id="SelectedCategoryId" name="SelectedCategoryId" zyf-categories="">
+                <option value="10">默认分类</option>
+                <option value="12">ffff</option>
+                <option value="20">的程度成都</option>
+                <option value="21">得得得得的</option>
+                <option value="22">vvvvvvvv</option>
+                <option value="23">帆帆帆帆帆帆帆帆帆帆</option>
+                <option value="24">生活目标</option>
+                <option value="25">生活目标</option>
+            </select>
+            <a class="btn input-group-addon" data-toggle="modal" data-target="#new-category">
+                <span class="fa fa-plus" data-toggle="tooltip" title="" data-original-title="添加"></span> 新系列
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>关键字：（* 必填）</label>
+        @Html.TextBoxFor(m => m.KeyWord, new { @class = "form-control", placeholder = "用空格分割，总长度不超过25个字符" })
+
+    </div>
+    <div class="form-group">
+        <label>摘要：（* 建议填写）</label>
+        @Html.TextAreaFor(m => m.Summary, new { placeholder = "不填写的话，系统会截取文章前255字作为摘要显示", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <a zyf-ad-delete="" class="text-warning pull-right"><span class="fa fa-remove"></span> 删除</a>
+        <label>之前用过的广告：</label>
+        @Html.TextBoxFor(m => m.AD, new { @class = "form-control" })
+
+    </div>
+
+    <ul class="hide" zyf-ad-in-widget-history-url="">
+    </ul>
+    <section style="padding:10px 20px; margin-bottom:20px; background-color:lightyellow" class="yellow-highlight" zyf-ad-content-container="">
+        <div class="text-right checkbox">
+            <label>
+                <input data-val="true" data-val-required="Edit 字段是必需的。" id="AdContent_Edit" name="AdContent.Edit" type="checkbox" value="true" zyf-ad-content-edit=""><input name="AdContent.Edit" type="hidden" value="false"> 修改
+            </label>
+        </div>
+        <div class="form-group">
+            <label>文字内容：（* 必填）</label>
+
+            @Html.TextBoxFor(m => m.TextContent, new { @class = "form-control", placeholder = "最多不超过24个字符" })
+
+        </div>
+        <div class="form-group">
+            <label>链接：（* 必填）</label>
+            @Html.TextBoxFor(m => m.Url, new { @class = "form-control", placeholder = "http或https开头的网址" })
+
+        </div>
+    </section>
+    <div class="submit">
+        <input type="submit" class="btn btn-primary loading" value="发布" zyf-submit-once="" zyf-exclude-draft="">
+        <button type="button" class="btn btn-default" data-toggle="tooltip" title="" zyf-submit-once="" zyf-write-draft="" data-original-title="存为草稿">保存</button>
+        <small class="text-success" zyf-article-draft-remind=""></small>
+        <input type="hidden" name="draftId" zyf-draft-hide-id="">
+        <script>
+            $(document).ready(function () {
+
+                var $button = $("[zyf-write-draft]"),
+                    $hidenInput = $("[zyf-draft-hide-id]"),
+                    $form = $button.parents("form"),
+                    $remind = $("[zyf-article-draft-remind]"),
+                    title,
+                    body,
+                    url;
+
+                //存为草稿
+                $button.click(function () {
+                    if (notEmptyContent()) {
+                        save();
+                    } else {
+                        $remind.html(
+                            '<span class="text-warning">* 还没有要保存的内容呢</span> ');
+                    }
+                });
+
+                $form.submit(function () {
+                    $(window).off("beforeunload");
+                })
+
+                //关闭前自动保存草稿
+                $(window).on("beforeunload", function () {
+                    if (notEmptyContent()) {
+                        save();
+                    }
+                })
+
+                //每120秒自动保存一次
+                setInterval(function () {
+                    if (notEmptyContent() && contentChanged()) {
+                        save();
+                    }
+                }, 120000);
+
+                function save() {
+                    $remind.html("");
+                    if ($hidenInput.val() == "") {
+                        url = "/Article/_DraftNew";
+                    } else {
+                        url = "/Article/_DraftEdit/" + $hidenInput.val();
+                    }
+                    $.ajax({
+                        url: url,
+                        data: $form.serialize(),
+                        method: "POST",
+                        async: false,
+                        success: function (data) {
+                            if ($hidenInput.val() == "") {
+                                $hidenInput.val(data);
+                            }
+                            $remind.html(
+                                '<span class="fa fa-check text-success"></span> ' +
+                                new Date().toTimeString().substring(0, 8));
+
+                            title = $.trim($("[zyf-draft-check-title]").val());
+                            body = $.trim($("[zyf-kindeditor]").val());
+                        },
+                        error: JqueryAjaxError
+                    });
+                }
+
+                function notEmptyContent() {
+                    return $.trim($("[zyf-draft-check-title]").val()) !== "" ||
+                        $.trim($("[zyf-kindeditor]").val()) !== "";
+                }
+
+                function contentChanged() {
+                    return title != $.trim($("[zyf-draft-check-title]").val()) ||
+                        body != $.trim($("[zyf-kindeditor]").val());
+                }
+            })
+        </script>
+        </div>
+
+  }
+
+
+
+
+        <!--<form action="/Article/New" method="post" novalidate="novalidate">
+            <div class="form-group">
+                <label>内容：（* 必填）</label>-->
+                @*<div class="ke-container ke-container-default" style="width: 100%;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="source" title="HTML代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="formatblock" title="段落" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-formatblock" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="strikethrough" title="删除线" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-strikethrough" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="table" title="表格" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-table" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="unlink" title="取消超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-unlink" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="code" title="插入程序代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code" unselectable="on"></span></span><span class="ke-outline" data-name="quote" title="插入引用" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-quote" unselectable="on"></span></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div style="display: block; height: 569px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" tabindex="" style="width: 100%; height: 569px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" tabindex="" style="width: 100%; height: 569px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea class="form-control" cols="20" data-val="true" data-val-length="* 正文的长度不能小于25，大于2147483647" data-val-length-min="25" data-val-required="* 正文不能为空" id="Body" name="Body" placeholder="请直接粘贴原生HTML代码" rows="30" zyf-kindeditor="" style="display: none;"></textarea>*@
+                @* <span class="field-validation-valid" data-valmsg-for="Body" data-valmsg-replace="true"></span>*@
+                <!--<textarea style="background-color:lightyellow"></textarea>
+            </div>
+            <div class="form-group">
+                <label>添加到系列：</label>
+                <a href="/Category/Manage" class="pull-right"><span class="fa fa-cog"></span>  管理</a>
+                <div class="input-group">
+                    <select class="form-control" data-val="true" data-val-number="字段 SelectedCategoryId 必须是一个数字。" data-val-required="SelectedCategoryId 字段是必需的。" id="SelectedCategoryId" name="SelectedCategoryId" zyf-categories="">
+                        <option value="10">默认分类</option>
+                        <option value="12">ffff</option>
+                        <option value="20">的程度成都</option>
+                        <option value="21">得得得得的</option>
+                        <option value="22">vvvvvvvv</option>
+                        <option value="23">帆帆帆帆帆帆帆帆帆帆</option>
+                        <option value="24">生活目标</option>
+                        <option value="25">生活目标</option>
+                    </select>
+                    <a class="btn input-group-addon" data-toggle="modal" data-target="#new-category">
+                        <span class="fa fa-plus" data-toggle="tooltip" title="" data-original-title="添加"></span> 新系列
+                    </a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>关键字：（* 必填）</label>
+                <input class="form-control" data-val="true" data-val-length="* 关键字的长度不能大于25" data-val-length-max="25" data-val-required="* 关键字不能为空" id="Keywords" name="Keywords" placeholder="用空格分割，总长度不超过25个字符" type="text" value="">
+                <span class="field-validation-valid" data-valmsg-for="Keywords" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <label>摘要：（* 建议填写）</label>
+                <textarea class="form-control" cols="20" data-val="true" data-val-length="* 摘要的长度不能大于255"
+                          data-val-length-max="255" id="Abstract" name="Abstract" placeholder="不填写的话，系统会截取文章前255字作为摘要显示" rows="3" zyf-in-max-length="255"></textarea>
+                <span class="field-validation-valid" data-valmsg-for="Abstract" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <a zyf-ad-delete="" class="text-warning pull-right"><span class="fa fa-remove"></span> 删除</a>
+                <label>之前用过的广告：</label>
+                <select class="form-control" data-val="true" data-val-number="字段 SelectedHistory 必须是一个数字。" id="AdContent_SelectedHistory" name="AdContent.SelectedHistory" zyf-ad-in-widget-history-select="">
+                    <option value="">----- 使用新的广告 -----</option>
+                </select>
+            </div>
+            <ul class="hide" zyf-ad-in-widget-history-url="">
+            </ul>
+            <section style="padding:10px 20px; margin-bottom:20px; background-color:lightyellow" class="yellow-highlight" zyf-ad-content-container="">
+                <div class="text-right checkbox">
+                    <label>
+                        <input data-val="true" data-val-required="Edit 字段是必需的。" id="AdContent_Edit" name="AdContent.Edit" type="checkbox" value="true" zyf-ad-content-edit=""><input name="AdContent.Edit" type="hidden" value="false"> 修改
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>文字内容：（* 必填）</label>
+                    <input class="form-control" data-val="true" data-val-length="* 文本的长度不能大于30" data-val-length-max="30" data-val-required="* 文本不能为空" id="AdContent_Text" name="AdContent.Text" placeholder="最多不超过24个字符" type="text" value="" zyf-ad-in-widget-input-text="">
+                    <span class="field-validation-valid" data-valmsg-for="AdContent.Text" data-valmsg-replace="true"></span>
+                </div>
+                <div class="form-group">
+                    <label>链接：（* 必填）</label>
+                    <input class="form-control" data-val="true" data-val-regex="* URL格式错误" data-val-regex-pattern="http(s)?://.*" data-val-required="* 链接不能为空" id="AdContent_Url" name="AdContent.Url" placeholder="http或https开头的网址" type="text" value="" zyf-ad-in-widget-input-url="">
+                    <span class="field-validation-valid" data-valmsg-for="AdContent.Url" data-valmsg-replace="true"></span>
+                </div>
+            </section>
+            <script>
+                $(document).ready(function () {
+                    $("[zyf-ad-delete]").click(function (event) {
+                        event.preventDefault();
+                        var $trigger = $(this),
+                            $adOptions = $("[zyf-ad-in-widget-history-select]"),
+                            deleteId = $adOptions.val();
+                        if (!deleteId) {
+                            showRemind(getWarningIcon() + ' 没有选中要删除的广告。');
+                            return false;
+                        }
+                        $.ajax({
+                            url: "/AdInWidget/_Delete/" + deleteId,
+                            success: function () {
+                                $adOptions.find("option[value=" + deleteId + "]").remove();
+                                $adOptions.change();
+                            },
+                            error: JqueryAjaxError
+                        })
+                    })
+                })
+            </script>
+            <div class="submit">
+                <input type="submit" class="btn btn-primary loading" value="发布" zyf-submit-once="" zyf-exclude-draft="">
+                <button type="button" class="btn btn-default" data-toggle="tooltip" title="" zyf-submit-once="" zyf-write-draft="" data-original-title="存为草稿">保存</button>
+                <small class="text-success" zyf-article-draft-remind=""></small>
+                <input type="hidden" name="draftId" zyf-draft-hide-id="">
+
+                <script>
+                    $(document).ready(function () {
+
+                        var $button = $("[zyf-write-draft]"),
+                            $hidenInput = $("[zyf-draft-hide-id]"),
+                            $form = $button.parents("form"),
+                            $remind = $("[zyf-article-draft-remind]"),
+                            title,
+                            body,
+                            url;
+
+                        //存为草稿
+                        $button.click(function () {
+                            if (notEmptyContent()) {
+                                save();
+                            } else {
+                                $remind.html(
+                                    '<span class="text-warning">* 还没有要保存的内容呢</span> ');
+                            }
+                        });
+
+                        $form.submit(function () {
+                            $(window).off("beforeunload");
+                        })
+
+                        //关闭前自动保存草稿
+                        $(window).on("beforeunload", function () {
+                            if (notEmptyContent()) {
+                                save();
+                            }
+                        })
+
+                        //每120秒自动保存一次
+                        setInterval(function () {
+                            if (notEmptyContent() && contentChanged()) {
+                                save();
+                            }
+                        }, 120000);
+
+                        function save() {
+                            $remind.html("");
+                            if ($hidenInput.val() == "") {
+                                url = "/Article/_DraftNew";
+                            } else {
+                                url = "/Article/_DraftEdit/" + $hidenInput.val();
+                            }
+                            $.ajax({
+                                url: url,
+                                data: $form.serialize(),
+                                method: "POST",
+                                async: false,
+                                success: function (data) {
+                                    if ($hidenInput.val() == "") {
+                                        $hidenInput.val(data);
+                                    }
+                                    $remind.html(
+                                        '<span class="fa fa-check text-success"></span> ' +
+                                        new Date().toTimeString().substring(0, 8));
+
+                                    title = $.trim($("[zyf-draft-check-title]").val());
+                                    body = $.trim($("[zyf-kindeditor]").val());
+                                },
+                                error: JqueryAjaxError
+                            });
+                        }
+
+                        function notEmptyContent() {
+                            return $.trim($("[zyf-draft-check-title]").val()) !== "" ||
+                                $.trim($("[zyf-kindeditor]").val()) !== "";
+                        }
+
+                        function contentChanged() {
+                            return title != $.trim($("[zyf-draft-check-title]").val()) ||
+                                body != $.trim($("[zyf-kindeditor]").val());
+                        }
+                    })
+                </script>
+            </div>
+        </form>-->
+        <div class="modal fade" id="new-category" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="/Category/_New" method="post" novalidate="novalidate">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title"><span class="fa fa-plus"></span> 添加新的系列</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>父系列：</label>
+                                <select class="form-control" data-val="true" data-val-number="字段 SelectedCategoryId 必须是一个数字。" id="SelectedCategoryId" name="SelectedCategoryId" zyf-categories="">
+                                    <option value="">--------------</option>
+                                    <option value="10">默认分类</option>
+                                    <option value="12">ffff</option>
+                                    <option value="20">的程度成都</option>
+                                    <option value="21">得得得得的</option>
+                                    <option value="22">vvvvvvvv</option>
+                                    <option value="23">帆帆帆帆帆帆帆帆帆帆</option>
+                                    <option value="24">生活目标</option>
+                                    <option value="25">生活目标</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>名称：（* 必填）</label>
+                                <input class="form-control" data-val="true" data-val-length="* 名称的长度不能大于25" data-val-length-max="25" data-val-required="* 名称不能为空" id="Name" name="Name" placeholder="不能为空，25字符以内" type="text" value="" zyf-new-category-name="">
+                                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>描述：</label>
+                                <textarea class="form-control" cols="20" data-val="true" data-val-length="* 描述的长度不能大于255" data-val-length-max="255" id="Description" name="Description" placeholder="255个字符以内，简单描述系列的目的、内容等" rows="2"></textarea>
+                                <span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" zyf-new-category-submit="" zyf-submit-once="">提交</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        @section Description{
+
+
+            <div zyf-newbie-reminder="" class="widget yellow-highlight">
+                <h4><span class="fa fa-list"></span> 新手任务</h4>
+                <p zyf-newbie-tasks-done="" class="text-right">
+                    <span class="fa fa-thumbs-o-up text-success"></span> 全部完成！
+                    <a zyf-newbie-reminder-hide="" href="#" class="text-primary">不再显示</a>
+                </p>
+                <hr>
+
+                <p><span class="fa fa-check-square-o text-success fa-fw"></span> 填写：<a href="/Contact/New?prepage=%2fArticle%2fNew">联系方式</a></p>
+                <p><span class="fa fa-check-square-o text-success fa-fw"></span> 激活：<a href="/Email/Activate?prepage=%2fArticle%2fNew">Email</a></p>
+                <p><span class="fa fa-check-square-o text-success fa-fw"></span> 邀请：<a href="/Invite">我的小伙伴</a></p>
+                <p><span class="fa fa-check-square-o text-success fa-fw"></span> 参加：<a href="/Exam/Newbie">新人测试</a></p>
+                <p><span class="fa fa-check-square-o text-success fa-fw"></span> 发布：<a href="/Problem/New">第一个求助</a></p>
+                <p><span class="fa fa-check-square-o text-success fa-fw"></span> 尝试：<a href="/Problem"> 第一次协助</a></p>
+                <p>
+                    <span class="fa fa-check-square-o text-success fa-fw"></span> 获得：若干
+                    <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                        <span class="iconfont icon-money"></span> 帮帮币
+                    </a>
+                </p>
+            </div>
+
+
+            <a href="/Profile/Write?prepage=%2fArticle%2fNew" class="btn pull-right" zyf-profile-edit="">
+                <span class="fa fa-pencil-square-o"></span>
+                <span>修改</span>
+            </a>
+            <div class="img-responsive img-thumbnail" id="profile-no-picture">
+                <span class="fa fa-picture-o" id="camera"></span>
+                <div id="wait">
+                    等待上传中<span class="fa fa-hourglass-half"></span>...
+                </div>
+            </div>
+            <div class="user-show">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>用户：</label>
+
+
+                        <span data-toggle="tooltip" title="" data-original-title="捐赠 9.9">
+                            <a href="/User/7" zyf-show-contact="7" style="color:#DCB962">
+                                DK
+                            </a>
+                        </span>
+                        <a href="/FAQ/Credit#" data-toggle="tooltip" title="" class="text-muted" style="position:relative; top:-1px;" data-original-title="大宗师">
+                            <span>⑩</span>
+                        </a>
+                        <a href="/User/ChangeName" class="btn" zyf-username-change="7"><span class="fa fa-pencil-square-o"></span> 修改</a>
+                    </div>
+                    <input type="hidden" value="7" zyf-profile-user-id="">
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>性别：</label>
+                        男
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>生日：</label>
+                        1991 <span>年</span>
+                    </div>
+                </div>
+                <div>
+                    <label>关注：</label>
+                    <p>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 1 次">DF</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 3 次">工具软件</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 1 次">Excel</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 1 次">单位</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 1 次">C#</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 8 次">编程开发语言</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 1 次">Python</span>
+                        <span title="" data-toggle="tooltip" class="badge" data-original-title="被使用过 4 次">JAVA</span>
+                    </p>
+                </div>
+
+            </div>
+
+
+
+        }
+

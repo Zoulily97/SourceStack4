@@ -1,0 +1,16 @@
+﻿@*@page
+    @model SourceStack.Pages.Shared._DualModel*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><i class="fa fa-registered"></i>@ViewData["Title"]</h2>
+<div class="container row ">
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+    <div class="col-md-3 ">
+        <h3><i class="fa fa-question-circle" aria-hidden="true"></i>说明</h3>
+        @RenderSection("Description")
+    </div>
+</div>
