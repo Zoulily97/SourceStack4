@@ -13,9 +13,11 @@ namespace YQBangMVC.Controllers
     {
 
         private IArticleService articleService;
+        private IUserService userService;
         public ArticleController()
         {
             articleService = new ArticleService();
+            userService = new UserService();
         }
         // GET: Article
         public ActionResult Index()
@@ -30,13 +32,26 @@ namespace YQBangMVC.Controllers
         [HttpPost]
         public ActionResult New(NewModel model)
         {
-           // int currentUserId = 1;
-            articleService.Publish(model/*, currentUserId*/);
+            // int currentUserId = 1;
+            bool HasUserId = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);//有没有找到当前cookie，找到了当前currentUserId是什么
+            if (HasUserId)
+            {
+                string pwd = userService.GetPwdById(currentUserId);
+                if (Request.Cookies[Keys.User].Values[Keys.Password]!=pwd)
+                {
+                    throw new ArgumentException("");
+
+                } 
+                int id=articleService.Publish(model, currentUserId);
+
+            }
+           
             return View();
         }
-        public ActionResult Single()
+        public ActionResult Single(int id)
         {
-            return View();
+            SingleModel model = articleService.GetById(id);
+            return View(model);
         }
         public ActionResult Edit()
         {

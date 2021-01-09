@@ -129,12 +129,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\MoneyTradeController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -185,6 +187,7 @@
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\Single.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
+    <Content Include="Views\Log\On.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -203,19 +206,15 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MockService\MockService.csproj">
-      <Project>{306a12c8-d979-49f0-be3a-19f62949fca4}</Project>
-      <Name>MockService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProdService\ProdService.csproj">
-      <Project>{894b322b-f7ec-427d-b47f-e078815bcd1f}</Project>
+    <ProjectReference Include="..\SRV\ProdService\ProdService.csproj">
+      <Project>{501dbb49-f7c5-40f2-811c-2de0ce656c87}</Project>
       <Name>ProdService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
-      <Project>{4ba2f4c1-8b4b-4f3d-b7fc-38e5bc19aa52}</Project>
+    <ProjectReference Include="..\SRV\ServiceInterface\ServiceInterface.csproj">
+      <Project>{79a8af21-d673-49c0-9c41-381e9e7e37d7}</Project>
       <Name>ServiceInterface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+    <ProjectReference Include="..\SRV\ViewModel\ViewModel.csproj">
       <Project>{b3f9df19-98b4-4328-aeaa-b22bf032d4ab}</Project>
       <Name>ViewModel</Name>
     </ProjectReference>

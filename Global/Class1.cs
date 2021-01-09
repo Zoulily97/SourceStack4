@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SRV.ViewModel.Article
+namespace Global
 {
-    public class SingleModel
+    public class Class1
     {
     }
 }

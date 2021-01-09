@@ -20,7 +20,17 @@ namespace ProdService
             articleRepository = new ArticleRepository(context);
             userRepository = new UserRepository(context);
         }
-        public int Publish(NewModel model/*, int currentUserId*/)
+        public SingleModel GetById(int id)
+        {
+            Article article = articleRepository.GetById(id);
+            return new SingleModel
+            {
+                Title = article.Title,
+                Body = article.Body
+            };
+        }
+
+        public int Publish(NewModel model, int currentUserId)
         {
             Article a1 = new Article
             {
@@ -30,8 +40,8 @@ namespace ProdService
                 HelpMoney = 0
 
             };
-         //   User author = userRepository.LoadProxy(currentUserId);
-           // a1.Author = author;//给文章加一个author
+            User author = userRepository.LoadProxy(currentUserId);
+            a1.Author = author;//给文章加一个author
             //articleRepository.context.Set<User>().Attach(author);//暴露了context
             articleRepository.Save(a1);
             return 1;

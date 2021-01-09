@@ -18,7 +18,12 @@ namespace BLL.Repositories
             return dbSet.Where(s => s.Name == name).SingleOrDefault();
 
         }
+        //public string GetPwdById(int id)
+        //{
+          
+        //}
 
-        
+
+
     }
 }

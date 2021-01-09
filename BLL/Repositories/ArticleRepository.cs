@@ -13,5 +13,11 @@ namespace BLL.Repositories
         {
 
         }
+
+        //根据文章id 获取整个文章
+        public Article GetById(int id)
+        {
+            return dbSet.Where(s =>s.Id==id).SingleOrDefault();
+        }
     }
 }

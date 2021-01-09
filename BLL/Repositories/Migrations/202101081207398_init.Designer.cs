@@ -13,7 +13,7 @@ namespace BLL.Repositories.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202101080516409_init"; }
+            get { return "202101081207398_init"; }
         }
         
         string IMigrationMetadata.Source

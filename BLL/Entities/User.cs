@@ -11,6 +11,7 @@ namespace BLL.Entities
         public string Name { get; set; }
         public string Password { get; set; }
         public User InvitedBy { get; set; }
+        public bool IsMale { get; set; }
         public void Register()
         {
             throw new NotImplementedException("");

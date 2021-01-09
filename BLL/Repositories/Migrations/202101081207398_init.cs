@@ -14,6 +14,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Password = c.String(),
+                        IsMale = c.Boolean(nullable: false),
                         InvitedBy_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)

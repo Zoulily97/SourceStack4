@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4BA2F4C1-8B4B-4F3D-B7FC-38E5BC19AA52}</ProjectGuid>
+    <ProjectGuid>{501DBB49-F7C5-40F2-811C-2DE0CE656C87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceInterface</RootNamespace>
-    <AssemblyName>ServiceInterface</AssemblyName>
+    <RootNamespace>ProdService</RootNamespace>
+    <AssemblyName>ProdService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,11 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleService.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="IArticleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BLL\Repositories\Repositories.csproj">
+      <Project>{548868ec-60b8-492e-98a7-48eebce9d8b8}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
+      <Project>{79a8af21-d673-49c0-9c41-381e9e7e37d7}</Project>
+      <Name>ServiceInterface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{b3f9df19-98b4-4328-aeaa-b22bf032d4ab}</Project>
       <Name>ViewModel</Name>
