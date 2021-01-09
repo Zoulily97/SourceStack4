@@ -28,9 +28,9 @@ namespace BLL.Repositories
             // return entity.Id;
 
         }
-        public T LoadProxy(int id)//只需要拿一个entity的id ,不需要从数据库中取//Load 假装找到
+        public T LoadProxy(int? id)//只需要拿一个entity的id ,不需要从数据库中取//Load 假装找到
         {
-            T entity = new T() { Id = id };
+            T entity = new T() { Id = (int)id };
             dbSet.Attach(entity);
             return entity;
         }

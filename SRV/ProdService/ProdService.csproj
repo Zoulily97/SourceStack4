@@ -47,9 +47,17 @@
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BLL\Entities\Entities.csproj">
+      <Project>{43B40386-4FD9-41B4-BF4B-1973445F52BC}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\BLL\Repositories\Repositories.csproj">
       <Project>{548868ec-60b8-492e-98a7-48eebce9d8b8}</Project>
       <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Global\Global.csproj">
+      <Project>{a8b882bd-9ac7-4e8f-92d6-351e51c6d8ec}</Project>
+      <Name>Global</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
       <Project>{79a8af21-d673-49c0-9c41-381e9e7e37d7}</Project>

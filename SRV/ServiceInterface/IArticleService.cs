@@ -9,7 +9,8 @@ namespace ServiceInterface
 {
    public  interface  IArticleService
     {
-        int Publish(NewModel model, int currentUserId);
+        int Publish(NewModel model, int? currentUserId);
         SingleModel GetById(int id);
+       // void Publish(NewModel model, int? currentUserId);
     }
 }

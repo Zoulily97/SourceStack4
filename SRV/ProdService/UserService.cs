@@ -1,4 +1,6 @@
-﻿using BLL.Repositories;
+﻿using BLL.Entities;
+using BLL.Repositories;
+using Global;
 using ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -8,7 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProdService
+namespace SRV.ProdService
 {
     public class UserService : IUserService
     {
@@ -26,7 +28,7 @@ namespace ProdService
 
         public string GetPwdById(int currentUserId)
         {
-            return "111";
+            return userRepository.LoadProxy(currentUserId).Password;
         }
 
         public int  Register(UserModel model)
@@ -34,7 +36,7 @@ namespace ProdService
             User user = new User
             {
                 Name = model.Name,
-                Password = MD5Crypt(model.Password)
+                Password = model.Password.MD5Crypt()
             };
             // user .Register();
             userRepository.Save(user);

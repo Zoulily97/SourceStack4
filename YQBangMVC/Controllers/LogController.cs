@@ -1,4 +1,4 @@
-﻿using ProdService;
+﻿using SRV.ProdService;
 using ServiceInterface;
 using SRV.ViewModel;
 using SRV.ViewModel.Article;
@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Global;
 
 namespace YQBangMVC.Controllers
 {
@@ -44,7 +45,10 @@ namespace YQBangMVC.Controllers
                 ModelState.AddModelError("", "密码错误");
                 return View();
             }
-            int id = user.Id;
+            HttpCookie cookie = new HttpCookie(Keys.User);
+            cookie.Values.Add(Keys.Id, user.Id.ToString());
+            cookie.Values.Add(Keys.Password, user.Password.MD5Crypt());
+            Response.Cookies.Add(cookie);
             return View();
         }
     }

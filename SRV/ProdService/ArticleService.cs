@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProdService
+namespace SRV.ProdService
 {
     public class ArticleService : IArticleService
     {
@@ -30,7 +30,7 @@ namespace ProdService
             };
         }
 
-        public int Publish(NewModel model, int currentUserId)
+        public int Publish(NewModel model, int? currentUserId)
         {
             Article a1 = new Article
             {
@@ -44,7 +44,11 @@ namespace ProdService
             a1.Author = author;//给文章加一个author
             //articleRepository.context.Set<User>().Attach(author);//暴露了context
             articleRepository.Save(a1);
-            return 1;
+            return  a1.Id;
         }
+
+       
+
+        
     }
 }

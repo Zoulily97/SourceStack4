@@ -1,4 +1,4 @@
-﻿using ProdService;
+﻿using SRV.ProdService;
 using ServiceInterface;
 using SRV.ViewModel.Article;
 using System;
@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YQBangMVC.Helpers;
 
 namespace YQBangMVC.Controllers
 {
@@ -33,20 +34,21 @@ namespace YQBangMVC.Controllers
         public ActionResult New(NewModel model)
         {
             // int currentUserId = 1;
-            bool HasUserId = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);//有没有找到当前cookie，找到了当前currentUserId是什么
-            if (HasUserId)
-            {
-                string pwd = userService.GetPwdById(currentUserId);
-                if (Request.Cookies[Keys.User].Values[Keys.Password]!=pwd)
-                {
-                    throw new ArgumentException("");
+            //bool HasUserId = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);//有没有找到当前cookie，找到了当前currentUserId是什么
+            //if (HasUserId)
+            //{
+            //    string pwd = userService.GetPwdById(currentUserId);
+            //    if (Request.Cookies[Keys.User].Values[Keys.Password]!=pwd)
+            //    {
+            //        throw new ArgumentException("");
 
-                } 
-                int id=articleService.Publish(model, currentUserId);
+            //    } 
+            //    int id= articleService.Publish(model, currentUserId);
 
-            }
-           
-            return View();
+            //}//else
+
+          int articleId=articleService.Publish(model, CookieHelpers.GetCurrentId());
+            return RedirectToAction("Single",new { id= articleId });
         }
         public ActionResult Single(int id)
         {
