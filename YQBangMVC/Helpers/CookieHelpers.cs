@@ -17,7 +17,7 @@ namespace YQBangMVC.Helpers
 
             userService = new UserService();
         }
-        public static int? GetCurrentId()
+        public static  int? GetCurrentUserId()
         {
             //MVC HttpContext.Current拿到当前HttpContext上下文
             NameValueCollection userInfo =HttpContext.Current.Request.Cookies[Keys.User].Values;
@@ -36,11 +36,11 @@ namespace YQBangMVC.Helpers
                 throw new ArgumentException("");
             }
             // string pwd = "";
-            //string pwd = userService.GetPwdById(currentUserId);
-            //if (pwd != pwdInCookie)
-            //{
-            //    throw new ArgumentException();
-            //}
+            string pwd = new UserService().GetPwdById(currentUserId);
+            if (pwd != pwdInCookie)
+            {
+                throw new ArgumentException();
+            }
             return currentUserId;
         }
     }

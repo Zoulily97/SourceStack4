@@ -24,7 +24,7 @@ namespace YQBangMVC.Controllers
         //防御式编程
         //顺利拿到 返回； 拿不到返回null
         //1、Request.Cookies[Keys.User].Value  取出来
-        protected int? GetCurrentId()//可空类型返回null
+        protected int? GetCurrentUserId()//可空类型返回null
         {
             NameValueCollection userInfo = Request.Cookies[Keys.User].Values;
             if (userInfo==null)

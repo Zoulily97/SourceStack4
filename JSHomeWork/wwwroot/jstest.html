@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        var reg = /<a.*?>/gim,
+            li = `<li class="dropdown-header">督导班</li>
+                        <li><a href="/Course/Confusion/New"><span class="fa fa-eye"></span> 督导班</a> </li>
+                        <li><a href="/Course/Confusion/Edit"><span class="fa fa-edit"></span> 疑问发布</a> </li>
+                        <li><a href="/Course/Confusion"><span class="fa fa-list"></span> 疑问列表</a> </li>
+                        <li class="divider"></li>
+                        <li><a href="/Problem?excludeCanceled=true&excludeRewarded=true"><span class="fa fa-list"></span> 列表</a> </li>
+                        <li><a href="/Problem/New"><span class="fa fa-edit"></span> 发布</a></li>`;
+        //非常非常坑的函数：返回的是一个数组，数组中却始终只有一个元素，还需要while循环才能取出所有匹配结果
+        while ((result = reg.exec(li))/* !== null*/) {//result 不声明就使用，这就是全局变量
+            console.log(result[0] + ': ' + reg.lastIndex);
+        };
+        console.log(result);
+      
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
