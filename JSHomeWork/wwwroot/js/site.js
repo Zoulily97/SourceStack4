@@ -98,7 +98,7 @@
 //        console.log("金童/玉女");
 //        break;
 
-       
+
 //}
 //var usercode = 3;
 //switch (usercode) {
@@ -145,7 +145,7 @@
 //var sum=0;
 //for (let i = 0; i < odds.length; i++) {
 //    sum += odds[i].valueOf();
-    
+
 //} 
 //console.log(sum);
 
@@ -186,16 +186,45 @@
 //            yh[i][j] = (j === rows - 1) ? 1 : 0;
 //        } else {
 //            var preRow = i - 1,
-//                //边界值替换
+//                边界值替换
 //                preColumn = j - 1 >= 0 ? yh[preRow][j - 1] :0,
 //                nextColumn = j + 1 < columns ? yh[preRow][j + 1] : 0;
 //            yh[i][j] = preColumn + nextColumn;
 //        }
 //        lines += yh[i][j] + ' ';        
 //    }
-  
+
 //    console.log(lines);
 //}
+
+//yh[i][j]=yh[i-1][j-1]+yh[i-1][j+1]
+
+//var rows = 5,
+//    columns = 2 * rows - 1;
+//var yh = [];
+//for (var i = 0; i < rows; i++) {
+//    yh[i] = [];
+//    var lines = '';
+//    for (var j = 0; j < columns; j++) {
+//        if (i === 0) {
+//            yh[i][j] = (j === rows - 1) ? 1 : '';
+//        }
+//        else {
+//            var preRow = i - 1;
+//            preColumn = j - 1 >= 0 ? yh[preRow][j - 1] : 0;
+//            nextColumn = j + 1 < columns ? yh[preRow][j + 1] : 0;
+//            var current = preColumn + nextColumn;
+//            yh[i][j] = current ? current : '';
+//        } 
+
+//        lines += yh[i][j] + '';
+//    }
+
+//    console.log(lines);
+//}
+
+
+
 
 //输出1000以内的所有“素数 / 质数”（只能被自己和1整除的数）
 //var flag;
@@ -225,44 +254,40 @@
 //console.log(numbers);
 
 //完成：二分查找(有序数组) / 快速排序（选做，参考C#）
-var target = 8;
-var numbers = [1,3,6,8,9,24,90];
-var left=0,
-    middle,
-    right = numbers.length;
+//var target = 45;
+//var numbers = [1,3,6,8,9,24,90];
+//var left=0,
+//    middle,
+//    right = numbers.length-1;
 
-while (left <=right) {
-    middle = (left + right) / 2;
-    if (target > numbers[middle]) {
-        left = middle + 1;
-        break;
-    }
-    else if (target < numbers[middle]) {
-        right = middle - 1
-        break;
-    }
-    else if(target == numbers[middle]){
-        console.log(middle);
-        break;
-    }
-    else {
-        console.log("??");
-        break;
-    }
-   
-}
+//while (left <=right) {
+//    middle = (left + right) / 2;
+//    if (target > numbers[middle]) {
+//        left = middle + 1;
+
+//    }
+//    else if (target < numbers[middle]) {
+//        right = middle - 1;
+
+//    }
+//    else if(target === numbers[middle]){
+//        console.log(middle);
+//        break;
+//    }  
+//}
+//console.log('没有找到');
 
 //var sname = "飞哥";
-function smart() {
-    alert(`${sname}最帅`);
-}
+//function smart() {
+//    alert(`${sname}最帅`);
+//}
 
-function reallySmart() {
-    var sname = '子祥';
-    smart();
-    //局部变量sname有更高优先级
-    console.log(sname);
-}
-reallySmart();
-    //假如var声明在后面
-var sname = "飞哥";  //提升  
+//function reallySmart() {
+//    var sname = '子祥';
+//    smart();
+//    //局部变量sname有更高优先级
+//    console.log(sname);
+//}
+//reallySmart();
+//    //假如var声明在后面
+//var sname = "飞哥";  //提升  
