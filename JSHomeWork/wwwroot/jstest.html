@@ -25,14 +25,68 @@
         //double(a);
         //console.log(a);//8
 
-        var a = [8];
-        function double(number) {
-            number[0] *= 2;
+        //var a = [8];
+        //function double(number) {
+        //    number[0] *= 2;
             
+        //}
+        //double(a);
+        //console.log(a);//16
+
+        //function main(callback) {
+        //    console.log("I'm main function, I invoked func()");
+        //    callback();   //调用了回调函数
+        //}
+        //main(callback);
+
+        //调用方传参
+        //main(function () {
+        //    callback('123455')
+        //})
+
+        //function main(func) {
+        //    console.log("I'm main function, I invoked func()");
+        //    var sname = "飞哥";//准备好回调函数的参数
+        //    func(sname);
+        //}
+        //main(callback); //调用方用参
+
+        //function callback() {    //callback可以决定main函数运行的内容
+        //    console.log("I'm a callback function" + arguments[0]);
+        //}
+
+        var sname = "飞哥";
+        function smart() {
+            alert(`${sname}最帅`);
         }
-        double(a);
-        console.log(a);//16
-      
+
+        function reallySmart() {
+            var sname = '子祥';
+            smart();
+            //局部变量sname有更高优先级
+            console.log(sname);
+        }
+        reallySmart();
+    //假如var声明在后面
+    //var sname = "飞哥";
+
+      //  var age = 100;
+        function outFunc(sname) {
+           // var age = 0;
+            function innerFunc() {
+                alert(age);   //age定义在innerFunc()之外
+            }
+            innerFunc();
+            var age = 0;
+        } 
+        outFunc();
+
+        var China = {};
+        China.Chongqing = {};
+        China.Chongqing.LuckyStack = {};
+        China.Chongqing.LuckyStack.wpz = function () {
+            console.log('i m 111');
+        }
 </script>
 
 </head>
