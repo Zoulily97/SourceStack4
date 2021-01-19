@@ -84,7 +84,6 @@ function Sum(a0, n, d) {
 }
 console.log(Sum(1, 5, 2));//25
 //封装一个函数，建立一个函数getMaxNumber() ，可以接受任意多各种类型的参数，并找出里面最大的数（忽略数值以外的其他类型）
-
 function getMaxNumber(numbers) {
     //var str = numbers.toString();
     //var arr = str.split("");
@@ -97,7 +96,21 @@ function getMaxNumber(numbers) {
     return max;
 }
 //console.log(    getMaxNumber([1, 3, 4, 6, 7, 8]));
-console.log(getMaxNumber([1, "4", false, 34, 789, "999"]));
+console.log(getMaxNumber([1, "4", false, 34, 789, "999", 1000, 89]));
+function getMaxNumber1() {
+    var max = -Infinity;//设为最小
+    for (var i = 0; i < arguments.length; i++) {
+        if (!isNaN(arguments[i])) {
+            if (max < arguments[i]) {
+                max = arguments[i];
+            }
+        }
+    }
+    return max;
+}
+console.log("179hhuu9j" > 1237000098102821);
+console.log("179hhuu9j" > 7898989898);
+console.log(getMaxNumber1("179hhuu9j", 1237000098102821, "4", 34, false, 789, "999", "yuhjy", 8, 7898989898));
 //封装一个函数swap(arr, i, j) ，可以交换数组arr里下标 i 和 j 的值
 function swap(arr, i, j) {
     var temp = arr[i];
@@ -119,45 +132,52 @@ function bubbleSort(array) {
 console.log(bubbleSort([1, 22, 3, 4, 5, 0, 19]));
 //封装函数deleteDuplicated()删除一个数组里面重复的元素
 function deleteDuplicated(numbers) {
+    console.log(numbers);
+    var newNumbers = [];
+    var j = 0;
     for (var i = 0; i < numbers.length; i++) {
-        numbers[i];
-        for (var j = 1; j < numbers.length; j++) {
-            if (numbers[i] === numbers[j]) {
-                numbers.splice(j, 1);//删除功能,第一个参数为第一项位置,第二个参数为要删除几个。 用法:array.splice(index,num),返回值为删除内容,array为结果值
-            }
-        }
+        // numbers[i];
+        //for (var j = 1; j < numbers.length; j++) {
+        //    if (numbers[i] !== numbers[j]) {
+        //        numbers.splice(j, 1);//删除功能,第一个参数为第一项位置,第二个参数为要删除几个。 用法:array.splice(index,num),返回值为删除内容,array为结果值
+        //       
+        //    }
+        //}
+
+        if (numbers[i] !== numbers[(i + 1)]) {
+            newNumbers[j] = numbers[i];
+            j++;
+        }// else 
     }
-    return numbers;
+    // console.log(typeof(newNumbers));
+    return newNumbers;
 }
 console.log(deleteDuplicated([2, 3, 4, 4, 5, 6, 6, 7, 7, 7, 9]));
 //将一个字符串顺序颠倒，比如：'hello,yuanzhan' 变成 'nahznauy,olleh'。
 var input = 'hello,yuanzhan';
 function stringReverse(str) {
     var newstr = "";
-    for (var i = str.length-1; i >=0; i--) {
-        newstr += str[i];       
+    for (var i = str.length - 1; i >= 0; i--) {
+        newstr += str[i];
     }
     return newstr;
 }
 console.log(stringReverse(input));
 //统计出这段文字中有多少个单词：
 //There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings, the parameters to the literal notation do not use quotation marks while the parameters to the constructor function do use quotation - marks.So the following expressions create the same regular expression
-
-function wordsSum(str) {
-    var i, j;
-   
-
+function wordsSum(wordtext) {
+    //console.log(wordtext);
+    var wordstr = wordtext.toString();
+    var words = wordstr.split(' ');
+    //console.log(words);
+    return words.length;
 }
-
+var text = 'There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings, the parameters to the literal notation do not use quotation marks while the parameters to the constructor function do use quotation - marks.So the following expressions create the same regular expression';
+console.log(wordsSum(text));
 //使用“模拟名称空间”技术，构建一个函数函数yz.fei.get(number) ；
 var yz = {};
 yz.fei = {};
 yz.fei.get = {
-   
+
 }
-//作业
-//yz.fei.get(number, handler)除number以外，还可以接受任意多个回调函数handler做参数，得到：0到number间有多少个满足handler条件的整数。
-//回调函数handler能对number进行运算，并返回bool值的，比如has6()
-//get()函数调用回调函数进行运算，只要回调函数运行结果为真，就累加计数
-//最后返回累加值
-//让yz.fei.get(number)调用实现之前“统计含9 / 8 / 6数字个数”的作业
+

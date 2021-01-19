@@ -47,7 +47,8 @@ console.log(arr1);
 //创建一个函数getRandomArray(length, max) ，能返回一个长度不大于length，每个元素值不大于max的随机整数数组。
 function getRandomArray(length, max) {
     var arr = [];
-    for (var i = 0; i < length; i++) {
+    var lengthRandom = Math.random(0, 1) * length;//长度不大于length
+    for (var i = 0; i < lengthRandom; i++) {
 
         arr[i] = Math.ceil(Math.random(0, 1) * max);
     }
