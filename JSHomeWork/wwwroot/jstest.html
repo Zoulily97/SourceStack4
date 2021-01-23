@@ -93,13 +93,29 @@
         var newLength = fruits.unshift('Strawberry');
         console.log(newLength);
 
+        var geoInfo = document.getElementById("geoInfo");
 
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(myGPSFun);
+            alert("ok")
+
+        } else {
+            console.log("浏览器不支持");
+            alert("buok");
+        }
+        function myGPSFun(postion) {
+            var jd = postion.coords.longitude;
+            var wd = postion.coords.latitude;
+            geoInfo.innerText = jd + ":" + wd;
+        }
 
 
 </script>
 
 </head>
 <body>
+   <div id="geoInfo">当前位置：</div>
 
 </body>
 </html>

@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form method="post" style="border :2px solid pink">
+        <div class="form-group">
+            <label for="exampleInputEmail1">密码：（* 必填） </label>
+            <input type="password" class="form-control" name="password" id="inputpassword">
+            <div style="display: none">密码长度不能小于4</div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">验证密码：（* 必填） </label>
+            <input type="password" class="form-control" name="password" id="cofirmpassword" placeholder="和密码相同">
+            <div style="display: none">密码错误</div>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <form style="border :2px solid pink ">
+        <div class="form-group">
+            <label><strong>性别： </strong></label>
+            <div>
+                <input type="radio" name="gender" id="inlineRadio1" value="true" checked>
+                <label>男</label>
+                <input type="radio" name="gender" id="inlineRadio2" value="false">
+                <label>女</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label><strong>生日：</strong></label>
+            <select name="year">
+                <option value="" selected>1991</option>
+                <option value="">1992</option>
+                <option value="">1993</option>
+            </select>
+            <span>年</span>
+            <select name="month">
+                <option value="" selected>1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+            </select>
+            <span>月</span>
+            <select name=" constellation">
+                <option value="" selected>双鱼</option>
+                <option value="">摩羯</option>
+                <option value="">狮子</option>
+            </select>
+            <span>星座</span>
+        </div>
+        <div class="form-group">
+            <label><strong>关键词：</strong></label>
+            <span>一级</span>
+            <select name="keyword">
+                <option value="C#" selected>C#</option>
+                <option value="JAVA">JAVA</option>
+                <option value="PHP">PHP</option>
+            </select>
+            <span>二级</span>
+            <select name="keyword">
+                <option value="1" selected>小白</option>
+                <option value="2">中级</option>
+                <option value="3">高级</option>
+            </select>
+            <input id="" name="keyword" placeholder="自定义关键字" />
+        </div>
+        <div>
+            <label>自我介绍：</label><br />
+            <textarea name="self-introduction">可乐可乐可乐可乐</textarea>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <h1 id="bell" style="color:purple">铃铛闪烁</h1>
+    <div id="problem1" class="problrm">
+        <div>
+            <span>
+                <i class="fa fa-calendar"></i>2020年01月31日 19点56分
+            </span>
+            <span style="float:right">
+                <i class="fa fa-user-circle"></i>
+                <a href="none" class="text-info">弹指一挥间</a>
+                <span>@5</span>
+            </span>
+
+        </div>
+        <h2><span class="text-white" style="background-color:orange" name="state">协助中</span> Windows Server 2016安装Web Farm问题</h2>
+        <p>
+            Windows Server 2016通过Web Paltform或直接下载都无法安装Web Farm问题具体详情描述参考：http://www.kungge.com/kungge/2733.html
+            <a href="/Problem/Edit/@problem.Id" style="color:black">……</a>
+        </p>
+        <label name="keywords">
+            <strong><i class="fa fa-tags"></i>关键字： </strong>
+            <span class="text-white badge bg-dark">编程开发语言</span>
+            <span class="text-white badge bg-dark">C#</span>
+            <span class="text-white badge bg-dark">java</span>
+
+        </label>
+        <br />
+        <label>
+            <span class="fa fa-tags" name="reward">悬赏</span>
+            <span class="text-white badge bg-dark" name="rewardNum">9</span>
+            <span class="fa fa-tags" name="answer">应答</span>
+            <span class="text-white badge bg-dark" name="answerNum">1</span>
+            <span class="fa fa-tags">总结</span>
+            <span class="text-white badge bg-dark" name="summarySum">8</span>
+        </label>
+    </div>
+    <hr />
+    <div id="promble2" class="problrm">
+
+        <div>
+            <span>
+                <i class="fa fa-calendar"></i>2020年01月31日 19点56分
+            </span>
+            <span style="float:right">
+                <i class="fa fa-user-circle"></i>
+                <a href="none" class="text-info">弹指一挥间</a>
+                <span>@5</span>
+            </span>
+        </div>
+        <h2><span class="text-white" style="background-color:orange" name="state">协助中</span> Windows Server 2016安装Web Farm问题</h2>
+        <p>
+            Windows Server 2016通过Web Paltform或直接下载都无法安装Web Farm问题具体详情描述参考：http://www.kungge.com/kungge/2733.html
+            <a href="/Problem/Edit/@problem.Id" style="color:black">……</a>
+        </p>
+        <label name="keyword">
+            <strong><i class="fa fa-tags"></i>关键字： </strong>
+
+            <span class="text-white badge bg-dark">编程开发语言</span>
+
+            <span class="text-white badge bg-dark">C#</span>
+
+            <span class="text-white badge bg-dark">java</span>
+
+        </label>
+        <br />
+        <label>
+            <span class="fa fa-tags" name="reward">悬赏</span>
+            <span class="text-white badge bg-dark" name="rewardNum">1</span>
+            <span class="fa fa-tags" name="answer">应答</span>
+            <span class="text-white badge bg-dark" name="answerNum">1</span>
+            <span class="fa fa-tags">总结</span>
+            <span class="text-white badge bg-dark" name="summarySum">0</span>
+
+        </label>
+
+    </div>
+    <hr />
+    <div id="promble3" class="problrm">
+
+        <div>
+            <span>
+                <i class="fa fa-calendar"></i>2020年01月31日 19点56分
+            </span>
+            <span style="float:right">
+                <i class="fa fa-user-circle"></i>
+                <a href="none" class="text-info">弹指一挥间</a>
+                <span>@5</span>
+            </span>
+        </div>
+        <h2><span class="text-white" style="background-color:pink" name="state">已撤销</span> Windows Server 2016安装Web Farm问题</h2>
+        <p>
+            Windows Server 2016通过Web Paltform或直接下载都无法安装Web Farm问题具体详情描述参考：http://www.kungge.com/kungge/2733.html
+            <a href="/Problem/Edit/@problem.Id" style="color:black">……</a>
+        </p>
+        <label name="keywords">
+            <strong><i class="fa fa-tags"></i>关键字： </strong>
+
+            <span class="text-white badge bg-dark">编程开发语言</span>
+
+            <span class="text-white badge bg-dark">C#</span>
+
+            <span class="text-white badge bg-dark">java</span>
+
+        </label>
+        <br />
+        <label>
+            <span class="fa fa-tags" name="reward">悬赏</span>
+            <span class="text-white badge bg-dark" name="rewardNum">1</span>
+            <span class="fa fa-tags" name="answer">应答</span>
+            <span class="text-white badge bg-dark" name="answerNum">1</span>
+            <span class="fa fa-tags">总结</span>
+            <span class="text-white badge bg-dark" name="summarySum">10</span>
+
+        </label>
+
+    </div>
+
+    <!--<script src="js/DOM.js"></script>-->
+    <script>
+
+        //统计有多少个悬赏大于1的求助
+        function pCountRewardover1() {
+            var count = 0;
+            var rewardNumarr = document.getElementsByName("rewardNum");
+            for (var i = 0; i < rewardNumarr.length; i++) {
+                if (rewardNumarr[i].innerText > 1) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        console.log(pCountRewardover1());
+        //将状态为“协助中”的求助背景改成灰黑色
+        function changeBackColor() {
+            var statearr = document.getElementsByName("state");
+            for (var i = 0; i < statearr.length; i++) {
+                if (statearr[i].innerText == "协助中") {
+                    statearr[i].style = "background-color:darkgray"
+                }
+            }
+        }
+        changeBackColor();
+        //如果总结数为0，将其从DOM树中删除
+        function removesum0() {
+            var summarySumarr = document.getElementsByName("summarySum");
+            for (var i = 0; i < summarySumarr.length; i++) {
+                if (summarySumarr[i].innerText == 0) {
+                    summarySumarr[i].previousElementSibling.remove();
+                    summarySumarr[i].remove();
+                }
+            }
+
+        }
+        removesum0();
+        //写一个函数getKeywordsCount() ，可以统计某个求助使用了多少关键字
+        function getKeywordsCount() {
+            var count = 0;
+            //// var problemsnode = document.getElementsByName("keywords")[0];
+            // var node = problemsnode.childNodes;
+            // for (var i = 0; i < node.length; i++) {
+
+
+
+            // }
+            //if (keywordsnode.nextSibling.innerText != null) {
+            //    count++;
+
+            //}
+            return count;
+        }
+        console.log(getKeywordsCount());
+        //密码的长度不能小于4
+        document.getElementsByName("password")[0].onblur = function () {
+            console.log(this.value);
+            console.log(this.value.length);
+            if (this.value.length < 4) {
+                //alert("你的密码长度不能小于4位");
+                this.nextElementSibling.style = "display:block;background-color:pink";
+            }
+        }
+        //密码和确认密码必须一致
+        document.getElementsByName("password")[1].onblur = function () {
+            var password = document.getElementsByName("password")[0];
+            //var cofirmpassword = document.getElementsByName("password")[1];
+            if (password.value != this.value) {
+                this.nextElementSibling.style = "display:block;background-color:pink";
+            }
+        }
+
+        function userdata() {
+            var gender = document.getElementsByName("gender");
+            for (var i = 0; i < gender.length; i++) {
+                if (gender[i].checked) {
+                    console.log("性别" + gender[i].nextElementSibling.innerText);
+                }
+            }
+            var year = document.getElementsByName("year")[0].selectedOptions[0].innerText;
+            var month = document.getElementsByName("month")[0].selectedOptions[0].innerText;
+            console.log(year + "年" + month + "月");
+            var introduction = document.getElementsByName("self-introduction")[0].value;
+            var keyword1 = document.getElementsByName("keyword")[0].selectedOptions[0].innerText;
+            var keyword2 = document.getElementsByName("keyword")[1].selectedOptions[0].innerText;
+            var keyword3 = document.getElementsByName("keyword")[2].innerText;
+            console.log("关键字" + keyword1 + keyword2 + keyword3);
+            console.log("自我介绍" + introduction);
+        }
+        userdata();
+        ////实现铃铛（没有学bootstrap的同学用文字代替）闪烁效果-->
+        if (document.getElementById("bell").style.color == 'purple') {
+            setInterval(function () {
+                if (document.getElementById("bell").style.color != 'purple') {
+                    document.getElementById("bell").setAttribute("style", "color:purple");
+                    console.log(22);
+                }
+                else if(document.getElementById("bell").style.color == 'purple') {
+                    document.getElementById("bell").setAttribute("style", "color:pink");
+                    console.log(233);
+                }
+            }, 1000);
+        }
+        
+
+    </script>
+</body>
+</html>
+<!--//作业
+//模拟求助首页，并：
+//   统计有多少个悬赏大于1的求助
+//   将状态为“协助中”的求助背景改成灰黑色
+//   如果总结数为0，将其从DOM树中删除
+//   写一个函数getKeywordsCount() ，可以统计某个求助使用了多少关键字
+
+//参考用户注册页面，显示错误提示：
+//   密码的长度不能小于4
+//    密码和确认密码必须一致
+//参考用户资料页面，控制台显示出用户的：性别 / 出生年月 / 关注（关键字）/ 自我介绍
+//实现铃铛（没有学bootstrap的同学用文字代替）闪烁效果-->
