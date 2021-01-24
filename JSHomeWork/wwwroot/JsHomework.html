@@ -10,6 +10,8 @@
 
 </head>
 <body>
+    <button id="pre">前一页</button>
+    <button id="next">后一页</button>
     <table>
         <thead>
             <tr>
@@ -29,5 +31,20 @@
     <script src="js/nameSpace.js"></script>
     <script src="js/Built-int.js"></script>
     <script src="js/BOM.js"></script>
+    <script>
+        function pre() {
+            document.getElementById("pre").onclick = function myfunction() {
+                history.go(-1);      
+            }
+
+        }
+        pre();
+        function next() {
+            document.getElementById("next").onclick = function myfunction() {
+                history.forward();
+            }
+        }
+        next();
+    </script>
 </body>
 </html>
