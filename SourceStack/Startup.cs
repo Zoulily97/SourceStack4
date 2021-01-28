@@ -27,7 +27,7 @@ namespace SourceStack
             //services.AddRazorPages();
 
             services.AddRazorPages()
-                .AddMvcOptions(opt=>opt.Filters.Add<IsShowLogOnAttribute>())//添加全局Filter 调用泛型方法
+                //.AddMvcOptions(opt=>opt.Filters.Add<IsShowLogOnAttribute>())//添加全局Filter 调用泛型方法
                  // .AddMvcOptions(opt => opt.Filters.Add(typeof(IsShowLogOnAttribute)))//添加全局Filter 调用普通方法
               .AddRazorPagesOptions(opt =>
        {

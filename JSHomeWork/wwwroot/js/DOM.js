@@ -25,20 +25,20 @@ function countReward(number) {
 }
 console.log("悬赏数大于1求助数量" + countReward(1));
 //将状态为“协助中”的求助背景改成灰黑色
-var statearr = document.getElementsByName("state");
-for (var i = 0; i < statearr.length; i++) {
-    if (statearr[i].innerText == "协助中") {
-        statearr[i].style = "background-color:darkgray"
+var states = document.getElementsByName("state");
+for (var i = 0; i < states.length; i++) {
+    if (states[i].innerText == "协助中") {
+        states[i].style = "background-color:darkgray"
     }
 }
 
 //如果总结数为0，将其从DOM树中删除
 function removesum0() {
-    var summarySumarr = document.getElementsByName("summarySum");
-    for (var i = 0; i < summarySumarr.length; i++) {
-        if (summarySumarr[i].innerText == 0) {
-            summarySumarr[i].previousElementSibling.remove();
-            summarySumarr[i].remove();
+    var summarySums = document.getElementsByName("summarySum");
+    for (var i = 0; i < summarySums.length; i++) {
+        if (summarySums[i].innerText == 0) {
+            summarySums[i].previousElementSibling.remove();
+            summarySums[i].remove();
         }
     }
 
