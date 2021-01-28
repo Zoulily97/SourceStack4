@@ -18,9 +18,9 @@
         //};
         //console.log(result);
         //var a = 8;
-        //function double(a) {   //难以理解的话，可以把 参数a 重命名为 number……   
+        //function double(a) {   //难以理解的话，可以把 参数a 重命名为 number……
         //    a *= 2;
-        //    
+        //
         //}
         //double(a);
         //console.log(a);//8
@@ -28,7 +28,7 @@
         //var a = [8];
         //function double(number) {
         //    number[0] *= 2;
-            
+
         //}
         //double(a);
         //console.log(a);//16
@@ -67,10 +67,10 @@
             console.log(sname);
         }
         reallySmart();
-    //假如var声明在后面
-    //var sname = "飞哥";
+        //假如var声明在后面
+        //var sname = "飞哥";
 
-      //  var age = 100;
+        //  var age = 100;
         //function outFunc(sname) {
         //   // var age = 0;
         //    function innerFunc() {
@@ -78,7 +78,7 @@
         //    }
         //    innerFunc();
         //    var age = 0;
-        //} 
+        //}
         //outFunc();
 
         //var China = {};
@@ -107,15 +107,71 @@
         function myGPSFun(postion) {
             var jd = postion.coords.longitude;
             var wd = postion.coords.latitude;
-            geoInfo.innerText = jd + ":" + wd;
+         //   geoInfo.innerText = jd + ":" + wd;
         }
 
 
-</script>
+        function changeColor(color) {
+            document.getElementsByTagName('h2')[0].style.color = color;
+        }
+        var buttons = document.getElementsByTagName('button');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                changeColor(this.style.color);
+            }
+        }
+
+    </script>
 
 </head>
 <body>
-   <div id="geoInfo">当前位置：</div>
+    <h2>万紫千红</h2>
+    <button style="color:red" name="change-color">变红</button>
+    <button style="color:blue" name="change-color">变蓝</button>
+    <button style="color:yellow" name="change-color">变黄</button>
+    <main></main>
+    <div id="geoInfo">当前位置：</div>
+    <button type="button">加载</button>
+    <form method="post">
+        <label>用户名：<input type="text" name="username" /></label><br />
+        <label>密码：<input type="password" name="password" /></label><br />
+        <label>确认密码：<input type="password" /></label><br />
+        <a href="border.html">border.html</a>
+        <div>
+            <label>性别：</label>
+            <label><input type="radio" value="female" name="gender" />男</label>
+            <label><input type="radio" value="male" name="gender" />女</label>
+        </div>
+        <div>
+            <label>来自：</label>
+            <select name="province">
+                <option value="js">江苏</option>
+                <option value="hn">湖南</option>
+                <option value="hlj">黑龙江</option>
+            </select>
+        </div>
+        <div>
+            <label>自我介绍：</label><br />
+            <textarea name="self-introduction"></textarea>
+        </div>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+        <label><input type="checkbox" id="remember" />记住我</label>
+    </form>
 
+
+    <script>
+        document.getElementsByTagName("button")[0].onclick = function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "/border.html?id=9");
+            xhttp.send();
+            xhttp.onload = function () {
+
+                document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
+                console.log(xhttp.response);
+            }
+        }
+
+    </script>
 </body>
 </html>

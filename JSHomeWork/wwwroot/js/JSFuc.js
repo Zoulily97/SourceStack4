@@ -173,7 +173,26 @@ function wordsSum(wordtext) {
     return words.length;
 }
 var text = 'There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings, the parameters to the literal notation do not use quotation marks while the parameters to the constructor function do use quotation - marks.So the following expressions create the same regular expression';
-console.log(wordsSum(text));
+console.log(wordsSum(text));//48
+function AiValidate(theChar) {
+    return (theChar >= "a" && theChar <= "z") || (theChar >= "A" && theChar <= "Z");
+}
+function wordstextCount(wordtext) {
+    var count=0;
+    wordtext += '';
+    for (var i = 0; i < wordtext.length; i++) {
+        var current = wordtext[i],
+            pre = wordtext[i - 1];
+        if (!AiValidate(current)) {
+            if (AiValidate(pre)){
+                count++;
+            }//else
+
+        }//else     
+    }
+   return count;
+}
+console.log(wordstextCount(text));//48
 //使用“模拟名称空间”技术，构建一个函数函数yz.fei.get(number) ；
 var yz = {};
 yz.fei = {};

@@ -11,32 +11,43 @@
 function guessNumber() {
     var targrtNum = Math.floor(Math.random() * 1000);
     console.log(targrtNum);
-    for (var i = 0; i < 20; i++) {
+    for (var i = 1; i <15; i++) {
         var inputnum = window.prompt("猜数字的游戏开始，请输入你猜的数字")
-        if (targrtNum !== inputnum) {
-            if (i < 10) {
-                if (targrtNum < inputnum) {
+        if (targrtNum != inputnum)
+        {
+            if (i < 10)
+            {
+                if (targrtNum < inputnum)
+                {
                     window.alert("大了");
-                } else if (targrtNum > inputnum) {
+                }
+                else 
+                {
                     window.alert("小了")
                 }
             }
-            else if (i > 10) {
+            else if (i === 10)
+            {
                 return window.alert('用了10次都还没猜对,弹出：^ (*￣(oo) ￣) ^');
-            }
+            }//else
         }
-        if (targrtNum == inputnum) {
-            if (i <= 5) {
+        if (targrtNum == inputnum)
+        {
+            if (i < 6)
+            {
                 return window.alert("碉堡了！");
             }
-            else if (i <= 8) {
+            else if (i < 8)
+            {
                 return window.alert("666！");
             }
-            else if (i <= 10) {
+            else if (i < 10)
+            {
                 return window.alert("猜到了。")
-            }
+            }//else
 
         }
+        //else
     }
 
 }
@@ -48,6 +59,4 @@ function smart(n) {
     console.log("第" + n + "周，源栈同学" + random + "人");
     setTimeout(smart, 2000, n);   
 }
-
-setTimeout(smart, 2000, 3);
-//setInterval(smart, 500);
+//setTimeout(smart, 2000, 3);
