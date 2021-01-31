@@ -33,17 +33,17 @@ for (var i = 0; i < states.length; i++) {
 }
 
 //如果总结数为0，将其从DOM树中删除
-function removesum0() {
+function removeSum(amount) {
     var summarySums = document.getElementsByName("summarySum");
     for (var i = 0; i < summarySums.length; i++) {
-        if (summarySums[i].innerText == 0) {
+        if (summarySums[i].innerText == amount) {
             summarySums[i].previousElementSibling.remove();
             summarySums[i].remove();
         }
     }
 
 }
-removesum0();
+removeSum(0);
 //写一个函数getKeywordsCount() ，可以统计某个求助使用了多少关键字
 
 function getKeywordsCount() {
@@ -80,7 +80,7 @@ document.getElementById("cofirmpassword").onblur = function () {
 }
 //参考用户资料页面，控制台显示出用户的：性别 / 出生年月 / 关注（关键字）/ 自我介绍
     var gender = document.getElementsByName("gender");
-    for (var i = 0; i < gender.length; i++) {
+    for (let i = 0; i < gender.length; i++) {
         if (gender[i].checked) {
             console.log("性别" + gender[i].nextElementSibling.innerText);
         }
@@ -109,21 +109,17 @@ document.getElementById("cofirmpassword").onblur = function () {
 
 
 //个“前一页”按钮，点击可以跳到上一页；一个“下一页”按钮，点击可以跳到下一页；
-function pre() {
     document.getElementById("pre").onclick = function myfunction() {
         history.go(-1);
     }
-}
-pre();
-function next() {
+
     document.getElementById("next").onclick = function myfunction() {
         // location.assign("http://17bang.ren/Article/486");
         history.forward();
     }
-}
-next();
+
 //一个“转到”按钮，点击该按钮页面可跳转到文本框指定的网址页面-->
 document.getElementById("goto").onclick = function () {
-    location.assign("https://localhost:44300/JsHomework.html");
+    location.assign(document.getElementById("wz").value);
 
 }

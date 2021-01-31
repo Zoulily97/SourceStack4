@@ -1,0 +1,71 @@
+﻿@page
+@model JSHomeWork.Pages.Register.HomeModel
+@{
+}
+<div class="col-md-5">
+    <style>
+        .field-validation-error {
+            color: orangered;
+            font-size: 12px;
+        }
+    </style>
+
+
+    <form method="post" class="">
+        <section style="padding:10px;border:2px dashed #f1f1f1;background-color:lightyellow;border-radius: 5px;margin-bottom:20px;">
+            <div class="text-right" style="padding-bottom:15px;"><a><i class="fa fa-question-circle"></i>为什么需要邀请</a></div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">邀请人：（* 必填，<a href="#">没有邀请人</a>） </label>
+                <input type="text" id="" class="form-control" data-val="true" data-val-required="用户名不能为空" name="NewUser.Inviter.Name" value="">
+                <span class="field-validation-valid" data-valmsg-for="NewUser.Inviter.Name" data-valmsg-replace="true"></span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">邀请码：（* 必填） </label>
+                <input type="text" class="form-control" data-val="true" data-val-length="4位字符" data-val-length-max="4" data-val-required="邀请码 不能为空" id="InviteCode" maxlength="4" name="InviteCode" value="">
+                <span class="field-validation-valid" data-valmsg-for="InviteCode" data-valmsg-replace="true"></span>
+            </div>
+        </section>
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名：（* 必填） </label>
+            <input type="text" class="form-control" id="username" data-val="true" data-val-required="用户名不能为空" name="NewUser.Name" value="">
+            <span class="field-validation-valid" data-valmsg-for="NewUser.Name" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">密码：（* 必填） </label>
+            <input type="password" class="form-control" data-val="true" data-val-required="密码不能为空" id="NewUser_Password" name="NewUser.Password">
+            <span class="field-validation-valid" data-valmsg-for="NewUser.Password" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">验证密码：（* 必填） </label>
+            <input type="password" class="form-control" placeholder="和密码相同" id="ComfirmPassword" name="ComfirmPassword">
+            <span class="field-validation-valid" data-valmsg-for="ComfirmPassword" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">验证码：（* 必填） </label>
+            <input type="text" class="form-control" style="width:100px" id="VerifyCode" name="VerifyCode" value="">
+            <span class="field-validation-valid" data-valmsg-for="VerifyCode" data-valmsg-replace="true"></span>
+            <span style="display:inline-block">点击输入框显示</span>
+        </div>
+        <button class="btn btn-primary" id="submit" type="submit">提交</button>
+        <button class="btn btn-light" type="reset">重置</button>
+        <a href="logon.html" class=" btn float-right text-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>
+
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8ELlztQXq_1PsqT09MDdR_riiwEGWbc0JXZsDuFNydaTlK5JZnet8YL5Nhtw98OkueKa9TEfTGz67B6HJFegjpVbxmubdeW-3vCfDEs3KO7ZAo1QUywLFavS_NCHOG4bE5avxNbud3Ub5lU1eRySjQo">
+    </form>
+
+
+
+
+    <script>
+    if (document.getElementById("username").value=="zl") {
+        document.getElementsByTagName("form")[0].onsubmit = function (event) {
+            event.preventDefault();
+        }
+    }//else
+
+    </script>
+
+
+
+
+</div>

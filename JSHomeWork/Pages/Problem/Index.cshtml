@@ -2,3 +2,545 @@
 @model JSHomeWork.Pages.Problem.IndexModel
 @{
 }
+<div class="col-md-8">
+    <small zyf-problem-filter-show=""></small>
+    <span style="top:60px;" class="visible-xs-inline visible-sm-inline flag">
+        <a zyf-show-widget="">
+            <span class="fa fa-window-restore"></span> 更多
+        </a>
+    </span>
+    <form action="/Problem" method="post" novalidate="novalidate">
+        <div class="clearfix" style="border-left:6px solid gray; margin-bottom:20px">
+            <div class="pull-left text-muted" style="margin:5px 0;">
+                <label class="checkbox-inline">
+                    <span class="fa fa-eye-slash"></span> 不显示
+                </label>
+                <label class="checkbox-inline">
+                    <input data-val="true" data-val-required="ExcludeRewarded 字段是必需的。" id="ExcludeRewarded" name="ExcludeRewarded" type="checkbox" value="true" zyf-filter-problems=""><input name="ExcludeRewarded" type="hidden" value="false">已酬谢
+                </label>
+                <label class="checkbox-inline">
+                    <input data-val="true" data-val-required="ExcludeCanceled 字段是必需的。" id="ExcludeCanceled" name="ExcludeCanceled" type="checkbox" value="true" zyf-filter-problems=""><input name="ExcludeCanceled" type="hidden" value="false">已撤销
+                </label>
+                <label class="checkbox-inline">
+                    <input data-val="true" data-val-required="ExcludeInProgress 字段是必需的。" id="ExcludeInProgress" name="ExcludeInProgress" type="checkbox" value="true" zyf-filter-problems=""><input name="ExcludeInProgress" type="hidden" value="false">协助中
+                </label>
+            </div>
+            <div class="pull-left text-info" style="margin:5px 0;">
+                <label class="checkbox-inline">
+                    <span class="fa fa-eye"></span> 只显示
+                </label>
+                <label class="checkbox-inline">
+                    <input data-val="true" data-val-required="OnlyMyFocus 字段是必需的。" id="OnlyMyFocus" name="OnlyMyFocus" type="checkbox" value="true" zyf-filter-problems=""><input name="OnlyMyFocus" type="hidden" value="false"> 我的关注
+                </label>
+                <label class="checkbox-inline">
+                    <input data-val="true" data-val-required="OnlySummaried 字段是必需的。" id="OnlySummaried" name="OnlySummaried" type="checkbox" value="true" zyf-filter-problems=""><input name="OnlySummaried" type="hidden" value="false"> 有总结
+                </label>
+            </div>
+
+        </div>
+    </form>   
+    <div style="margin:10px 0; clear:both;">
+        <div zyf-problem-single="" style="padding-top:20px;">
+            <span data-toggle="tooltip" title="" data-original-title="更新：2020年10月17日 13点54分">
+                <small class="text-muted" zyf-datetime="">
+                    <span>
+                        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2020年10月10日 02点14分</span>
+                    </span>
+                </small>
+
+            </span>
+            <span class="pull-right">
+                <span data-author-id="4244" zyf-problem-author="">
+
+
+                    <span data-toggle="tooltip" title="" data-original-title="">
+                        <span class="fa fa-user-circle-o" style="color:"></span>
+                        <a href="/User/4244" zyf-show-contact="4244" style="color:">
+                            skyline
+                        </a>
+                    </span>
+                    <a href="/FAQ/Credit#" data-toggle="tooltip" title="" class="text-muted" style="position:relative; top:-1px;" data-original-title="中级教师">
+                        <span>⑤</span>
+                    </a>
+                </span>
+            </span>
+            <div style="font-size:24px;word-break:break-all;">
+
+                <span class="problem-status label-default">已撤销</span>
+
+
+                <span class="hide" zyf-problem-status="" data-problem-status="Cancel"></span>
+                <a href="/Problem/750" style="color:black;">自学完了源栈二期视频，想请教一下简历和面试相关事宜</a>
+            </div>
+            <div style="margin-top:10px; margin-bottom:10px; word-break:break-all;" class="clearfix">
+                <div class="pull-right text-center remote-icon" style="margin-left:20px;" zyf-problem-need-remote="" title="" data-toggle="tooltip" data-original-title="远程">
+                    <b class="iconfont icon-remote-help" style="font-size:20px;"></b>
+                </div>
+                在B站看完了二期视频，目前准备投简历找工作，但对于简历的撰写没有思绪，也想请教一下面试经验之类，麻烦大家不吝赐教。<a href="/Problem/750" data-toggle="tooltip" title="" data-original-title="全文">……</a>
+                <a href="/Problem/AdminEdit?id=750" class="hide" zyf-problem-edit-admin="" style="margin-left:15px;">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </div>
+            <p zyf-problem-keyword="" style="clear:both;">
+                <span class="fa fa-tags " style="margin-right:10px;"></span>
+                <span zyf-keyword="2" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 2 次">
+                    <a href="/Problem?keyword=446" style="color:white;">面试</a>
+                </span>
+                <span zyf-keyword="2" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 2 次">
+                    <a href="/Problem?keyword=676" style="color:white;">简历</a>
+                </span>
+                <span zyf-keyword="19" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 19 次">
+                    <a href="/Problem?keyword=184" style="color:white;">职场</a>
+                </span>
+                <span zyf-keyword="97" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 97 次">
+                    <a href="/Problem?keyword=169" style="color:white;">C#</a>
+                </span>
+                <a href="" class="hide" zyf-keyword-update="750">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </p>
+            <div class="status">
+                <span>
+                    <span>
+
+                        <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                            <span class="iconfont icon-money"></span>
+                        </a>
+
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">悬赏：</span>
+                    </span>
+                    <span zyf-problem-bounty="" data-toggle="tooltip" title="" data-original-title="定额">50</span>
+                </span>
+                <span>
+                    <a href="/Problem/750#new-comment" zyf-problem-single-item-new-comment="">
+                        <span class="fa fa-heart" style="color:red;"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">应答：</span>
+                    </a>
+                    <span zyf-comment-count="">
+                        0
+                    </span>
+                </span>
+                <span>
+                    <a href="/Problem/750#summary" zyf-problem-single-item-summary="">
+                        <span class="fa fa-key"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">总结：</span>
+                    </a>
+                    <span>
+                        0
+                    </span>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <div style="margin:10px 0; clear:both;">
+        <div zyf-problem-single="" style="padding-top:20px;">
+            <span data-toggle="tooltip" title="" data-original-title="更新：2019年08月15日 19点51分">
+                <small class="text-muted" zyf-datetime="">
+                    <span>
+                        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2019年08月05日 10点07分</span>
+                    </span>
+                </small>
+
+            </span>
+            <span class="pull-right">
+                <span data-author-id="2720" zyf-problem-author="">
+
+
+                    <span data-toggle="tooltip" title="" data-original-title="">
+                        <span class="fa fa-user-circle-o" style="color:"></span>
+                        <a href="/User/2720" zyf-show-contact="2720" style="color:">
+                            28zhu
+                        </a>
+                    </span>
+                    <a href="/FAQ/Credit#" data-toggle="tooltip" title="" class="text-muted" style="position:relative; top:-1px;" data-original-title="导师">
+                        <span>⑦</span>
+                    </a>
+                </span>
+            </span>
+            <div style="font-size:24px;word-break:break-all;">
+
+                <span class="problem-status label-default">已撤销</span>
+
+
+                <span class="hide" zyf-problem-status="" data-problem-status="Cancel"></span>
+                <a href="/Problem/736" style="color:black;">有一个自定义UI控件，此控件使用在不同的系统中会有不同的呈现，之前的做法是各种switch case，阅读代码时让人很难受，另外新创建一个用到此控件的系统，要修改代码的地方也多，只要有swich case 的地方都要再加一个case。请教一个好一些的方式来处理这个问题，目的是让代码更加清楚</a>
+            </div>
+            <div style="margin-top:10px; margin-bottom:10px; word-break:break-all;" class="clearfix">
+                RT，也不知道描述的清楚不清楚。求一个思路<a href="/Problem/736" data-toggle="tooltip" title="" data-original-title="全文">……</a>
+                <a href="/Problem/AdminEdit?id=736" class="hide" zyf-problem-edit-admin="" style="margin-left:15px;">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </div>
+            <p zyf-problem-keyword="" style="clear:both;">
+                <span class="fa fa-tags " style="margin-right:10px;"></span>
+                <span zyf-keyword="1" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 1 次">
+                    <a href="/Problem?keyword=709" style="color:white;">不限</a>
+                </span>
+                <span zyf-keyword="55" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 55 次">
+                    <a href="/Problem?keyword=164" style="color:white;">顾问咨询</a>
+                </span>
+                <span zyf-keyword="242" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 242 次">
+                    <a href="/Problem?keyword=163" style="color:white;">编程开发语言</a>
+                </span>
+                <a href="" class="hide" zyf-keyword-update="736">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </p>
+            <div class="status">
+                <span>
+                    <span>
+
+                        <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                            <span class="iconfont icon-money"></span>
+                        </a>
+
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">悬赏：</span>
+                    </span>
+                    <span zyf-problem-bounty="" data-toggle="tooltip" title="" data-original-title="定额">15</span>
+                </span>
+                <span>
+                    <a href="/Problem/736#new-comment" zyf-problem-single-item-new-comment="">
+                        <span class="fa fa-heart" style="color:red;"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">应答：</span>
+                    </a>
+                    <span zyf-comment-count="">
+                        1
+                    </span>
+                </span>
+                <span>
+                    <a href="/Problem/736#summary" zyf-problem-single-item-summary="">
+                        <span class="fa fa-key"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">总结：</span>
+                    </a>
+                    <span>
+                        0
+                    </span>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <div style="margin:10px 0; clear:both;">
+        <div zyf-problem-single="" style="padding-top:20px;">
+            <span data-toggle="tooltip" title="" data-original-title="更新：2019年06月24日 19点32分">
+                <small class="text-muted" zyf-datetime="">
+                    <span>
+                        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2019年06月15日 23点27分</span>
+                    </span>
+                </small>
+
+            </span>
+            <span class="pull-right">
+                <span data-author-id="520" zyf-problem-author="">
+
+
+                    <span data-toggle="tooltip" title="" data-original-title="">
+                        <span class="fa fa-user-circle-o" style="color:"></span>
+                        <a href="/User/520" zyf-show-contact="520" style="color:">
+                            WhiteWater
+                        </a>
+                    </span>
+                    <a href="/FAQ/Credit#" data-toggle="tooltip" title="" class="text-muted" style="position:relative; top:-1px;" data-original-title="初级教师">
+                        <span>④</span>
+                    </a>
+                </span>
+            </span>
+            <div style="font-size:24px;word-break:break-all;">
+
+                <span class="problem-status label-default">已撤销</span>
+
+
+                <span class="hide" zyf-problem-status="" data-problem-status="Cancel"></span>
+                <a href="/Problem/730" style="color:black;">手动导入jar包，运行报错的问题</a>
+            </div>
+            <div style="margin-top:10px; margin-bottom:10px; word-break:break-all;" class="clearfix">
+                <div class="pull-right text-center remote-icon" style="margin-left:20px;" zyf-problem-need-remote="" title="" data-toggle="tooltip" data-original-title="远程">
+                    <b class="iconfont icon-remote-help" style="font-size:20px;"></b>
+                </div>
+                运行就报这个错误，这个jar包我导入项目了的，不然编译都无法通过。<a href="/Problem/730" data-toggle="tooltip" title="" data-original-title="全文">……</a>
+                <a href="/Problem/AdminEdit?id=730" class="hide" zyf-problem-edit-admin="" style="margin-left:15px;">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </div>
+            <p zyf-problem-keyword="" style="clear:both;">
+                <span class="fa fa-tags " style="margin-right:10px;"></span>
+                <span zyf-keyword="10" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 10 次">
+                    <a href="/Problem?keyword=165" style="color:white;">Windows</a>
+                </span>
+                <span zyf-keyword="12" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 12 次">
+                    <a href="/Problem?keyword=167" style="color:white;">Linux</a>
+                </span>
+                <span zyf-keyword="5" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 5 次">
+                    <a href="/Problem?keyword=128" style="color:white;">IDEA</a>
+                </span>
+                <span zyf-keyword="71" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 71 次">
+                    <a href="/Problem?keyword=170" style="color:white;">JAVA</a>
+                </span>
+                <span zyf-keyword="7" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 7 次">
+                    <a href="/Problem?keyword=175" style="color:white;">C++</a>
+                </span>
+                <span zyf-keyword="68" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 68 次">
+                    <a href="/Problem?keyword=162" style="color:white;">工具软件</a>
+                </span>
+                <span zyf-keyword="24" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 24 次">
+                    <a href="/Problem?keyword=161" style="color:white;">操作系统</a>
+                </span>
+                <span zyf-keyword="242" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 242 次">
+                    <a href="/Problem?keyword=163" style="color:white;">编程开发语言</a>
+                </span>
+                <a href="" class="hide" zyf-keyword-update="730">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </p>
+            <div class="status">
+                <span>
+                    <span>
+
+                        <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                            <span class="iconfont icon-money"></span>
+                        </a>
+
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">悬赏：</span>
+                    </span>
+                    <span zyf-problem-bounty="" data-toggle="tooltip" title="" data-original-title="定额">10</span>
+                </span>
+                <span>
+                    <a href="/Problem/730#new-comment" zyf-problem-single-item-new-comment="">
+                        <span class="fa fa-heart" style="color:red;"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">应答：</span>
+                    </a>
+                    <span zyf-comment-count="">
+                        0
+                    </span>
+                </span>
+                <span>
+                    <a href="/Problem/730#summary" zyf-problem-single-item-summary="">
+                        <span class="fa fa-key"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">总结：</span>
+                    </a>
+                    <span>
+                        0
+                    </span>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <div style="margin:10px 0; clear:both;">
+        <div zyf-problem-single="" style="padding-top:20px;">
+            <span data-toggle="tooltip" title="" data-original-title="更新：2019年06月23日 00点09分">
+                <small class="text-muted" zyf-datetime="">
+                    <span>
+                        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2019年06月13日 11点27分</span>
+                    </span>
+                </small>
+
+            </span>
+            <span class="pull-right">
+                <span data-author-id="3896" zyf-problem-author="">
+
+
+                    <span data-toggle="tooltip" title="" data-original-title="">
+                        <span class="fa fa-user-circle-o" style="color:"></span>
+                        <a href="/User/3896" zyf-show-contact="3896" style="color:">
+                            chenzhiwei
+                        </a>
+                    </span>
+                    <a href="/FAQ/Credit#" data-toggle="tooltip" title="" class="text-muted" style="position:relative; top:-1px;" data-original-title="初级教师">
+                        <span>④</span>
+                    </a>
+                </span>
+            </span>
+            <div style="font-size:24px;word-break:break-all;">
+
+                <span class="problem-status label-default">已撤销</span>
+
+
+                <span class="hide" zyf-problem-status="" data-problem-status="Cancel"></span>
+                <a href="/Problem/728" style="color:black;">electron-vue 项目  存放localStorage 的cookie  问题</a>
+            </div>
+            <div style="margin-top:10px; margin-bottom:10px; word-break:break-all;" class="clearfix">
+                <div class="pull-right text-center remote-icon" style="margin-left:20px;" zyf-problem-need-remote="" title="" data-toggle="tooltip" data-original-title="远程">
+                    <b class="iconfont icon-remote-help" style="font-size:20px;"></b>
+                </div>
+                现在是用electron-vue 做的 桌面应用程序用localStorage存放的用户信息重新安装之后 存放的数据依旧不会清除最好是能知道怎么解决问题其次是知道具体信息存放位置<a href="/Problem/728" data-toggle="tooltip" title="" data-original-title="全文">……</a>
+                <a href="/Problem/AdminEdit?id=728" class="hide" zyf-problem-edit-admin="" style="margin-left:15px;">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </div>
+            <p zyf-problem-keyword="" style="clear:both;">
+                <span class="fa fa-tags " style="margin-right:10px;"></span>
+                <span zyf-keyword="9" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 9 次">
+                    <a href="/Problem?keyword=249" style="color:white;">vue</a>
+                </span>
+                <span zyf-keyword="242" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 242 次">
+                    <a href="/Problem?keyword=163" style="color:white;">编程开发语言</a>
+                </span>
+                <a href="" class="hide" zyf-keyword-update="728">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </p>
+            <div class="status">
+                <span>
+                    <span>
+
+                        <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                            <span class="iconfont icon-money"></span>
+                        </a>
+
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">悬赏：</span>
+                    </span>
+                    <span zyf-problem-bounty="" data-toggle="tooltip" title="" data-original-title="定额">30</span>
+                </span>
+                <span>
+                    <a href="/Problem/728#new-comment" zyf-problem-single-item-new-comment="">
+                        <span class="fa fa-heart" style="color:red;"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">应答：</span>
+                    </a>
+                    <span zyf-comment-count="">
+                        5
+                    </span>
+                </span>
+                <span>
+                    <a href="/Problem/728#summary" zyf-problem-single-item-summary="">
+                        <span class="fa fa-key"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">总结：</span>
+                    </a>
+                    <span>
+                        0
+                    </span>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <div style="margin:10px 0; clear:both;">
+        <div zyf-problem-single="" style="padding-top:20px;">
+            <span data-toggle="tooltip" title="" data-original-title="更新：2019年05月22日 09点56分">
+                <small class="text-muted" zyf-datetime="">
+                    <span>
+                        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2019年05月20日 18点32分</span>
+                    </span>
+                </small>
+
+            </span>
+            <span class="pull-right">
+                <span data-author-id="2720" zyf-problem-author="">
+
+
+                    <span data-toggle="tooltip" title="" data-original-title="">
+                        <span class="fa fa-user-circle-o" style="color:"></span>
+                        <a href="/User/2720" zyf-show-contact="2720" style="color:">
+                            28zhu
+                        </a>
+                    </span>
+                    <a href="/FAQ/Credit#" data-toggle="tooltip" title="" class="text-muted" style="position:relative; top:-1px;" data-original-title="导师">
+                        <span>⑦</span>
+                    </a>
+                </span>
+            </span>
+            <div style="font-size:24px;word-break:break-all;">
+
+                <span class="problem-status label-default">已撤销</span>
+
+
+                <span class="hide" zyf-problem-status="" data-problem-status="Cancel"></span>
+                <a href="/Problem/727" style="color:black;">使用StackExchange.Redis.dll访问Redis时引用程序集错误</a>
+            </div>
+            <div style="margin-top:10px; margin-bottom:10px; word-break:break-all;" class="clearfix">
+                <div class="pull-right text-center remote-icon" style="margin-left:20px;" zyf-problem-need-remote="" title="" data-toggle="tooltip" data-original-title="远程">
+                    <b class="iconfont icon-remote-help" style="font-size:20px;"></b>
+                </div>
+                Message = "未能加载文件或程序集“System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)"<a href="/Problem/727" data-toggle="tooltip" title="" data-original-title="全文">……</a>
+                <a href="/Problem/AdminEdit?id=727" class="hide" zyf-problem-edit-admin="" style="margin-left:15px;">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </div>
+            <p zyf-problem-keyword="" style="clear:both;">
+                <span class="fa fa-tags " style="margin-right:10px;"></span>
+                <span zyf-keyword="97" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 97 次">
+                    <a href="/Problem?keyword=169" style="color:white;">C#</a>
+                </span>
+                <span zyf-keyword="242" title="" data-toggle="tooltip" class="badge badge-has-used" style="margin-right:5px;" data-original-title="已使用 242 次">
+                    <a href="/Problem?keyword=163" style="color:white;">编程开发语言</a>
+                </span>
+                <a href="" class="hide" zyf-keyword-update="727">
+                    <span class="fa fa-pencil-square-o"></span> 修改
+                </a>
+            </p>
+            <div class="status">
+                <span>
+                    <span>
+
+                        <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                            <span class="iconfont icon-money"></span>
+                        </a>
+
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">悬赏：</span>
+                    </span>
+                    <span zyf-problem-bounty="" data-toggle="tooltip" title="" data-original-title="定额">22</span>
+                </span>
+                <span>
+                    <a href="/Problem/727#new-comment" zyf-problem-single-item-new-comment="">
+                        <span class="fa fa-heart" style="color:red;"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">应答：</span>
+                    </a>
+                    <span zyf-comment-count="">
+                        0
+                    </span>
+                </span>
+                <span>
+                    <a href="/Problem/727#summary" zyf-problem-single-item-summary="">
+                        <span class="fa fa-key"></span>
+                        <span class="visible-sm-inline visible-md-inline visible-lg-inline">总结：</span>
+                    </a>
+                    <span>
+                        1
+                    </span>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+
+
+    <nav>
+        <ul class="pagination">
+            <li class="active"><a id="1" href="/Problem/Page-1">1</a></li>
+            <li class=""><a id="2" href="/Problem/Page-2">2</a></li>
+            <li class=""><a id="3" href="/Problem/Page-3">3</a></li>
+            <li class=""><a id="4" href="/Problem/Page-4">4</a></li>
+            <li class=""><a id="5" href="/Problem/Page-5">5</a></li>
+            <li class=""><a id="6" href="/Problem/Page-6">6</a></li>
+            <li class=""><a id="7" href="/Problem/Page-7">7</a></li>
+            <li class=""><a id="8" href="/Problem/Page-8">8</a></li>
+            <li class=""><a id="9" href="/Problem/Page-9">9</a></li>
+            <li class=""><a id="10" href="/Problem/Page-10">10</a></li>
+            <li><a id="2" href="/Problem/Page-2">&gt;&gt;</a></li>
+        </ul>
+    </nav><div class="modal fade" tabindex="-1" role="dialog" zyf-keyword-update-modal="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title"><span class="fa fa-pencil-square-o"></span> 修改关键字</h4>
+                </div>
+                <div class="modal-body" zyf-keyword-update-modal-body="">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+</div>
