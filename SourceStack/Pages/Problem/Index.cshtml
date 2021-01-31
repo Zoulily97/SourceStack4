@@ -40,9 +40,6 @@
 
     </div>
 </form>
-<div id="AD">
-    这是一个广告
-</div>
 <div style="margin:10px 0; clear:both;">
     <div zyf-problem-single="" style="padding-top:20px;">
         <span data-toggle="tooltip" title="" data-original-title="更新：2020年10月17日 13点54分">
@@ -276,22 +273,22 @@
 </div>
 <hr>
 
+<form style="width:500px;border:1px solid red">
+    <h4>这是广告</h4>
 
-<nav>
-    <ul class="pagination">
-        <li class="active"><a id="1" href="/Problem/Page-1">1</a></li>
-        <li class=""><a id="2" href="/Problem/Page-2">2</a></li>
-        <li class=""><a id="3" href="/Problem/Page-3">3</a></li>
-        <li class=""><a id="4" href="/Problem/Page-4">4</a></li>
-        <li class=""><a id="5" href="/Problem/Page-5">5</a></li>
-        <li class=""><a id="6" href="/Problem/Page-6">6</a></li>
-        <li class=""><a id="7" href="/Problem/Page-7">7</a></li>
-        <li class=""><a id="8" href="/Problem/Page-8">8</a></li>
-        <li class=""><a id="9" href="/Problem/Page-9">9</a></li>
-        <li class=""><a id="10" href="/Problem/Page-10">10</a></li>
-        <li><a id="2" href="/Problem/Page-2">&gt;&gt;</a></li>
-    </ul>
-</nav>
+ 
+    <div class="form-group">
+        <label for="exampleInputEmail1">文字内容：（* 必填） </label>
+        <input type="text" class="form-control" id="username">
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">链接：（* 必填） </label>
+        <input type="password" class="form-control">
+
+    </div>
+</form>
+
 <div class="modal fade" tabindex="-1" role="dialog" zyf-keyword-update-modal="">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -310,7 +307,7 @@
     <div style="border:2px dashed #f6f6f6">
         <h4><i class="fa fa-tags"></i>  关键字</h4>
         <hr />
-        <a href="#" class="badge badge-dark"  >编程开发语言</a>
+
         <a href="#" id="keyword1" class="badge badge-dark">C#</a>
         <a href="#" class="badge badge-dark">JAVA</a>
         <a href="#" class="badge badge-dark">工具软件</a>
@@ -445,13 +442,20 @@
         <small style="float:right;"><a href="#"><i class="fa fa-audio-description" aria-hidden="true"></i>广告</a></small>
 
     </div>
-    <script>    
-            document.getElementById("keyword1").onmouseover = function (e) {
-                var showcount = document.createElement("span");
-                var count = 3;
-                showcount.innerText = count + "次";
-                this.appendChild(showcount);
-            }   
+    @*<script src="~/js/Event.js"></script>*@
+    <script>
+        document.getElementById("keyword1").onmouseover = function (e) {
+            var showcount = document.createElement("span");
+            var count = 3;
+            showcount.innerText = count + "次";
+            this.appendChild(showcount);
+        }
+
+
+
+            //参考求助首页侧边栏“免费广告发布”弹出Modal，实现（不需要弹出Modal）：
+              //根据下拉列表选中项，填充“文字内容”和“链接”文本框
+              //勾选修改的checkbox，实现“文字内容”和“链接”文本框的禁用和启用
     </script>
 }
 
