@@ -45,7 +45,7 @@ namespace SourceStack.Pages.Article
             if (id < articleRepository.ArticleCount()) {
                 NextTitle = articleRepository.Find(id + 1).Title;
             }
-            Article.keywords = new KeywordRepository().FindArticle(Article.Id);
+         //   Article.keywords = new KeywordRepository().FindArticle(Article.Id);
                 //item.Comments=new CommentRepository().
             
 

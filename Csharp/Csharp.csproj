@@ -55,6 +55,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository1.cs" />
     <Compile Include="test\BeforeWork.cs" />
     <Compile Include="test\Work.cs" />
     <Compile Include="_17bang1.Designer.cs">

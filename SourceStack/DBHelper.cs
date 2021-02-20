@@ -10,6 +10,8 @@ namespace SourceStack
     class DBHelper
     {
         private const string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+        
+
         public IDbConnection GetNewConnection()
         {
             return new SqlConnection(connectionString);
