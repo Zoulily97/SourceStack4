@@ -11,66 +11,89 @@ namespace ADO
 
         static void Main(string[] args)
         {
+
+
+            DBHelper dBHelper = new DBHelper();
+
+            //SqlCommand commands1 = new SqlCommand { CommandText = "delete Student where id=2" };
+            //SqlCommand commands2= new SqlCommand { CommandText = "delete Student where id=1" };
+            //SqlCommand[] commands = { commands1, commands2 };
+            //dBHelper.DeleteRange(commands);
+
+            //删除多条
+            int[] ids = { 3, 4, 1007 };
+            IDbCommand[] commands = new IDbCommand[ids.Length];
+            for (int i = 0; i < ids.Length; i++)
+            {
+                commands[i] = new SqlCommand
+                {
+                    CommandText = "delete Student where id=@pid"
+                };
+                IDataParameter pid = new SqlParameter("@pid",ids[i]);
+                commands[i].Parameters.Add(pid);
+            }
+            dBHelper.DeleteRange(commands);
+
+
+
+
+
+
+
+
+
+
+
             Console.WriteLine("Hello World!");
 
             //string name = Console.ReadLine();
-           // string password = Console.ReadLine();
-
-
-            //1、链接数据库
-            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
-            // IDbConnection connection = new SqlConnection(connectionString);
-            //  打开数据库
-            // using 释放资源
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (IDbTransaction transaction = connection.BeginTransaction())
-                {
-                    try
-                    {
-                        IDbCommand command = new SqlCommand();
-                        command.Transaction = transaction;//仍然需要指定链接 //能够正常执行
-                        command.CommandText = "UPDATE Student SET Age -= 1;";
-                        command.ExecuteNonQuery();
-
-                        //会违反Age>0的约束
-                        command.CommandText = "UPDATE Student SET Age -= 108;";
-                        command.ExecuteNonQuery();
-
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        //注意不能对异常“不予处理”，直接吞了
-                        throw;
-                    }
-                }
+            // string password = Console.ReadLine();
 
 
 
+            #region 
+
+            //#region 11
+            ////1、链接数据库
+            //string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            //// IDbConnection connection = new SqlConnection(connectionString);
+            ////  打开数据库
+            //// using 释放资源
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+
+            //    using (IDbTransaction transaction = connection.BeginTransaction())
+            //    {
+            //        try
+            //        {
+            //            IDbCommand command = new SqlCommand();
+            //            command.Connection = connection;//仍然需要指定链接
+            //            command.Transaction = transaction; 
+            //            //能够正常执行
+            //            command.CommandText = "UPDATE Student SET Age -= 1;";
+            //            command.ExecuteNonQuery();
 
 
+            //            //会违反Age>0的约束
+            //            command.CommandText = "UPDATE Student SET Age -= 108;";
+            //            command.ExecuteNonQuery();
 
-
-
-
-
-
-
-
-
-
-
-
-
+            //            transaction.Commit();
+            //        }
+            //        catch (Exception)
+            //        {
+            //            transaction.Rollback();
+            //            //注意不能对异常“不予处理”，直接吞了
+            //            throw;
+            //        }
+            //    }
+            //    #endregion
                 //2、数据库命令
-               // IDbCommand command = new SqlCommand();
+                // IDbCommand command = new SqlCommand();
                 //Command对象中必须要有依赖两个属性：属性给他赋值
-              //  command.Connection = connection;
-              //  command.CommandType = CommandType.StoredProcedure;
+                //  command.Connection = connection;
+                //  command.CommandType = CommandType.StoredProcedure;
                 //  command.CommandText = "insert  Student values(5,N'廖',N'005',N'20');";
                 //3、执行
                 //int rows = command.ExecuteNonQuery();
@@ -110,11 +133,12 @@ namespace ADO
                 //}
 
 
-              //  command.CommandText = "insert  Student([Name]) values(N'廖er');" +
-              //                       "select @@identity";
-              ////  command.ExecuteScalar();
-              //  Console.WriteLine(command.ExecuteScalar());
-            }
+                //  command.CommandText = "insert  Student([Name]) values(N'廖er');" +
+                //                       "select @@identity";
+                ////  command.ExecuteScalar();
+                //  Console.WriteLine(command.ExecuteScalar());
+        //    }
+            #endregion
             //
 
             //try

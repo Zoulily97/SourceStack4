@@ -9,7 +9,10 @@ namespace ADO
 {
     class DBHelper
     {
-        private const string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+        private const string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; 
+                                                Initial Catalog = YQBang4; Integrated Security = True;";
+
+
         public IDbConnection GetNewConnection()
         {
             return new SqlConnection(connectionString);
@@ -55,6 +58,7 @@ namespace ADO
 
             }
         }
+
         public int Insert(string cmdText)
         {
             return executeNonQuery(cmdText);
@@ -65,6 +69,8 @@ namespace ADO
         }
 
 
+
+        //一个方法中完成多个commands
         public void DeleteRange(IDbCommand[] commands)
         {
             using (IDbConnection connection = GetNewConnection())
