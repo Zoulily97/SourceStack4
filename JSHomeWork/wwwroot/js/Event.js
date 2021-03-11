@@ -17,9 +17,11 @@
 //后输入的关键字显示在前面
 document.getElementById("keyword1").onmouseover = function () {
     var showcount = document.createElement("span");
+    showcount.style="position:relative;left:-10px;top:-16px;color:red"
     var count = 3;
     showcount.innerText = count + "次";
     this.appendChild(showcount);
+    //
 }
 window.onscroll = function () {
     console.log("scroll");

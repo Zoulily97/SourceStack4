@@ -8,10 +8,79 @@ using System.Linq;
 
 namespace Csharp
 {
+
+    class Person1
+    {
+        public int Age { get; set; }
+    }
+
+
     public class Program
     {
-        static void Main(string[] args)
+
+        public  static void  maopao(int[] array)
         {
+            
+            int temp = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j <array.Length; j++)
+                {
+                    if (array[j] < array[i])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+
+                    }
+                }
+
+            }
+            Console.WriteLine(array);
+        }
+
+
+       public static int F(int[] a1, int start, int end)
+        {
+            if (start == end)//递归边界
+                return a1[start];
+
+            return a1[start] + F(a1, start + 1, end);//递归公式
+        }
+
+            static void Main(string[] args)
+        {
+            int[] arraym = { 1, 23, 33, 4, 5 };
+            maopao(arraym);
+
+            int[] a1 = { 1, 2, 3, 4, 5 };
+            Console.WriteLine(F(a1,0,4));
+
+
+            int i1 = 20;
+            int i2 = i1;
+            i1++;
+            Console.WriteLine("i2"+i2);//20
+            Console.WriteLine(i1);//21
+
+            Person1 p11 = new Person1();
+            p11.Age = 20;
+            Person1 p22 =p11;
+            p11.Age++;
+            Console.WriteLine("p22.Age"+p22.Age);//21
+
+            int i11 = 10;
+
+            Console.WriteLine("i11++"+i11++);//10
+            Console.WriteLine(i11);//11
+            Console.WriteLine(++i11);//12
+            Console.WriteLine(i11);//12
+            Console.WriteLine("i11=20");
+            Console.WriteLine(i11=20);//20
+            Console.WriteLine("i11==20");
+            Console.WriteLine(i11==20);//true
+
+
 
             Console.WriteLine(Sum()); ;
             Console.WriteLine(CovDate(7278));
