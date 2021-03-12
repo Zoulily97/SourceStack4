@@ -16,7 +16,6 @@ namespace SourceStack
         {
             return new SqlConnection(connectionString);
         }
-
         private int executeNonQuery(string cmdText, params IDataParameter[] dataParameters)
         {
             IDbCommand command = new SqlCommand();
@@ -26,7 +25,6 @@ namespace SourceStack
             }
             return executeNonQuery(command);
         }
-
         public int executeNonQuery(IDbCommand command)
         {
             using (IDbConnection connection = GetNewConnection()) {
@@ -35,6 +33,11 @@ namespace SourceStack
                 return command.ExecuteNonQuery();
             }
         }
+        /// <summary>
+        /// 非参数化ExecuteNonQuery
+        /// </summary>
+        /// <param name="cmdText"></param>
+        /// <returns></returns>
         public int ExecuteNonQuery(string cmdText)
         {
             using (IDbConnection connection = GetNewConnection()) {
@@ -52,16 +55,18 @@ namespace SourceStack
 
             }
         }
-        public int Insert(string cmdText)
+        public int Insert(string cmdText, params IDataParameter[] dataParameters)
         {
-            return executeNonQuery(cmdText);
+            return executeNonQuery(cmdText, dataParameters);
         }
         public int Delete(string cmdText, params IDataParameter[] dataParameters)
         {
             return executeNonQuery(cmdText, dataParameters);
         }
-
-
+        /// <summary>
+        /// 执行多个comandsDeleteRange
+        /// </summary>
+        /// <param name="commands"></param>
         public void DeleteRange(IDbCommand[] commands)
         {
             using (IDbConnection connection = GetNewConnection()) {
@@ -72,7 +77,6 @@ namespace SourceStack
                 }
 
             }
-
         }
         public void DeleteRange(string cmdText, params IDataParameter[] dataParameters)
         {
@@ -86,9 +90,9 @@ namespace SourceStack
             DeleteRange(commands);
         }
 
-        public int Update(string cmdText)
+        public int Update(string cmdText, params IDataParameter[] dataParameters)
         {
-            return executeNonQuery(cmdText);
+            return executeNonQuery(cmdText, dataParameters);
         }
 
         internal DbDataReader ExecuteReader(string cmdText, params IDataParameter[] dataParameters)
