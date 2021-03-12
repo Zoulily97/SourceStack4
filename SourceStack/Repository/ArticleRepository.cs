@@ -133,9 +133,6 @@ namespace SourceStack.Repository
                 }
              
             } 
-
-
-
             return articles.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
         }
 

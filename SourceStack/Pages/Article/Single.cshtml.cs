@@ -38,13 +38,18 @@ namespace SourceStack.Pages.Article
             int id = Convert.ToInt32(RouteData.Values["id"]);
             //PreID = id - 1;
             //NextID = id + 1;
-            if (id > 1) {
-                PreTitle = articleRepository.Find(id - 1).Title;
-            }
+
+            //上一一个问题
+            //if (id > 1) {
+            //    PreTitle = articleRepository.Find(id - 1).Title;
+            //}
+
             Article = articleRepository.Find(id);
-            if (id < articleRepository.ArticleCount()) {
-                NextTitle = articleRepository.Find(id + 1).Title;
-            }
+            //下一个问题
+            //if (id < articleRepository.ArticleCount()) {
+            //    NextTitle = articleRepository.Find(id + 1).Title;
+            //}
+
          //   Article.keywords = new KeywordRepository().FindArticle(Article.Id);
                 //item.Comments=new CommentRepository().
             

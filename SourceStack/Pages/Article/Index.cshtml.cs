@@ -32,6 +32,8 @@ namespace SourceStack.Pages.Article
             //int pageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
             int pageIndex = Convert.ToInt32(RouteData.Values["id"]);
             Articles = articleRepository.Get(pageIndex, 2);
+
+
             foreach (var item in Articles) {
                // item.keywords = new KeywordRepository().FindArticle(item.Id);
                 //item.Comments=new CommentRepository().
