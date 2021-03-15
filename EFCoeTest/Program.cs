@@ -8,10 +8,11 @@ namespace EFCoeTest
     {
         static void Main()
         {
-            //DB();
+           DB();
+
             // DB1();
-            IList<ProblemStatus> problemStatuses = new List<ProblemStatus> { ProblemStatus.assist, ProblemStatus.Rewarded };
-            GetBy(problemStatuses, false, false);
+            //IList<ProblemStatus> problemStatuses = new List<ProblemStatus> { ProblemStatus.assist, ProblemStatus.Rewarded };
+            //GetBy(problemStatuses, false, false);
             //Console.WriteLine(GetBy(problemStatuses, false, false).Count());//6
         }
 

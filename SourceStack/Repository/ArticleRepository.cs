@@ -134,6 +134,7 @@ namespace SourceStack.Repository
              
             } 
             return articles.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            //跳过多上行，取多少行
         }
 
         public Article Find(int id)
@@ -163,7 +164,10 @@ namespace SourceStack.Repository
             return articles.Where(a => a.Id == id).SingleOrDefault();
 
         }
-        void Delete() { }
+        void Delete()
+        {
+
+        }
         void Save(Article Article)
         {
             articles.Add(Article);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -58,6 +59,29 @@ namespace SourceStack.Repository
                 },
             };
 
+        }
+        public IList<Keyword> Get()
+        {
+            keywords = new List<Keyword>();
+            string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            using (IDbConnection connection = new SqlConnection(connectionString)) {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"select * from Keywords";
+                DbDataReader reader = (DbDataReader)command.ExecuteReader();
+                if (reader.HasRows) {
+                    while (reader.Read()) {
+                        Keyword keyword = new Keyword {
+                            Id = (int)reader["ID"],
+                            Name=(string)reader["Name"]
+                        };
+                        keywords.Add(keyword);
+                    }
+                }
+
+            }
+            return keywords;
         }
 
         public Keyword Find(int id)

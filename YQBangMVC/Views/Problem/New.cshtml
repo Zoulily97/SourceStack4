@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Dual_93.cshtml";
+}
+
+<h2>我要求助</h2>
+<form method="post">
+    <div class="text-info" style="padding:10px 10px 0 10px; margin-bottom:15px;">
+        <p>
+            这是你第一次发布求助，求助发布成功系统会奖励你 20
+            <a href="/FAQ/Credit" data-toggle="tooltip" class="water" title="" data-original-title="点击了解">
+                帮帮点
+            </a>
+            。
+        </p>
+        <p>
+            你还没有<a href="/FAQ/Problem#first">自由发布权限</a>
+            ，为了保证求助的质量，我们会帮助你检查完善该求助内容，然后再公开显示，请耐心等待。<br>
+            中途如有任何问题，工作人员会主动和你联系，请注意保持联系方式畅通。
+        </p>
+        <div class="form-group">
+            <label>标题：（* 必填）</label>
+            <input class="form-control" data-val="true" placeholder="简明扼要，不超过255字" type="text" />
+        </div>
+        <div class="form-group">
+            <label>说明：（* 必填）</label>
+            <textarea id="editor_id" class="form-control" name="content" style="height:500px;"></textarea>
+
+        </div>
+        <div class="form-group">
+            <label>关键字：（* 使用空格分隔）</label>
+            <div zyf-keyword-show="" style="padding-bottom:3px;"></div>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default ">--- 1级 ---</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" zyf-keyword-dropdownlist="1">
+                        <li><a data-keyword-id="163">编程开发语言</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="input-group-btn input-group-btn-middle" zyf-keyword-dropdownlist-2="">
+                    <button type="button" class="btn btn-default ">--- 2级 ---</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" zyf-keyword-dropdownlist="2"></ul>
+                </div>
+                <input type="text" class="form-control" placeholder="自定义关键字，使用空格分隔" zyf-keyword-input="">
+            </div>
+            <input data-val="true" data-val-required="* 关键字不能为空" id="Keywords" name="Keywords" type="hidden" value="" zyf-keyword-submit-value="">
+            <span class="field-validation-valid" data-valmsg-for="Keywords" data-valmsg-replace="true"></span>
+        </div>
+        <div class="form-group">
+            <label>定向求助：（<a zyf-user-recommend="">推荐</a> <small><span class="fa fa-question-circle text-info" data-toggle="tooltip" title="" data-original-title="根据关键字筛选用户"></span></small>）</label>
+            <div class="input-group">
+                <span class="input-group-addon">wew</span>
+                <input type="text" class="form-control" placeholder="输入你想要求助的大神用户名" zyf-problem-invitee-name="">
+
+            </div>
+            <div zyf-search-username-result=""></div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox pull-right" style="margin:0px; /*去除checkbox的影响*/">
+                <label><input data-val="true" data-val-required="Settlement 字段是必需的。" id="Settlement" name="Settlement" type="checkbox" value="true" zyf-problem-reward-settlement=""><input name="Settlement" type="hidden" value="false">据实结算</label>
+            </div>
+            <label>
+                悬赏
+                <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                    <span class="iconfont icon-money"></span> 帮帮币
+                </a>
+                ：（<a href="/Money/Owner">现有<span zyf-current-money="" class="credit">0</span>枚</a>
+                <small class="fa fa-refresh text-info" data-toggle="tooltip" title="" zyf-money-available-refresh="" data-original-title="刷新"></small>
+                <input id="CurrentCredit" name="CurrentCredit" type="hidden" value="0" zyf-hide-current-money="">）
+            </label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <a href="/FAQ/Money" data-toggle="tooltip" class="credit" title="" data-original-title="点击了解">
+                        <span class="iconfont icon-money"></span>
+                    </a>
+                </span>
+                <input class="form-control" data-rule-creditenough="[zyf-current-money]" data-val="true" data-val-number="字段 悬赏帮帮币 必须是一个数字。" data-val-regex="* 悬赏帮帮币只能为正整数" data-val-regex-pattern="^[1-9][0-9]*$" data-val-required="* 悬赏帮帮币不能为空" id="Reward" name="Reward" placeholder="正整数，建议10枚以上" type="text" value="" zyf-problem-reward-amount="">
+                <span class="input-group-addon">枚</span>
+            </div>
+            <a href="/FAQ/Money#gain" class="pull-right"><span class="fa fa-question-circle"></span> 如何获得“帮帮币”</a>
+            <span class="field-validation-valid" data-valmsg-for="Reward" data-valmsg-replace="true"></span>
+        </div>
+        <input type="submit" class="btn btn-primary loading" value="发布">
+        <button type="button" class="btn btn-default">保存基本内容</button>
+    </div>
+</form>
+
+@section Description{
+    <ol>
+        <li>重置密码的邮件会发送到你填写的Email中。</li>
+        <li>输入用户名之后，还要点击旁边的🔎按钮，以完成Email地址的填写。</li>
+        <li>现目前，还没有针对未激活Email做特殊提示，请务必确保Email正确。</li>
+    </ol>
+}

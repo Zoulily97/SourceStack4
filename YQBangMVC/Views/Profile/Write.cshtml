@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "个人注册";
+    Layout = "~/Views/Shared/_Dual_551.cshtml";
+}
+
+<h2>个人资料</h2>
+<label>头像：（* 仅限jpg/png/gif）</label>
+<div class="input-group">
+    <input class="form-control" type="text"  placeholder="页面提交时上传文件">
+    <span class="btn input-group-addon file_browser" >浏览</span>
+</div>
+<div class="form-group">
+    <label>性别：</label>
+    <label class="checkbox-inline">
+        <input id="IsFemale" name="IsFemale" type="radio" value="True"> 男
+    </label>
+    <label class="checkbox-inline">
+        <input id="IsFemale" name="IsFemale" type="radio" value="False"> 女
+    </label>
+</div>
+<div class="form-group">
+
+    <label>生日：</label>
+    <div class="input-group">
+        <select class="form-control" data-val="true" data-val-number="字段 BirthYear 必须是一个数字。" id="BirthYear" name="BirthYear">
+            <option value="">----</option>
+            <option>2016</option>
+            
+            <option>1957</option>
+        </select>
+        <span class="input-group-addon">年</span>
+        <select class="form-control" data-val="true" data-val-number="字段 BirthMonth 必须是一个数字。" id="BirthMonth" name="BirthMonth">
+            <option value="">--</option>
+            <option>1</option>
+         
+            <option>11</option>
+            <option>12</option>
+        </select>
+        <span class="input-group-addon">月</span>
+        <select class="form-control" id="Constellation" name="Constellation">
+            <option value="">--</option>
+            <option>白羊座</option>
+          
+            <option>双鱼座</option>
+        </select>
+        <span class="input-group-addon">星座</span>
+    </div>
+</div>
+<div class="form-group">
+    <label>关键字：（* 使用空格分隔）</label>
+    <div zyf-keyword-show="" style="padding-bottom:3px;"></div>
+    <div class="input-group">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default ">--- 1级 ---</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" zyf-keyword-dropdownlist="1">
+                <li><a data-keyword-id="163">编程开发语言</a></li>
+                
+
+            </ul>
+        </div>
+        <div class="input-group-btn input-group-btn-middle" zyf-keyword-dropdownlist-2="">
+            <button type="button" class="btn btn-default ">--- 2级 ---</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" zyf-keyword-dropdownlist="2"></ul>
+        </div>
+        <input type="text" class="form-control" placeholder="自定义关键字，使用空格分隔" zyf-keyword-input="">
+    </div>
+    <input data-val="true" data-val-required="* 关键字不能为空" id="Keywords" name="Keywords" type="hidden" value="" zyf-keyword-submit-value="">
+    <span class="field-validation-valid" data-valmsg-for="Keywords" data-valmsg-replace="true"></span>
+</div>
+<div class="form-group">
+    <label>自我介绍：</label>
+    <textarea class="form-control" cols="20" data-val="true" data-val-length="* 自我介绍的长度不能大于255" data-val-length-max="255"  placeholder="简单的介绍一下自己吧，不超过255字" rows="5"></textarea>
+    <span class="field-validation-valid" data-valmsg-for="SelfDescription" data-valmsg-replace="true"></span>
+</div>
+<input type="submit" class="btn btn-primary loading" value="提交">
+
+@section Description{
+    <ol class="page-introduction-ol">
+
+        <li>Email非常重要，可用于重置密码、接受用户消息（可设置取消）等，强烈建议填写。</li>
+        <li>Email填写之后系统稍后会发送一封确认邮件到该地址，请注意查收，建议将<span class="text-primary">system@17help.net</span>加入白名单，以避免被当做垃圾邮件过滤掉。</li>
+        <li>因为联系方式会公开显示，我们不建议你填写电话号码，以免个人信息被泄露。</li>
+        <li>所以我们推荐使用QQ/微信等网络通信方式。</li>
+        <li>注意填写QQ作为联系方式时，不要忘了留下“添加好友”的验证条件</li>
+
+    </ol>
+
+}

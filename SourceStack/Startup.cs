@@ -32,7 +32,7 @@ namespace SourceStack
               .AddRazorPagesOptions(opt =>
        {
            opt.Conventions.AddPageRoute("/Log/On", "/LogOn");
-           //opt.Conventions.AddPageRoute("/Article/Index", "/Article/Categary-{id:int}");
+           opt.Conventions.AddPageRoute("/Article/Index", "/Article/Categary-{id:int}");
             opt.Conventions.AddPageRoute("/Article/Index", "/Article/Paged{id}");
            opt.Conventions.AddPageRoute("/Article/Single", "/Article/{id}");
        });

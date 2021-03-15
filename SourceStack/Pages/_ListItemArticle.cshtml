@@ -5,9 +5,9 @@
 *@
 @{
 }
-<i class="fa fa-calendar" aria-hidden="true"></i><small class="text-secondary">  @Model.PublishTime</small>
+ <small class="text-secondary">  @Model.PublishTime</small>
  <span style="float:right">作者：<a href="#">Model.Author.Name</a></span>
-<h5><a asp-page="/Article/Single" asp-route-id="@Model.Id" >@Model.Title</a></h5>
+ <h5><a asp-page="/Article/Single" asp-route-id="@Model.Id" >@Model.Title</a></h5>
 <p>
     @Model.Body
 </p>
@@ -23,12 +23,9 @@
     }
 </div>
 <div style="text-align:right">
-
-
     <a href="#" class="ml-3">
         <i class="fa fa-commenting" aria-hidden="true"></i>评论:
-
-        if (Model.Comments != null)
+       @if (Model.Comments != null)
         {
             <span>
                 Model.Comments.Count
@@ -38,14 +35,8 @@
         {
             <span>0</span>
         }
-
     </a>
-    <a href="#" class="text-success ml-3"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>赞:<span>  0</span></a>
-    <a href="#" class="text-secondary ml-3">
-        <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>踩:<span>
-            0
-        </span>
-    </a>
-
+    <a href="#" class="text-success ml-3">赞:<span>  0</span></a>
+    <a href="#" class="text-secondary ml-3">踩:<span>0 </span> </a>
 </div>
     

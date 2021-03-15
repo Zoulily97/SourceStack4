@@ -10,7 +10,7 @@ using E = SourceStack.Entities;
 
 namespace SourceStack.Pages.Article
 {
-  //  [IsShowLogOn]//  Ò³ÃæÏÔÊ¾µÇÂ¼×´Ì¬
+    [IsShowLogOn]//  Ò³ÃæÏÔÊ¾µÇÂ¼×´Ì¬
     public class SingleModel : PageModel
     {
         private ArticleRepository articleRepository;

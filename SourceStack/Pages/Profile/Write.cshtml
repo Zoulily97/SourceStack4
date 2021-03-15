@@ -1,0 +1,18 @@
+﻿@page
+@model SourceStack.Pages.Profile.WriteModel
+@{
+    Layout = "Layout/_Dual";
+    ViewData["Title"] = "个人资料";
+}
+
+
+
+<select asp-for="BirthMonth" asp-items="Model.AvailableMonths"></select>
+@section Description{
+    <ol class="page-introduction-ol" zyf-page-introduction-body="">
+        <li>头像仅接受jpg/png/gif格式，大小不超过256KB。</li>
+        <li>头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+        <li>自我介绍的字数不要超过255字。</li>
+
+    </ol>
+}

@@ -9,7 +9,12 @@
         color: orangered;
         font-size: 12px;
     }
+        .field-validation-error::before {
+            content:  "\f024"; 
+
+        }
 </style>
+
 <div asp-validation-summary="ModelOnly">
 
 </div>
@@ -18,10 +23,10 @@
 
 <form method="post" class="">
     <section style="padding:10px;border:2px dashed #f1f1f1;background-color:lightyellow;border-radius: 5px;margin-bottom:20px;">
-        <div class="text-right" style="padding-bottom:15px;"><a><i class="fa fa-question-circle"></i>为什么需要邀请</a></div>
+        <div class="text-right" style="padding-bottom:15px;"><a>为什么需要邀请</a></div>
         <div class="form-group">
             <label for="exampleInputEmail1">邀请人：Zouli（* 必填，<a href="#">没有邀请人</a>） </label>
-            <input type="text" id="" class="form-control" asp-for=" NewUser.Inviter.Name">
+            <input type="text" class="form-control" asp-for=" NewUser.Inviter.Name">
             <span asp-validation-for="NewUser.Inviter.Name"></span>
         </div>
         <div class="form-group">
@@ -37,7 +42,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">密码：（* 必填） </label>
-        <input type="password" id="password" class="form-control" asp-for="NewUser.Password">
+        <input type="password" class="form-control" asp-for="NewUser.Password">
         <span asp-validation-for="NewUser.Password"></span>
     </div>
     <div class="form-group">

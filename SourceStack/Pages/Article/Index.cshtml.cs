@@ -11,7 +11,7 @@ using SourceStack.Filters;
 namespace SourceStack.Pages.Article
 {
     //[ContextPerRequest]//需要登录才能访问
-     // [IsShowLogOn]//  页面显示登录状态
+      [IsShowLogOn]//  页面显示登录状态
     public class IndexModel : PageModel
     {
         private ArticleRepository articleRepository;

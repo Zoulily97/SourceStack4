@@ -19,7 +19,7 @@ namespace SourceStack.Pages.Log
     public class OnModel : PageModel
     {
         private UserRepository userRepository;
-        public OnModel()
+         public OnModel()
         {
             userRepository = new UserRepository();
         }
@@ -97,7 +97,7 @@ namespace SourceStack.Pages.Log
             if (Remember) {
                 options.Expires = DateTime.Now.AddDays(3);
             }
-            //else nothing
+            //else nothing // Expires after session
             Response.Cookies.Append(Keys.UserId, user.Id.ToString(), options
                             //, new Microsoft.AspNetCore.Http.CookieOptions() {
                             //    Expires = DateTime.Now.AddDays(14)

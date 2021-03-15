@@ -13,8 +13,8 @@ using E = SourceStack.Entities;
 namespace SourceStack.Pages.Message
 {
     [IgnoreAntiforgeryToken]
-    //[ContextPerRequest]//需要登录才能访问
-  //  [IsShowLogOn]//  页面显示登录状态
+   // [ContextPerRequest]//需要登录才能访问
+    [IsShowLogOn]//  页面显示登录状态
     public class IndexModel : PageModel
     {
         private MessageRepository messageRepository;
@@ -63,17 +63,18 @@ namespace SourceStack.Pages.Message
             //if (!string.IsNullOrEmpty(Request.Cookies[Keys.UserId])) {
             //    ViewData["HasLogOn"] = true;
             //}
-            //DataSet
-           // string conStr = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
-           // string queryStr = @"select * from message";
-           //// SqlConnection connection = new SqlConnection(conStr);
-           // DataAdapter adapter = new SqlDataAdapter(queryStr, conStr);
-           // DataSet dsmessage = new DataSet();
-           // adapter.Fill(dsmessage);
-           // adapter.Update(dsmessage);
 
-        //    Messages
-             Messages = messageRepository.GetMine(true);
+            //DataSet
+            // string conStr = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
+            // string queryStr = @"select * from message";
+            //// SqlConnection connection = new SqlConnection(conStr);
+            // DataAdapter adapter = new SqlDataAdapter(queryStr, conStr);
+            // DataSet dsmessage = new DataSet();
+            // adapter.Fill(dsmessage);
+            // adapter.Update(dsmessage);
+
+            // Messages
+            Messages = messageRepository.GetMine(true);//呈现未读的
 
 
             //登录才能访问，不然就是访问指定页面
@@ -86,16 +87,15 @@ namespace SourceStack.Pages.Message
         }
         public RedirectToPageResult OnPost()
         {
-            foreach (var item in Messages) {
-
+            foreach (var item in Messages)
+            {
                 //被选择
-                if (item.Selected) {
+                if (item.Selected) 
+                {
                     messageRepository.Find(item.Id).Read();
-                    // messageRepository.GetMine();
+                    messageRepository.Update();
                 }
-            }
-            // Messages = messageRepository.GetMine(true);//未读的，当前页，就可以注释了
-            //return RedirectToPage("/Article/Index", new { id=3});
+            }        
             return RedirectToPage();//重定向当前页面，没有给参数   //PRG模式
         }
     }

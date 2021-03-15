@@ -6,23 +6,23 @@
 <label class="checkbox-inline">
     <input type="checkbox" id="selectall"> 全选
 </label>
-<form method="post" action=""> 
+<form method="post" > 
     @for (int i = 0; i < Model.Messages.Count; i++)
     {
-       <input asp-for="@Model.Messages[i].Selected"  name="message" />
+        <input asp-for="@Model.Messages[i].Selected" zl-Selected  />
         <span>@Model.Messages[i].CreateTime</span>
         <span>@Model.Messages[i].Content</span>
-        <input  type="hidden" asp-for="@Model.Messages[i].Id"/>
+        <input type="hidden" asp-for="@Model.Messages[i].Id"/>
         <br />
     }
-    <button  type ="submit" >已读就勾选</button>
+    <button type ="submit" >已读就勾选</button>
 </form>
 
 @*<script src="~/js/Event.js"></script>*@
 <script>
     document.getElementById("selectall").addEventListener("change",
         function () {
-            var messages = document.getElementsByName("message");
+            var messages = document.querySelectorAll('[zl-Selected]');
             for (let  i = 0; i < messages.length; i++) {
                 messages[i].checked = this.checked;
             }

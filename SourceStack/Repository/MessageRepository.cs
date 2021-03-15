@@ -14,32 +14,12 @@ namespace SourceStack.Repository
         private static IList<Message> messages;
         static MessageRepository()
         {
-            //messages = new List<Message>();
-            //string connectionString = @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = YQBang4; Integrated Security = True;";
-            //using (IDbConnection connection = new SqlConnection(connectionString)) {
-            //    connection.Open();
-            //    IDbCommand command = new SqlCommand();
-            //    command.Connection = connection;
-            //    command.CommandText = $"select * from Message";
-            //    DbDataReader reader = (DbDataReader)command.ExecuteReader();
-            //    if (reader.HasRows) {
-            //        while (reader.Read()) {
-            //            Message message = new Message {
-            //                Content = (string)reader["Content"],
-            //                Id = (int)reader["ID"],
-            //             //   HasRead = (bool)reader["HasRead"],
-            //            };
-            //            messages.Add(message);
-            //        }
-            //    }
-            //}
-
-                //new Message() {
-                //        Id=1,
-                //        Content="欢迎你加入“一起帮”！记得完成“新手任务”获得 帮帮点 奖励哟。O(∩_∩)O~",
-                //        CreateTime=DateTime.Now
-                //    },}   
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="onlyNotRead">可选参数，不写false</param>
+        /// <returns></returns>
         public IList<Message> GetMine(bool onlyNotRead = false)
         {
             messages = new List<Message>();
@@ -55,25 +35,15 @@ namespace SourceStack.Repository
                         Message message = new Message {
                             Content = (string)reader["Content"],
                             Id = (int)reader["ID"],
-                            //   HasRead = (bool)reader["HasRead"],
+                            CreateTime=(DateTime)reader["CreateTime"],
+                            //HasRead = (bool)reader["HasRead"],
+                            //Selected=(bool)reader["Selected"]
                         };
                         messages.Add(message);
                     }
                 }
             }
-            //DBHelper helper = new DBHelper();
-            //string cmd= $"select * from Message";
-            //DbDataReader reader = helper.ExecuteReader(cmd);
-            //if (reader.HasRows) {
-            //    while (reader.Read()) {
-            //        Message message = new Message {
-            //            Content = (string)reader["Content"],
-            //            Id = (int)reader["ID"],
-            //            //   HasRead = (bool)reader["HasRead"],
-            //        };
-            //        messages.Add(message);
-            //    }
-            //}
+            
 
             var result = messages;
             if (onlyNotRead) {
@@ -82,12 +52,17 @@ namespace SourceStack.Repository
             }
 
             //else {
-            //    return messages;
+            //    return messages; //返回所有的
             //}
             //else nothig
             return result;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Message Find(int id)
         {
             // messages = new List<Message>();
@@ -101,15 +76,19 @@ namespace SourceStack.Repository
                 DbDataReader reader = (DbDataReader)command.ExecuteReader();
                     if (reader.Read()) {
                     message.Content = (string)reader["Content"];
-                    message.Id = (int)reader["ID"];                        
-                        }                 
-                    }
+                    message.Id = (int)reader["ID"];
+                    message.CreateTime = (DateTime)reader["CreateTime"];
+                    //message.Selected = (bool)reader["Selected"];
+                    //message.HasRead = (bool)reader["HasRead"];
+
+                }
+            }
             return message;
         }
-          
-            
 
-        
-
+        internal void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace SourceStack.Entities
         public void Read()
         {
             HasRead = true;
+
         }
     }
 }
