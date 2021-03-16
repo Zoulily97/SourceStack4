@@ -1,19 +1,19 @@
-﻿@model SRV.ViewModel .LogOnModel
+﻿@model SRV.ViewModel.LogOnModel
 @{
     ViewBag.Title = "On";
     Layout = "~/Views/Shared/_Dual_551.cshtml";
-   //ViewData["Title"] = "登录";
+    //ViewData["Title"] = "登录";
 }
 <form method="post" class="article">
     <div class="table">
         <label>用户名：(*必填)</label><br />
-        @Html.TextBoxFor(m => m.Name, new { placeholder = "登陆用户名" , style = "width:350px" ,@class ="form-control" })
-       
+        @Html.TextBoxFor(m => m.Name, new { placeholder = "登陆用户名", style = "width:350px", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
     <div class="table">
         <label>密码：(*必填)</label><br />
-        @Html.TextBoxFor(m=>m.Password,new { type = "password", style = "width:350px", placeholder = "不少于四位", @class = "form-control" })  
-  
+        @Html.TextBoxFor(m => m.Password, new { type = "password", style = "width:350px", placeholder = "不少于四位", @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Password) 
     </div>
     <div class="table">
         <label>验证码：(*必填)</label><br />
@@ -23,7 +23,7 @@
     <div class="table">
         <input type="submit" class="btn btn-primary loading" value="提交" />&nbsp;&nbsp;
         <label class="checkbox-inline">
-           @Html.CheckBoxFor(m=>m.Rememberme)记住我
+            @Html.CheckBoxFor(m => m.Rememberme)记住我
         </label>
         <a href="/Views/Register/Index.cshtml" class="btn float-right text-primary">注册</a>
         <a href="#" class="btn float-right text-primary">(｡ŏ_ŏ) 忘了</a>

@@ -16,7 +16,7 @@ namespace DbFactory
             Helper.GetDbcontext().Database.Delete();
             Helper.GetDbcontext().Database.Create();
             UserFactory.Create();
-            ArticleFactory.Create();
+           // ArticleFactory.Create();
             Console.WriteLine("ok");
 
 

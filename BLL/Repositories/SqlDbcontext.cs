@@ -21,6 +21,10 @@ namespace BLL.Repositories
         {
             modelBuilder.Entity<User>();
             modelBuilder.Entity<Article>();//建表
+            modelBuilder.Entity<Keyword>();
+            modelBuilder.Entity<Comment>();
+            modelBuilder.Entity<Message>();
+
             base.OnModelCreating(modelBuilder);
 
         }

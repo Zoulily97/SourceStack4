@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="Keyword.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

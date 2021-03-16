@@ -31,7 +31,7 @@ namespace YQBangMVC.Controllers
             cookie.Values.Add(Keys.Password,  model.Password.MD5Crypt());
             Response.Cookies.Add(cookie);//响应拿到cookie
 
-            return View();
+            return RedirectToAction("on", "Log");
         }
     } 
 }

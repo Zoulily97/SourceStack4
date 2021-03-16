@@ -15,6 +15,8 @@ namespace BLL.Entities
         public string Title { get; set; }
         public string Body { get; set; }
         public User Author { get; set; }
+       public IList<Comment> Comments { get; set; }
+        public IList<Keyword> Keywords { get; set; }
         public DateTime PublishTime { get; set; } 
         public string Summary { get; set; }
         

@@ -49,7 +49,7 @@ namespace YQBangMVC.Controllers
             cookie.Values.Add(Keys.Id, user.Id.ToString());
             cookie.Values.Add(Keys.Password, user.Password.MD5Crypt());
             Response.Cookies.Add(cookie);
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
