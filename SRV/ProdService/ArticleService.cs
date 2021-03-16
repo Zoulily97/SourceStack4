@@ -15,11 +15,13 @@ namespace SRV.ProdService
     {
         private UserRepository userRepository;
         private ArticleRepository articleRepository;
+        public KeywordRepository keywordRepository;
         public ArticleService()
         {
             SqlDbcontext context = new SqlDbcontext();
             articleRepository = new ArticleRepository(context);
             userRepository = new UserRepository(context);
+            keywordRepository = new KeywordRepository(context);
         }
         public SingleModel GetById(int id)
         {
@@ -42,25 +44,49 @@ namespace SRV.ProdService
             //};
         }
 
-        public int Publish(NewModel model, int? currentUserId)
+        public int Publish(NewModel model/*, int? currentUserId*/)
         {
-            Article a1 = new Article
-            {
-                Title = model.Title,
-                Body = model.Body,
-                // PublishTime=model.PublishTime
-                 
 
-            };
-            User author = userRepository.LoadProxy(currentUserId);
-            a1.Author = author;//给文章加一个author
+            //Article a1 = new Article();
+            //1、得到一个MapperConfiguration（映射配置）实例
+            MapperConfiguration config =
+                new MapperConfiguration(cfg => cfg.CreateMap<NewModel, Article>());
+            //2、根据MapperConfiguration得到一个IMapper对象
+
+            IMapper mapper = config.CreateMapper();
+            //3、调用IMapper的Map()方法开始映射
+            Article a1 = mapper.Map<Article>(model);
+
+            //Article a1 = new Article
+            //{
+            //    Title = model.Title,
+            //    Body = model.Body,
+            //   // Keywords=model.KeyWord,
+            //    Summary=model.Summary,
+
+
+
+
+            //};
+            // User author = userRepository.LoadProxy(currentUserId);
+            // a1.Author = author;//给文章加一个author
             //articleRepository.context.Set<User>().Attach(author);//暴露了context
             articleRepository.Save(a1);
-            return  a1.Id;
+            if (a1.Keywords != null)
+            {
+                foreach (var item in a1.Keywords)
+                {
+                    keywordRepository.Save(item);
+
+                }
+            }
+
+
+            return a1.Id;
         }
 
-       
 
-        
+
+
     }
 }

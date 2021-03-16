@@ -16,6 +16,6 @@ namespace SRV.ViewModel.Article
         public string AD { get; set; }
         public string TextContent { get; set; }
         public string Url { get; set; }
-     //   public DateTime PublishTime { get; set; }
+        public DateTime PublishTime { get; set; }
     }
 }

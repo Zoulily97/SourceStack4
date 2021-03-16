@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class ArticleRepository :Repository<Article>
+    public class ArticleRepository : Repository<Article>
     {
-        public ArticleRepository(SqlDbcontext context):base (context)
+        public ArticleRepository(SqlDbcontext context) : base(context)
         {
 
         }
@@ -17,7 +17,9 @@ namespace BLL.Repositories
         //根据文章id 获取整个文章
         public Article GetById(int id)
         {
-            return dbSet.Where(s =>s.Id==id).SingleOrDefault();
+            return dbSet.Where(s => s.Id == id).SingleOrDefault();
         }
+        
     }
 }
+

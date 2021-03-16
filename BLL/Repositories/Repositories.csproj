@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="ArticleRepository.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="KeywordRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SqlDbcontext.cs" />
