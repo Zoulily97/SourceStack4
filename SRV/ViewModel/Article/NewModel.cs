@@ -8,6 +8,7 @@ namespace SRV.ViewModel.Article
 {
     public class NewModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
         public string Serise { get; set; }

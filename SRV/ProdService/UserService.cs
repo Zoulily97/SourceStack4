@@ -24,20 +24,20 @@ namespace SRV.ProdService
 
         public UserModel GetByName(string name)
         {
-            User user= userRepository.GetByName(name);
+            User user = userRepository.GetByName(name);
             if (user == null)
             {
                 return null;
             }
             else
             {
- return new UserModel
-            {
-                Name = user.Name,
-                Password = user.Password
-            };
+                return new UserModel
+                {
+                    Name = user.Name,
+                    Password = user.Password
+                };
             }
-           
+
 
         }
 
@@ -46,9 +46,14 @@ namespace SRV.ProdService
             return userRepository.LoadProxy(currentUserId).Password;
         }
 
-        public int  Register(UserModel model)
+        public int Register(UserModel model)
         {
-            
+
+
+
+
+
+
             User user = new User
             {
                 Name = model.Name,
@@ -58,9 +63,9 @@ namespace SRV.ProdService
             // user .Register();
             userRepository.Save(user);
             return user.Id;
-        
-        
-        
+
+
+
         }
 
         public string MD5Crypt(string source)
@@ -70,7 +75,7 @@ namespace SRV.ProdService
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
-                sb.Append(bytes[i].ToString ("X"));
+                sb.Append(bytes[i].ToString("X"));
 
             }
             //return Encoding.UTF8.GetString(bytes);
