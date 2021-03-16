@@ -21,35 +21,12 @@
                 .ForeignKey("dbo.Users", t => t.InvitedBy_Id)
                 .Index(t => t.InvitedBy_Id);
             
-            CreateTable(
-                "dbo.Articles",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Body = c.String(),
-                        HelpMoney = c.Int(nullable: false),
-                        Series = c.String(),
-                        KeyWord = c.String(),
-                        Summary = c.String(),
-                        AD = c.String(),
-                        TextContent = c.String(),
-                        Url = c.String(),
-                        Author_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.Author_Id)
-                .Index(t => t.Author_Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Articles", "Author_Id", "dbo.Users");
             DropForeignKey("dbo.Users", "InvitedBy_Id", "dbo.Users");
-            DropIndex("dbo.Articles", new[] { "Author_Id" });
             DropIndex("dbo.Users", new[] { "InvitedBy_Id" });
-            DropTable("dbo.Articles");
             DropTable("dbo.Users");
         }
     }

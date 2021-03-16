@@ -15,10 +15,11 @@ namespace BLL.Repositories
         {
             Database.Log = s => Debug.WriteLine(s);
         }
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>();
-            modelBuilder.Entity<Article>();//建表
+          //  modelBuilder.Entity<Article>();//建表
             base.OnModelCreating(modelBuilder);
 
         }

@@ -2,9 +2,10 @@
 namespace BLL.Repositories.Migrations
 {
     using System.CodeDom.Compiler;
+    using System.Data.Entity.Migrations;
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
-
+    
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
     public sealed partial class init : IMigrationMetadata
     {
@@ -12,7 +13,7 @@ namespace BLL.Repositories.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202101081207398_init"; }
+            get { return "202103160647269_init"; }
         }
         
         string IMigrationMetadata.Source

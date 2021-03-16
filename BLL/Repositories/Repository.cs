@@ -12,7 +12,7 @@ namespace BLL.Repositories
     {
         protected SqlDbcontext context;
 
-        protected DbSet<T> dbSet;
+        protected DbSet<T> dbSet;//抽象成一个字段
         public Repository(SqlDbcontext context)
         {       
             this.context = context;

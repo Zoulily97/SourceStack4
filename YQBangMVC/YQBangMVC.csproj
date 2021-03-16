@@ -139,6 +139,7 @@
     <Compile Include="Controllers\ProblemController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -422,6 +423,7 @@
     <Content Include="Scripts\KindEditer\jsp\file_manager_json.jsp" />
     <Content Include="Scripts\KindEditer\jsp\upload_json.jsp" />
     <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Shared\_User.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
