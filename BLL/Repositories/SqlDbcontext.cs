@@ -9,17 +9,18 @@ using BLL.Entities;
 
 namespace BLL.Repositories
 {
-  public class SqlDbcontext: DbContext
+    public class SqlDbcontext : DbContext
     {
         public SqlDbcontext() : base("20bang")
         {
             Database.Log = s => Debug.WriteLine(s);
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Article> Articles { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>();
-          //  modelBuilder.Entity<Article>();//建表
+            modelBuilder.Entity<Article>();//建表
             base.OnModelCreating(modelBuilder);
 
         }

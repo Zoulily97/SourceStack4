@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using AutoMapper;
+using BLL.Entities;
 using BLL.Repositories;
 using ServiceInterface;
 using SRV.ViewModel.Article;
@@ -23,11 +24,22 @@ namespace SRV.ProdService
         public SingleModel GetById(int id)
         {
             Article article = articleRepository.GetById(id);
-            return new SingleModel
-            {
-                Title = article.Title,
-                Body = article.Body
-            };
+
+            //1、得到一个MapperConfiguration（映射配置）实例
+            MapperConfiguration config =
+                new MapperConfiguration(cfg => cfg.CreateMap<Article, SingleModel>());
+            //2、根据MapperConfiguration得到一个IMapper对象
+
+            IMapper mapper = config.CreateMapper();
+            //3、调用IMapper的Map()方法开始映射
+            SingleModel model = mapper.Map<SingleModel>(article);
+            return model;
+
+            //return new SingleModel
+            //{
+            //    Title = article.Title,
+            //    Body = article.Body
+            //};
         }
 
         public int Publish(NewModel model, int? currentUserId)
@@ -37,7 +49,7 @@ namespace SRV.ProdService
                 Title = model.Title,
                 Body = model.Body,
                 // PublishTime=model.PublishTime
-                HelpMoney = 0
+                 
 
             };
             User author = userRepository.LoadProxy(currentUserId);

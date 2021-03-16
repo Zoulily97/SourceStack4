@@ -15,13 +15,9 @@ namespace BLL.Entities
         public string Body { get; set; }
         public User Author { get; set; }
      //   public DateTime PublishTime { get; set; }
-        public int HelpMoney { get; set; }
-        public string Series { set; get; }
-        public string KeyWord { get; set; }
+      
         public string Summary { get; set; }
-        public string AD { get; set; }
-        public string TextContent { get; set; }
-        public string Url { get; set; }
+        
 
 
     }

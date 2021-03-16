@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using AutoMapper;
+using BLL.Entities;
 using BLL.Repositories;
 using Global;
 using ServiceInterface;
@@ -33,6 +34,7 @@ namespace SRV.ProdService
 
         public int  Register(UserModel model)
         {
+            
             User user = new User
             {
                 Name = model.Name,
