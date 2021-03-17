@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ServiceInterface
 {
-    public interface IUserService
+    public interface IRegisterService
     {
         int  Register(RegisterModel model);
         string GetPwdById(int currentUserId);
-        UserModel GetByName(string name);
+        RegisterModel GetByName(string name);
     }
 }

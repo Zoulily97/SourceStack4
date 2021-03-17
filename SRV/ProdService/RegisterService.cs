@@ -13,16 +13,16 @@ using System.Threading.Tasks;
 
 namespace SRV.ProdService
 {
-    public class UserService : IUserService
+    public class RegisterService : IRegisterService
     {
         private UserRepository userRepository;
-        public UserService()
+        public RegisterService()
         {
             SqlDbcontext context = new SqlDbcontext();
             userRepository = new UserRepository(context);
         }
 
-        public UserModel GetByName(string name)
+        public RegisterModel GetByName(string name)
         {
             User user = userRepository.GetByName(name);
             if (user == null)
@@ -31,10 +31,11 @@ namespace SRV.ProdService
             }
             else
             {
-                return new UserModel
+                return new RegisterModel
                 {
                     Name = user.Name,
-                    Password = user.Password
+                    //Password = user.Password,
+                    InviterNumber=user.InviterNumber.ToString()
                 };
             }
 
@@ -48,6 +49,11 @@ namespace SRV.ProdService
 
         public int Register(RegisterModel model)
         {
+
+
+
+
+
 
             User user = new User
             {
