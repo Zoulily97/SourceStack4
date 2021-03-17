@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Global;
+using YQBangMVC.Filter;
 
 namespace YQBangMVC.Controllers
 {
@@ -25,12 +26,13 @@ namespace YQBangMVC.Controllers
             return View();
         }
         [HttpPost]
+        [PRGModelState]
         public ActionResult Index(RegisterModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
             RegisterModel inviter = registerService.GetByName(model.InviterName);
             if (inviter == null)
             {
