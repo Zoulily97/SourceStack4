@@ -34,13 +34,13 @@ namespace YQBangMVC.Controllers
             // bool result = userService.GetByName(model.Name, out string pwd);//面向过程 //扩展性不够
             UserModel user = userService.GetByName(model.Name);//这个UserModel不能对应一个View
 
-            if (user==null)
+            if (user == null)
             {
                 ModelState.AddModelError("", "用户名不存在");
                 return View();
 
             }
-            if (user.Password!= model.Password)
+            if (user.Password != model.Password)
             {
                 ModelState.AddModelError("", "密码错误");
                 return View();
@@ -48,6 +48,11 @@ namespace YQBangMVC.Controllers
             HttpCookie cookie = new HttpCookie(Keys.User);
             cookie.Values.Add(Keys.Id, user.Id.ToString());
             cookie.Values.Add(Keys.Password, user.Password.MD5Crypt());
+            if (model.Rememberme)
+            {
+                cookie.Expires = DateTime.Now.AddDays(1);
+            }
+
             Response.Cookies.Add(cookie);
             return RedirectToAction("Index", "Home");
         }

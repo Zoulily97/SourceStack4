@@ -13,7 +13,7 @@
         <div class="form-group">
             <label for="exampleInputEmail1">邀请人：（* 必填，<a href="#">没有邀请人</a>） </label>
             @Html.TextBoxFor(m=>m.InviterName, new { type = "text", @class = "form-control" })
-            @Html.ValidationMessageFor(m => m)
+            @Html.ValidationMessageFor(m =>m.InviterName)
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">邀请码：（* 必填） </label>
