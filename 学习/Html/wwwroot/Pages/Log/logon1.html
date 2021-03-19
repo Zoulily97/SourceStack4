@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+     /*   * {
+            margin-left: auto;
+            margin-right: auto;
+        }*/
+        ul li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        button {
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+            width: 80px;
+            height: 38px;
+            margin-right :20px;
+        }
+        #nav li {
+            float: left;
+            list-style: none;
+            margin-left: 40px;
+            color: #777;
+            font-size: 16px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
+        #header {
+            height: 60px;
+            background-color: ghostwhite;
+        }
+
+        li #tangle {
+            border-top: 5px solid black;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            width: 0;
+        }
+
+        #register {
+            float: left;
+            width: 500px;
+            height: 700px;
+            
+        }
+
+            #register input {
+                width: 480px;
+                height: 38px;
+                border: 2px solid gainsboro;
+                border-radius: 5px 4px;
+            }
+
+            #register label {
+                width: 480px;
+                font-size: 20px;
+                font-weight: 800;
+                line-height: 60px;
+            }
+
+            #register #input {
+                width: 500px;
+                height: 80px;
+                margin-bottom: 30px;
+            }
+
+        #invite {
+            background-color: #ffffe0;
+            border: 5px dashed gainsboro;
+            border-radius: 10px 10px;
+        }
+
+       article #declare {
+            float: left;
+            margin-left:100px;
+            width: 500px;
+            height: 700px;
+          
+        }
+        footer ul li {
+            list-style: none;
+            float: left;
+        }
+        #helplink span {
+            display: block;
+            width: 40px;
+            height: 60px;
+            background-color: mediumaquamarine;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 10px;
+            align-items: center;
+            line-height: 60px;
+        }
+        #return {
+            display:block;
+            width: 80px;
+            height: 40px;
+            background-color: mediumaquamarine;
+            border-radius: 10px;
+            text-align: center;
+            left :1100px;
+            line-height:40px;
+            position:relative ;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header" style="background-color:gainsboro;width:1200px;">
+        <a><img src="/images/logo-big.ico" style="height: 50px;" /></a>
+        <span style="font-size:24px;
+                             font-weight:600;color:#777;font-family:Arial, Helvetica, sans-serif
+                             ;margin-left:40px"> 一起帮</span>
+        <span style="color: #777;">网络互助平台</span>
+        <div id="nav" style="width:500px;float:right ">
+            <ul>
+                <li>求助<lable><span id="tangle"></span></lable></li>
+                <li>督促<lable><span id="tangle"></span></lable></li>
+                <li>文章<lable><span id="tangle"></span></lable></li>
+                <li>列表<lable><span id="tangle"></span></lable></li>
+            </ul>
+        </div>
+    </div>
+    <article style="width:1200px; ">
+        <h1>注册</h1>
+        <a href="#"><span id="return" style="">返回</span></a>
+        <form id="register">
+            <div id="invite">
+                <div id="input">
+                    <label>邀请人：（* 必填，没有邀请人）</label>
+                    <input />
+                </div>
+                <div id="input">
+                    <label>邀请码：（* 必填）</label>
+                    <input />
+                </div>
+            </div>
+            <div id="input">
+                <label>用户名：（* 必填）</label>
+                <input />
+            </div>
+            <div id="input">
+                <label>密码：（* 必填）</label>
+                <input />
+            </div>
+            <div id="input">
+                <label>验证密码：（* 必填）</label>
+                <input />
+            </div>
+            <div id="input">
+                <label>验证码：（* 必填）</label>
+                <br />
+                <input style="width:120px" /><span>点击输入框提示</span>
+            </div>
+            <div id="input">
+                <button type="submit">提交</button>
+                <button type="reset" style="  background-color: #fff;
+            border-color: gainsboro;color:black">
+                    重置
+                </button>
+            </div>
+
+        </form>
+        <div id="declare">
+            <h1>说明</h1>
+            <ul>
+                <li>1、我们希望通过一起帮，能<b>直接解决</b>大家在电脑操作/软件使用/编程学习等方面的<b>具体问题</b></li>
+                <li>2、现在互联网远程技术（比如QQ桌面共享）已经非常成熟，当我们再遇到上述问题，如果别人能直接远程给予帮助，岂不是好？</li>
+                <li>3、当然，你也可以在你熟悉的领域去帮助别人。由此而形成我们这个“你帮他他帮我我帮你，大家一起帮”的网上互助社区平台。</li>
+                <li>4、公平起见，我们还引入了 帮帮点/币/豆 三级概念，以记录和衡量社区成员的收获和贡献。</li>
+                <li>5、赶快加入我们，赚取帮帮币吧！</li>
+                <li>6、 了解更多</li>
+            </ul>
+        </div>
+    </article>
+    <div style="clear:both;"></div>
+    <footer style="width:1200px; height:50px;">
+        <hr />
+        <div id="footernav"style="">
+            <ul>
+                <li> 关于我们 | </li>
+                <li> 源栈课堂 |  </li>
+                <li> 常见问题 | </li>
+                <li> 意见建议 |  </li>
+                <li> 历史通知 | </li>
+                <li> 友情捐赠 |  </li>
+                <li> 诚邀合伙人</li>
+            </ul>
+        </div>  
+            <span style="float:right;">渝ICP备18007191号（备案）© 2021 - 自由</span>    
+    </footer>
+    <div id="helplink" style="width:50px;height:150px;position:fixed;right:5px;bottom:10px;">
+        <a href="#"> <span style="">帮助</span></a>
+        <a href=" #"> <span style=" ">反馈</span></a>
+    </div>
+</body>
+</html>

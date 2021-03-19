@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Pages\Article\" />
+    <Folder Include="wwwroot\Pages\register\" />
+    <Folder Include="wwwroot\Pages\Test\" />
+  </ItemGroup>
+
 </Project>

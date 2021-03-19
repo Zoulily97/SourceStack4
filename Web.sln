@@ -55,7 +55,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{B6FF18CB-B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFactory", "Tool\DbFactory\DbFactory.csproj", "{1A30485E-F680-463A-8D3C-E42B42FABEF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Html", "学习\Html\Html.csproj", "{CEC869D9-F4CC-422E-89E9-A0F09AF5C2F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Html", "学习\Html\Html.csproj", "{CEC869D9-F4CC-422E-89E9-A0F09AF5C2F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

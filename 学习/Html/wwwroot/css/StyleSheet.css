@@ -1,0 +1,17 @@
+﻿body {
+}
+
+a {
+    text-decoration: none;
+    /*color: green !important;*/ /*//最高优先级*/
+    color: blueviolet; /* 最终生效 */
+}
+a:active{
+    text-decoration:underline;
+}
+a:visited{
+    color:brown;
+}
+p:hover {
+        color: goldenrod;
+    }
