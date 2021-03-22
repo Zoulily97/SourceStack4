@@ -47,7 +47,9 @@ namespace YQBangMVC.Controllers
 
             //}//else
 
-            int articleId = articleService.Publish(model/*, CookieHelpers.GetCurrentUserId()*/);
+           // int articleId = articleService.Publish(model/*, CookieHelpers.GetCurrentUserId()*/);
+
+            int articleId = userService.Publish(model/*, CookieHelpers.GetCurrentUserId()*/);
             return RedirectToAction("Single", new { id = articleId });
         }
         public ActionResult Single(int id)

@@ -29,6 +29,7 @@
                 <p class="navbar-text pull-left">
                     <span style="font-size:18px; font-weight:600;">一起帮</span>
                     <span class="visible-md-inline visible-lg-inline">· 网络互助平台</span>
+                    <i class=" fa fa-bell" style="color:darkblue" zl-bell></i>
                 </p>
                 <a href="/Message/Mine" class="navbar-text pull-left" style="font-size:18px; margin-left:10px;">
                     <span class="fa fa-bell  pull-left hide" style="color: darkblue;" zyf-bell></span>
@@ -189,7 +190,19 @@
     @*@RenderSection("Scripts", required: false)*@
 
 
+<script >
+    setInterval(function () {
+        var bell = document.querySelector('[zl-bell]')
+        if (bell.style.color !== 'darkblue') {
+            bell.setAttribute("style", "color:darkblue");       
+    }
+    else{
+        bell.setAttribute("style", "color:pink");      
+    }
+}, 1000);
 
+</script>
 </body>
+
 </html>
 

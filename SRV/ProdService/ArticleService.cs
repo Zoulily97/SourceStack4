@@ -69,8 +69,9 @@ namespace SRV.ProdService
 
             //};
 
-            // User author = userRepository.LoadProxy(currentUserId);
-            // a1.Author = author;//给文章加一个author
+            int currentUserId = 1;
+             User author = userRepository.LoadProxy(currentUserId);
+             a1.Author = author;//给文章加一个author
             //articleRepository.context.Set<User>().Attach(author);//暴露了context
             articleRepository.Save(a1);
             if (a1.Keywords != null)

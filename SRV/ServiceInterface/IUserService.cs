@@ -1,4 +1,5 @@
 ﻿using SRV.ViewModel;
+using SRV.ViewModel.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ServiceInterface
         int  Register(RegisterModel model);
         string GetPwdById(int currentUserId);
         UserModel GetByName(string name);
+        int Publish(NewModel model/*, int? currentUserId*/);
     }
 }
