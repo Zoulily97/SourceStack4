@@ -34,8 +34,9 @@
             var times = document.createElement('span');
             times.setAttribute('id', 'times');
             times.innerText = Math.ceil(Math.random() * 100);
+            if (event.target != event.currentTarget){
             event.target.appendChild(times);
-            
+            }       
         });
         document.querySelector('[zl-keyword-container').addEventListener('mouseout', function () {
            document.getElementById("times").remove();
