@@ -7,7 +7,8 @@
     <a href="none" style="padding-left:260px;">更多历史</a>
 </div>
 
-<ul class="list-unstyled" style="overflow-y:scroll;height:600px">
+<div zl-scroll-left style="overflow-y:scroll;height:600px;">
+<ul class="list-unstyled" >
     <li class="media">
         <button type="button" class="btn btn-outline-secondary">@@TA<br />回复</button>
         <div class="media-body ml-2">
@@ -59,42 +60,9 @@
             <span>啥?</span>
         </div>
     </li>
-    <li class="media">
-        <button type="button" class="btn btn-outline-secondary">@@TA<br />回复</button>
-        <div class="media-body ml-2">
-            <h5 class="mt-0 mb-1">2020/2/13 19:59:29<a href="none">云飞飞飞</a><a href="/credit">①</a></h5>
-            <span>666666666</span>
-        </div>
-    </li>
-    <li class="media">
-        <button type="button" class="btn btn-outline-secondary">@@TA<br />回复</button>
-        <div class="media-body ml-2">
-            <h5 class="mt-0 mb-1">2020/2/17 0:24:57<a href="none">疾风小白</a><a href="/credit">①</a></h5>
-            <span>hai</span>
-        </div>
-    </li>
-    <li class="media">
-        <button type="button" class="btn btn-outline-secondary">@@TA<br />回复</button>
-        <div class="media-body ml-2">
-            <h5 class="mt-0 mb-1">2020/2/18 15:41:29<a href="none">harriethwikk</a><a href="/credit">②</a></h5>
-            <span>啥?</span>
-        </div>
-    </li>
-    <li class="media">
-        <button type="button" class="btn btn-outline-secondary">@@TA<br />回复</button>
-        <div class="media-body ml-2">
-            <h5 class="mt-0 mb-1">2020/2/7 3:05:18<a href="none"> lk6321</a><a href="/credit">①</a></h5>
-            <span>6</span>
-        </div>
-    </li>
-    <li class="media">
-        <button type="button" class="btn btn-outline-secondary">@@TA<br />回复</button>
-        <div class="media-body ml-2">
-            <h5 class="mt-0 mb-1">2020/2/19 12:39:21<a href="none">harriethwikk</a><a href="/credit">②</a></h5>
-            <span>嗨</span>
-        </div>
-    </li>
+ 
 </ul>
+</div>
 
 <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="我来说两句" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -104,11 +72,45 @@
 </div>
 @section Description{
 
-    }
+    <div zyf-fixed-widget="" id="fixed-widget" style="height:420px; top:100px;position:fixed">
+        <h3>“源栈”Web开发培训班 <br> <span style="color:red"><span class="fa fa-fire"></span> 火热</span> 招生中：</h3>
+        <p>线上：全程直播，<b>免费</b>收看</p>
+        <p>线下：<b>灵活</b>学制，拎包入住</p>
+        <p>有意向的同学，可以加QQ群：326801052</p>
+        <img class="img-responsive center-block" src="/Images/qq-group.png" title="QQ学习群：326801052">
+    </div>
+
+}
 <script>
-    window.load = function () {
 
 
+    //document.querySelector('[zl-scroll-left]').onscroll = function () {
+    //    console.log(this.scrollHeight);
+    //    console.log(this.clientHeight);
+    //    console.log(this.scrollTop);
+    //    if (this.scrollTop == this.scrollHeight - this.scrollTop) {
+    //        console.log('到底了');
+    //    }
 
-    }
+    //}
+    document.addEventListener("scroll", function () {
+        var scrollTop = document.documentElement.scrollTop;
+       //var left = document.querySelector('[zl-scroll-left]');
+        var left = document.documentElement;
+        var right = document.getElementById('fixed-widget');
+        console.log("scrollTop=" + scrollTop);
+        console.log((left.scrollHeight - right.scrollHeight) - 100-240);
+        console.log((left.scrollHeight - right.scrollHeight) - scrollTop);
+        if (scrollTop < (left.scrollHeight - right.scrollHeight - 100-240)) {
+            right.style.top = '100px';
+        }
+        else 
+        {
+            right.style.top = ((left.scrollHeight - right.scrollHeight) - 100) - scrollTop-135 + 'px'
+        }
+       console.log("right.style.="+right.style.top);
+
+       
+        //console.log(right.style.top);
+    });
 </script>
