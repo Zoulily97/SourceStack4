@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <title></title>
+</head>
+<body>
+    <div class="widget clearfix">
+        <p style="font-size:30px"><span class="fa fa-tags"></span>关键字</p><hr>
+        <div zl-keyword-container style="font-size:25px">
+            <span zl-keyword id="keyword1" class="badge badge-secondary" style="border-radius: 10px;">编程开发语言</span>
+            <span zl-keyword  id="keyword2" class="badge badge-secondary" style="border-radius: 10px;">C#</span>
+            <span zl-keyword id="keyword3" class="badge badge-secondary" style="border-radius: 10px;">JAVA</span>
+          
+        </div>
+        <hr>
+        <div class="input-group mb-3">
+            <input type="text" style="width:50%" placeholder="直接输入关键字查找" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append" style="margin-right:25px">
+                <span class="input-group-text" id="basic-addon2"><span class="fa fa-search"></span></span>
+            </div>
+            <div>
+                <button type="button" style="margin-left:1px" class="btn btn-outline-dark"><span class="fa fa-random"></span>换一批<</button>>
+            </div>
+        </div>
+    </div>
+    <span zl-ad class="input-group-text" >免费广告位，抢到就是赚到！</span>
+    <script>
+        //参考求助首页侧边栏关键字，实现：当鼠标移动到关键字上，显示关键字被使用次数
+
+        
+        document.querySelector('[zl-keyword-container').addEventListener('mouseover', function () {
+            var times = document.createElement('span');
+            times.setAttribute('id', 'times');
+            times.innerText = Math.ceil(Math.random() * 100);
+            event.target.appendChild(times);
+            
+        });
+        document.querySelector('[zl-keyword-container').addEventListener('mouseout', function () {
+           document.getElementById("times").remove();
+        });
+    </script>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

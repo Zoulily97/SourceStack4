@@ -3,48 +3,87 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        #propagate {
+            padding: 30px;
+            border: 1px solid;
+        }
+
+            #propagate > p {
+                background-color: blue;
+                border: 1px dashed;
+            }
+    </style>
 </head>
 <body>
-    <h2>万紫千红</h2>
-    <button style="color:red" onclick="changeColor(this.style.color)" name="change-color">变红</button>
-    <button style="color:blue" name="change-color">变蓝</button>
-    <button style="color:yellow" name="change-color">变黄</button>
-    <script>
-        console.log(sname);
-        let sname = "11";
+    <div id="propagate">
+        <p>
+            源栈欢迎您
+        </p>
+        <p>
+            大神小班
+        </p>
+        <p>
+            我的世界
+        </p>
+    </div>
+<script>
+    var father = document.getElementById('propagate'),
+        child = father.children[0];
+    father.addEventListener('click', function () {
+        event.target.innerText = '我的世界11W';       /* p*/
+       
 
-        //function changeColor(color) {
-        //    return function (/*color*/) {
-        //    document.getElementsByTagName('h2')[0].style.color = color;
-        //    }
+    });
+    
+    //father.addEventListener('click', function () {
+    //    console.log('event handler on father');
+    //});
+    //child.addEventListener('click', function () {
+    //    console.log('event handler on child');
+    //});
 
-        //}
-        //var buttons = document.getElementsByTagName('button');
-        //for (var i = 0; i < buttons.length; i++) {12
-        //    buttons[i].onclick =
-        //        //function () {
-        //        //changeColor(this.style.color);//有func包裹，this.style.color this btn
-        //        changeColor(buttons[i].style.color); //this不是btn ，所以用btn
-        //}
+    //father.addEventListener('click', function () {
+    //    console.log('event handler on father');
+    //    console.log('-------------');
+    //    console.log("this" + this);
+    //    console.log(this);
+    //    console.log('---');
+    //    console.log("event.target" + event.target);
+    //    console.log(event.target);
+    //    console.log('---');
+    //    console.log("this == event.target");
+    //    console.log(this == event.target);
+    //    console.log('---');
+    //    console.log("event.currentTarget");
+    //    console.log(event.currentTarget);
+    //    console.log('---');
+    //    console.log("this == event.currentTarget");
+    //    console.log(this == event.currentTarget);
+    //    console.log('《《《《《《《《》》》》》》');
 
-        
-        function changeColor(color){
-            document.getElementsByTagName('h2')[0].style.color = color;
-        }
-        var buttons = document.getElementsByTagName('button');
-        for (let i = 0; i < buttons.length; i++) {//let
-            buttons[i].onclick =
-                function () {
-                    changeColor(buttons[i].style.color);
-                }
-            //(function (n) {
-            //    return function () {
-            //        changeColor(buttons[n].style.color);//完成绑定，点击i=3,解决就是立即执行函数，
-            //    }
-            //})(i);//i实参，click绑定i就穿了进来
 
-            //}
-        }
-    </script>
+    //}, true);
+    //child.addEventListener('click', function () {
+    //    console.log('event handler on child');
+    //    console.log('-------------');
+    //    console.log("this" + this);
+    //    console.log(this);
+    //    console.log('---');
+    //    console.log("event.target" + event.target);
+    //    console.log(event.target);
+    //    console.log('---');
+    //    console.log("this == event.target");
+    //    console.log(this == event.target);
+    //    console.log('---');
+    //    console.log("event.currentTarget");
+    //    console.log(event.currentTarget);
+    //    console.log('---');
+    //    console.log("this == event.currentTarget");
+    //    console.log(this == event.currentTarget);
+    //    console.log('《《《《《《《《》》》》》》');
+    //}, true);/*capture*/
+    //   //}, false);/*bubble*/
+</script>
 </body>
 </html>
