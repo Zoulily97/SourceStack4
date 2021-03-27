@@ -34,7 +34,17 @@
         </p>
     </div>
     <main>
-
+        <label>
+            姓名<span id="sname"></span>
+        </label>
+        <br />
+        <label>
+            年龄<span id="age"></span>
+        </label>
+        <br />
+        <label>
+            isFemale<span id="isFemale"></span>
+        </label>
     </main>
     <button type="button" id="load">加载</button>
     <form method="post" action="/Index">
@@ -44,15 +54,20 @@
     </form>
     <script>
 
-        //post 向后台发送一些数据
-        document.getElementById('submit').onclick = function (event) {
+
+
+
+        document.getElementById('load').onclick = function (event) {
             event.preventDefault();
             var xhttp = new XMLHttpRequest();
-            xhttp.open("post", "/index");
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            //xhttp.send("username="+document.getElementsByName('username')[0].value);
-            xhttp.send("username=Bill");
-            document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
+            xhttp.open("get", "/border.html");
+            xhttp.send();
+            xhttp.onload = function () {           
+                var student = JSON.parse(xhttp.response);
+                document.getElementById('sname').innerText = student.name;
+                document.getElementById('age').innerText = student.age;
+
+            }
 
         }
 
@@ -61,129 +76,146 @@
 
 
 
-
-
-            //document.getElementById('load').onclick = function (event) {
+            //post 向后台发送一些数据
+            //document.getElementById('submit').onclick = function (event) {
             //    event.preventDefault();
             //    var xhttp = new XMLHttpRequest();
-            //    xhttp.onreadystatechange = function () {
-            //        console.log('in onreadystatechange:' + this.readyState);
-            //    }
+            //    xhttp.open("post", "/index");
+            //    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //    //xhttp.send("username="+document.getElementsByName('username')[0].value);
+            //    xhttp.send("username=Bill");
+            //    document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
 
-            //    xhttp.open("get", "index");
-            //    xhttp.onreadystatechange = function () {
-            //        console.log('in onreadystatechange:' + this.readyState);
-            //    };
-
-            //    xhttp.send();
-            //    console.log('after send');
-            //    xhttp.onreadystatechange = function () {
-            //        if (this.readyState == 4) {
-            //            document.getElementsByTagName("main")[0].innerHTML = xhttp.response
-            //        }
-            //        console.log('in onreadystatechange:' + this.readyState);
-            //    };
             //}
 
-                    //var xhttp = new XMLHttpRequest();
-                    //console.log('after XMLHttpRequest');
-                    ////xhttp.open("GET", "/border.html?id=2");
-                    //xhttp.open("POST", "/border.html?id=2");
-                    //console.log('after open');
-                    ////xhttp.send();
-                    //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    //xhttp.send("fname=Bill&lname=Gates");
-                    //console.log('after send');
-                    //xhttp.onload = function () {
-                    //    //document.getElementsByTagName("main")[0].innerHTML = xhttp.response
-                    //    console.log(xhttp.response);
-                    //}
-                    //console.log('after onload');
-
-                    //document.getElementsByTagName('button')[0].addEventListener('click', function () {
-                    //    document.getElementsByTagName("main")[0].innerHTML = xhttp.response
-                    //})
 
 
 
 
 
 
-                    //document.getElementById('submit').onclick = function (event) {
-                    //    event.preventDefault();
-                    //    var xhttp = new XMLHttpRequest();
-                    //    console.log('after XMLHttpRequest');
-                    //    xhttp.open("POST", "/border.html?id=2");
-                    //    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    //    xhttp.send("username=" + document.getElementsByName('username')[0].value);
-                    //    console.log('after send');
-                    //}
+
+                //document.getElementById('load').onclick = function (event) {
+                //    event.preventDefault();
+                //    var xhttp = new XMLHttpRequest();
+                //    xhttp.onreadystatechange = function () {
+                //        console.log('in onreadystatechange:' + this.readyState);
+                //    }
+
+                //    xhttp.open("get", "index");
+                //    xhttp.onreadystatechange = function () {
+                //        console.log('in onreadystatechange:' + this.readyState);
+                //    };
+
+                //    xhttp.send();
+                //    console.log('after send');
+                //    xhttp.onreadystatechange = function () {
+                //        if (this.readyState == 4) {
+                //            document.getElementsByTagName("main")[0].innerHTML = xhttp.response
+                //        }
+                //        console.log('in onreadystatechange:' + this.readyState);
+                //    };
+                //}
+
+                        //var xhttp = new XMLHttpRequest();
+                        //console.log('after XMLHttpRequest');
+                        ////xhttp.open("GET", "/ l?id=2");
+                        //xhttp.open("POST", "/border.html?id=2");
+                        //console.log('after open');
+                        ////xhttp.send();
+                        //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        //xhttp.send("fname=Bill&lname=Gates");
+                        //console.log('after send');
+                        //xhttp.onload = function () {
+                        //    //document.getElementsByTagName("main")[0].innerHTML = xhttp.response
+                        //    console.log(xhttp.response);
+                        //}
+                        //console.log('after onload');
+
+                        //document.getElementsByTagName('button')[0].addEventListener('click', function () {
+                        //    document.getElementsByTagName("main")[0].innerHTML = xhttp.response
+                        //})
 
 
 
 
-                    //document.getElementsByTagName("button")[0].addEventListener("click", function () {
-                    //    document.getElementById('keywords').src = "/iframe1.html";
-                    //    //document.getElementById('keywords').style = "border:5px dashed pink";
-                    //    document.getElementById('keywords').getElementsByTagName('div')[0].children[0].style = "border:5px dashed pink";
-                    //    window.frames[0].document.getElementsByTagName('div')[0].children[0].style ="border:5px dashed pink";
-                    //})
-                    //var father = document.getElementById('propagate'),
-                    //    child = father.children[0];
-                    //father.addEventListener('click', function () {
-                    //    event.target.innerText = '我的世界11W';       /* p*/
 
 
-                    //});
-
-                    //father.addEventListener('click', function () {
-                    //    console.log('event handler on father');
-                    //});
-                    //child.addEventListener('click', function () {
-                    //    console.log('event handler on child');
-                    //});
-
-                    //father.addEventListener('click', function () {
-                    //    console.log('event handler on father');
-                    //    console.log('-------------');
-                    //    console.log("this" + this);
-                    //    console.log(this);
-                    //    console.log('---');
-                    //    console.log("event.target" + event.target);
-                    //    console.log(event.target);
-                    //    console.log('---');
-                    //    console.log("this == event.target");
-                    //    console.log(this == event.target);
-                    //    console.log('---');
-                    //    console.log("event.currentTarget");
-                    //    console.log(event.currentTarget);
-                    //    console.log('---');
-                    //    console.log("this == event.currentTarget");
-                    //    console.log(this == event.currentTarget);
-                    //    console.log('《《《《《《《《》》》》》》');
+                        //document.getElementById('submit').onclick = function (event) {
+                        //    event.preventDefault();
+                        //    var xhttp = new XMLHttpRequest();
+                        //    console.log('after XMLHttpRequest');
+                        //    xhttp.open("POST", "/border.html?id=2");
+                        //    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        //    xhttp.send("username=" + document.getElementsByName('username')[0].value);
+                        //    console.log('after send');
+                        //}
 
 
-                    //}, true);
-                    //child.addEventListener('click', function () {
-                    //    console.log('event handler on child');
-                    //    console.log('-------------');
-                    //    console.log("this" + this);
-                    //    console.log(this);
-                    //    console.log('---');
-                    //    console.log("event.target" + event.target);
-                    //    console.log(event.target);
-                    //    console.log('---');
-                    //    console.log("this == event.target");
-                    //    console.log(this == event.target);
-                    //    console.log('---');
-                    //    console.log("event.currentTarget");
-                    //    console.log(event.currentTarget);
-                    //    console.log('---');
-                    //    console.log("this == event.currentTarget");
-                    //    console.log(this == event.currentTarget);
-                    //    console.log('《《《《《《《《》》》》》》');
-                    //}, true);/*capture*/
-                    //   //}, false);/*bubble*/
+
+
+                        //document.getElementsByTagName("button")[0].addEventListener("click", function () {
+                        //    document.getElementById('keywords').src = "/iframe1.html";
+                        //    //document.getElementById('keywords').style = "border:5px dashed pink";
+                        //    document.getElementById('keywords').getElementsByTagName('div')[0].children[0].style = "border:5px dashed pink";
+                        //    window.frames[0].document.getElementsByTagName('div')[0].children[0].style ="border:5px dashed pink";
+                        //})
+                        //var father = document.getElementById('propagate'),
+                        //    child = father.children[0];
+                        //father.addEventListener('click', function () {
+                        //    event.target.innerText = '我的世界11W';       /* p*/
+
+
+                        //});
+
+                        //father.addEventListener('click', function () {
+                        //    console.log('event handler on father');
+                        //});
+                        //child.addEventListener('click', function () {
+                        //    console.log('event handler on child');
+                        //});
+
+                        //father.addEventListener('click', function () {
+                        //    console.log('event handler on father');
+                        //    console.log('-------------');
+                        //    console.log("this" + this);
+                        //    console.log(this);
+                        //    console.log('---');
+                        //    console.log("event.target" + event.target);
+                        //    console.log(event.target);
+                        //    console.log('---');
+                        //    console.log("this == event.target");
+                        //    console.log(this == event.target);
+                        //    console.log('---');
+                        //    console.log("event.currentTarget");
+                        //    console.log(event.currentTarget);
+                        //    console.log('---');
+                        //    console.log("this == event.currentTarget");
+                        //    console.log(this == event.currentTarget);
+                        //    console.log('《《《《《《《《》》》》》》');
+
+
+                        //}, true);
+                        //child.addEventListener('click', function () {
+                        //    console.log('event handler on child');
+                        //    console.log('-------------');
+                        //    console.log("this" + this);
+                        //    console.log(this);
+                        //    console.log('---');
+                        //    console.log("event.target" + event.target);
+                        //    console.log(event.target);
+                        //    console.log('---');
+                        //    console.log("this == event.target");
+                        //    console.log(this == event.target);
+                        //    console.log('---');
+                        //    console.log("event.currentTarget");
+                        //    console.log(event.currentTarget);
+                        //    console.log('---');
+                        //    console.log("this == event.currentTarget");
+                        //    console.log(this == event.currentTarget);
+                        //    console.log('《《《《《《《《》》》》》》');
+                        //}, true);/*capture*/
+                        //   //}, false);/*bubble*/
     </script>
 </body>
 </html>
