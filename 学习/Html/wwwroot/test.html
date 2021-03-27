@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <main>
+        1
+    </main>
+    <form method="post" action="/Index">
+        <label>姓名</label>
+        <input id="fname" name="username" />
+        <button type="submit" id="submit"> 提交</button>
+    </form>
+    <script>
+
+        //post 向后台发送一些数据
+        document.getElementById('submit').onclick = function (event) {
+            event.preventDefault();
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("post", "/");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("username=" + document.getElementsByName('username')[0].value);
+            //xhttp.send("username=Bill");
+            xhttp.onload = function () {
+                if (this.status > 400) {
+                    console.log(this.statusText);
+
+                }
+                document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
+            }
+
+
+        }
+    </script>
+</body>
+</html>
