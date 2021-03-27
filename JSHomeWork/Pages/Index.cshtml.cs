@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace JSHomeWork.Pages
 {
+    [IgnoreAntiforgeryToken]
     public class IndexModel : PageModel
     {
+        [BindProperty]
+        public string username { get; set; }
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -19,6 +22,12 @@ namespace JSHomeWork.Pages
 
         public void OnGet()
         {
+
+        }
+
+        public void OnPost()
+        {
+            
 
         }
     }
