@@ -12,17 +12,19 @@ namespace JSHomeWork.Pages
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public string username { get; set; }
+        [FromBody]
+        public Student Student  { get; set; }
         private readonly ILogger<IndexModel> _logger;
-
+        public string Name { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet()
+        public void OnGet(IndexModel model)
         {
-
+            Student student = new Student();
+            model.Name = student.Name;
         }
 
         public void OnPost()
@@ -30,5 +32,9 @@ namespace JSHomeWork.Pages
             
 
         }
+    }
+    public class Student
+    {
+        public string Name { get; set; }
     }
 }
