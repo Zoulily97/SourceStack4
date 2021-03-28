@@ -56,39 +56,40 @@
 
 
 
-        //前端到后端
-        document.getElementById('load').onclick = function (event) {
-            event.preventDefault();
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("post", "/");
-            // 向后台发送JSON数据需要修改content type：
-            xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
-            var laoCheng = {
-                name: '老程'
-            }
-            xhttp.send(JSON.stringify(laoCheng));
-            xhttp.onload = function () {
-                document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
+        ////前端到后端
+        //document.getElementById('load').onclick = function (event) {
+        //    event.preventDefault();
+        //    var xhttp = new XMLHttpRequest();
+        //    xhttp.open("post", "/");
+        //    // 向后台发送JSON数据需要修改content type：
+        //    xhttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        //    var laoCheng = {
+        //        name: '老程'
+        //    }
+        //    xhttp.send(JSON.stringify(laoCheng));
+        //    xhttp.onload = function () {
+        //        document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
+
+        //    }
+
+
+        //}
+
+
+            document.getElementById('load').onclick = function (event) {
+                event.preventDefault();
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("get", "/");
+                xhttp.send();
+                xhttp.onload = function () {
+                    console.log(xhttp.response);
+                    var student = JSON.parse(xhttp.response);
+                    document.getElementById('sname').innerText = student.name;
+                    document.getElementById('age').innerText = student.age;
+
+                }
 
             }
-
-
-        }
-
-
-            //document.getElementById('load').onclick = function (event) {
-            //    event.preventDefault();
-            //    var xhttp = new XMLHttpRequest();
-            //    xhttp.open("get", "/border.html");
-            //    xhttp.send();
-            //    xhttp.onload = function () {
-            //        var student = JSON.parse(xhttp.response);
-            //        document.getElementById('sname').innerText = student.name;
-            //        document.getElementById('age').innerText = student.age;
-
-            //    }
-
-            //}
 
 
 

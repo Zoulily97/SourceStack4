@@ -21,10 +21,9 @@ namespace JSHomeWork.Pages
             _logger = logger;
         }
 
-        public void OnGet(IndexModel model)
+        public JsonResult OnGet()
         {
-            Student student = new Student();
-            model.Name = student.Name;
+            return new JsonResult(new Student { Name = "zl", Age = 23 });
         }
 
         public void OnPost()
@@ -35,6 +34,7 @@ namespace JSHomeWork.Pages
     }
     public class Student
     {
+        public int Age { get;set; }
         public string Name { get; set; }
     }
 }
