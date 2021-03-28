@@ -5,34 +5,59 @@
     <title></title>
 </head>
 <body>
-    <main>
-        1
+    <main style=" border:2px dashed pink">
+    <label>
+        姓名<span id="sname"></span>
+    </label>
+    <br />
+    <label>
+        年龄<span id="age"></span>
+    </label>
+    <br />
+    <label>
+        isFemale<span id="isFemale"></span>
+    </label>
     </main>
+    <button type="button" id="load">加载</button>
     <form method="post" action="/Index">
         <label>姓名</label>
         <input id="fname" name="username" />
         <button type="submit" id="submit"> 提交</button>
     </form>
     <script>
-
-        //post 向后台发送一些数据
-        document.getElementById('submit').onclick = function (event) {
+        document.getElementById('load').onclick = function (event) {
             event.preventDefault();
             var xhttp = new XMLHttpRequest();
-            xhttp.open("post", "/");
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("username=" + document.getElementsByName('username')[0].value);
-            //xhttp.send("username=Bill");
+            xhttp.open("get", "/");
+            xhttp.send();
             xhttp.onload = function () {
-                if (this.status > 400) {
-                    console.log(this.statusText);
+                console.log(xhttp.response);
+                var student = JSON.parse(xhttp.response);
+                document.getElementById('sname').innerText = student.name;
+                document.getElementById('age').innerText = student.age;
 
-                }
-                document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
             }
 
-
         }
+
+            ////post 向后台发送一些数据
+            //document.getElementById('submit').onclick = function (event) {
+            //    event.preventDefault();
+            //    var xhttp = new XMLHttpRequest();
+            //    xhttp.open("post", "/");
+            //    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //    xhttp.send("username=" + document.getElementsByName('username')[0].value);
+            //    //xhttp.send("username=Bill");
+            //    xhttp.onload = function () {
+            //        if (this.status > 400) {
+            //            console.log(this.statusText);
+
+            //        }
+            //        document.getElementsByTagName("main")[0].innerHTML = xhttp.response;
+            //    }
+
+
+            //}
     </script>
 </body>
 </html>

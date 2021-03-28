@@ -22,9 +22,8 @@ namespace Html.Controllers
  
         public IActionResult Index()
         {
-            IndexModel model = new IndexModel();
-            model.username = Request.Form["username"];
-            return View(model);
+            return Json(new Student { Name = "zouliy", Age = 23 });
+
         }
 
         public IActionResult Privacy()
@@ -38,5 +37,10 @@ namespace Html.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    }
+    public class Student
+    {
+        public int Age { get; set; }
+        public string Name { get; set; }
     }
 }
